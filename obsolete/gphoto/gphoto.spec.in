@@ -1,0 +1,51 @@
+%define ver	@VERSION@
+%define rel	1
+%define prefix	/usr
+
+Summary: gPhoto - Digital Camera Software
+Name: gphoto        
+Version: %ver
+Release: %rel
+Copyright: GPL
+Group: X11/Utilities
+Source: ftp://ftp.gphoto.org/projects/gphoto/pub/tar/gphoto/stable/gphoto-%{ver}.tar.gz
+BuildRoot: /var/tmp/gphoto-root
+URL: http://www.gphoto.org/
+Docdir: %{prefix}/doc
+Requires: gtk+ >= 1.2.0
+Requires: libusb >= 0.1
+Requires: libgpio >= 0.0.2
+
+%description
+gPhoto is an universal, free application and library framework 
+that lets you download images from several different digital 
+camera models, and from the local harddrive, and generate HTML
+albums.
+
+%prep
+%setup -q
+
+%build
+CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%prefix
+make
+
+%install
+rm -rf $RPM_BUILD_ROOT
+make prefix=$RPM_BUILD_ROOT%{prefix} install
+
+%post
+/sbin/ldconfig
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%doc AUTHORS COPYING FAQ MANUAL NEWS README THANKS THEMES ChangeLog
+%{prefix}/man/man1/gphoto.1
+%{prefix}/bin/*
+%{prefix}/lib/gphoto/*
+%{prefix}/share/gphoto/doc/*
+%{prefix}/share/gphoto/gallery/Default/*
+%{prefix}/share/gphoto/gallery/RedNGray/*
+%{prefix}/share/gphoto/gallery/CSStheme/*
+%{prefix}/share/gnome/apps/Graphics/*

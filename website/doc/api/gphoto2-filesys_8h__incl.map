@@ -1,0 +1,4 @@
+base referer
+rect $gphoto2-context_8h.html 231,7 412,33
+rect $gphoto2-list_8h.html 244,108 399,135
+rect $gphoto2-file_8h.html 244,159 399,185

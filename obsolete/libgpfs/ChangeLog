@@ -1,0 +1,49 @@
+2002-12-19  Lutz Müller <lutz@users.sourceforge.net>
+
+	* libgpfs/gpfs-prop.h: Move some functions to ...
+	* libgpfs/gpfs-obj.h: ... here.
+
+2002-12-19  Lutz Müller <lutz@users.sourceforge.net>
+
+	* libgpfs/gpfs-bag.[c,h] (gpfs_bag_[bag,prop]_add_impl): New.
+
+2002-12-18  Lutz Müller <lutz@users.sourceforge.net>
+
+	* tests/konica: New.
+
+2002-12-18  Lutz Müller <lutz@users.sourceforge.net>
+
+	* libgpfs/gpfs.[c,h]: Now a GPFsObj, too.
+
+2002-12-17  Lutz Müller <lutz@users.sourceforge.net>
+
+	* libgpfs/gpfs-cache.[c,h]: Work to be continued.
+
+2002-12-16  Lutz Müller <lutz@users.sourceforge.net>
+
+	* libgpfs/*: Put some commonly used stuff into gpfs-obj.[c,h].
+
+2002-12-13  Lutz Müller <lutz@users.sourceforge.net>
+
+	* libgpfs/gpfs-info.[c,h]: Renamed to
+	* libgpfs/gpfs-prop.[c,h]
+
+Lutz Müller <lutz@users.sourceforge.net>
+
+	* libgpfs/*: Support ranges.
+
+Lutz Müller <lutz@users.sourceforge.net>
+
+	* libgpfs/gpfs-info-type.[c,h]: New
+	* libgpfs/gpfs-if.[c,h]: Support setting pieces of information.
+	* libgpfs/Makefile.am: Add new files.
+
+Lutz Müller <lutz@users.sourceforge.net>
+
+	* configure.in: Fix typo.
+
+Lutz Müller <lutz@users.sourceforge.net>
+
+	* AUTHORS
+	* README: Updated.
+

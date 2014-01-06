@@ -1,0 +1,9 @@
+GnoCam*
+Makefile
+Makefile.in
+test-vfs-module
+test-gnocam
+test-moniker
+*.o
+.libs
+.deps

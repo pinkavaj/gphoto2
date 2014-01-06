@@ -1,0 +1,250 @@
+                gphoto-suite
+		------------
+		
+gphoto-suite is an "umbrella package" which contains 
+required (sub)packages related to libgphoto2 in one convenient package.
+
+gphoto-suite makes compiling and installing from scratch easier for
+
+  - people without much compilation experience
+  - people who use cross compilation environments
+  - people who run test builds and runtime tests
+  - people who build integrated binary packages of libgphoto2 and gphoto2
+
+
+Legal stuff:
+------------
+
+gphoto-suite includes multiple packages which are mostly licensed under
+GPL or LGPL. See the respective packages for details.
+
+
+Quick Start:
+------------
+
+First, look into gphoto-suite/src/ and make sure that only the software
+packages you want built are there - none more, none less.
+
+Then, depending on your desired directory layout, choose one of the
+following Quick Start n of 3 sections.
+
+
+Quick Start 1 of 3:
+-------------------
+
+Directory layout (works for development and testing):
+ 
+  someplace
+  +- gphoto-suite   source code
+     +- _b          built files (object files and stuff)
+     +- _i          properly installed files (binaries, libs, docs)
+
+Of course, you can replace the relative _i directory with an absolute
+directory like $HOME/usr or /usr/local.
+
+Disadvantage: A simple "grep -r" will grep both source and binaries.
+
+    svn co https://svn.sourceforge.net/svnroot/gphoto/trunk/gphoto-suite gphoto-suite
+    cd gphoto-suite
+    autoreconf -vis
+    mkdir _b
+    cd _b
+    ../configure --prefix=$PWD/../_i
+    make all
+    make install
+    ../_i/bin/gphoto2 --list-cameras
+
+
+Quick Start 2 of 3:
+-------------------
+
+Directory layout (ideal for development and testing):
+ 
+  someplace
+  +- gphoto-suite          source code
+  +- gphoto-suite-build    built files (object files and stuff)
+  +- gphoto-suite-install  properly installed files (binaries, libs, docs)
+
+Advantage: A simple "grep -r" can grep just the source (without the binaries).
+
+    svn co https://svn.sourceforge.net/svnroot/gphoto/trunk/gphoto-suite gphoto-suite
+    mkdir gphoto-suite-build
+    autoreconf -vis gphoto-suite
+    cd gphoto-suite-build
+    ../gphoto-suite/configure --prefix=$PWD/../gphoto-suite-install
+    make all
+    make install
+    ../gphoto-suite-install/bin/gphoto2 --list-cameras
+
+
+Quick Start 3 of 3:
+-------------------
+
+Directory layout (ideal for one-off installation):
+ 
+  someplace
+  +- gphoto-suite   source code and built files (object files and stuff)
+  /my/usr           properly installed files (binaries, libs, docs)
+
+Common values for /my/usr would be $HOME/usr/gphoto, $HOME/usr or /usr/local.
+
+Advantage: Simple instructions.
+
+    svn co https://svn.sourceforge.net/svnroot/gphoto/trunk/gphoto-suite gphoto-suite
+    cd gphoto-suite
+    autoreconf -vis
+    ./configure --prefix=/my/usr
+    make all
+    make install
+    /my/usr/bin/gphoto2 --list-cameras
+
+
+Getting gphoto-suite from SVN:
+------------------------------
+
+Get gphoto-suite via SVN and change into its directory:
+
+    svn co https://svn.sourceforge.net/svnroot/gphoto/trunk/gphoto-suite gphoto-suite
+
+This downloads the programs from the gphoto project SVN.
+
+
+
+Getting gphoto-suite from source tarball:
+-----------------------------------------
+
+If you got gphoto-suite from a tarball, the source subdirectories
+should already be there.
+
+
+Make sure required (or optional) dependencies are installed:
+------------------------------------------------------------
+
+Highest importance:
+    pkgconfig
+    libusb-dev libexif-dev libjpeg-dev
+    libpopt-dev libltdl-dev
+
+Recommended:
+    libreadline-dev
+
+Less important:
+    doxygen
+
+Optional:
+    libaa-dev
+
+
+Initialize the buildsystem:
+---------------------------
+
+This step is only required for SVN/CVS checkouts or if you have just
+added new SVN directories to src/.
+
+If you have only added the contents of a source tarball to src/, then
+you do *not* need it.
+
+    autoreconf --install --symlink [ --verbose ]
+
+
+Configure the build system:
+---------------------------
+
+This step is required regardless of the method you used to get
+gphoto-suite.
+
+Run
+
+    ./configure --help=recursive
+
+to get help on all the parameters for subprojects.
+
+Note that some subproject options will be automatically set by
+gphoto-suite. This mostly concerns the *_CFLAGS and *_LIBS
+for the libraries gphoto-suite provides by itself.
+
+Then run (for an in-tree build)
+
+    ./configure
+
+with your favourite configure parameters. Or, for an out-of-tree build:
+
+    mkdir ../gphoto-suite-build
+    cd ../gphoto-suite-build
+    ../gphoto-suite/configure ...
+
+with your favourite configure parameters.
+
+If need be, you can even build the included subprojects by themselves:
+
+    mkdir ../libgphoto2-build
+    cd ../libgphoto2-build
+    ../gphoto-suite/src/libgphoto2/configure ...
+
+
+Compilation:
+------------
+
+Use the standard commands:
+
+    make
+    make install
+
+The latter may be given a DESTDIR= parameter or run as root.
+
+
+Cross-compilation:
+------------------
+
+This is an example using "i586-mingw32msvc" as the system for which
+you want to compile (i.e. i586-mingw32msvc-gcc will be the compiler).
+The build system for this example is i686-pc-linux (you can run
+config.guess to determine the build system).
+
+Note that you may want *not* to use
+
+    ../configure --prefix=/foo/bar/usr ...
+    make all
+    make install
+
+but
+
+    ../configure --prefix=/usr ...
+    make all
+    make DESTDIR=/foo/bar install
+
+if you have the "root" (/) directory of the system the stuff is
+supposed to run on mapped into /foo/bar. It depends on your setup.
+
+You can build gphoto-suite for that platform by running:
+
+    mkdir _win32 && cd _win32
+    ../configure --prefix=/tmp/lt-win32-inst \
+        --host=i586-mingw32msvc --build=i686-pc-linux
+    make all
+    make install
+
+If you have an emulator properly installed for the binaries, even
+"make check" will give results. Yes, you can compile and test Windows
+binaries on a Linux system!
+
+
+Run the tests:
+--------------
+
+Run
+
+    make check
+
+and examine the output.
+
+
+Check the distribution mechanism:
+---------------------------------
+
+Run
+
+    make distcheck
+
+and see whether it finishes without errors.
+

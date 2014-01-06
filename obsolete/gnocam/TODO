@@ -1,0 +1,3 @@
+Write/fix the gnome-vfs-module.
+Add more functionality to the applet.
+Add a plugin for libgphoto2 (i.e. add support for cameras other than konica).

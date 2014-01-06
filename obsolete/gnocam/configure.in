@@ -1,0 +1,164 @@
+AC_INIT(gnocam/main.c)
+AC_PREREQ(2.50)
+
+AM_INIT_AUTOMAKE(Gnocam, 0.14)
+AM_CONFIG_HEADER(config.h)
+
+AC_ISC_POSIX
+AC_PROG_CC
+AC_STDC_HEADERS
+
+AM_MAINTAINER_MODE
+
+dnl ---------------------------------------------------------------------------
+dnl libtool:
+dnl ---------------------------------------------------------------------------
+AM_PROG_LIBTOOL
+
+dnl ---------------------------------------------------------------------------
+dnl Internationalization: We need gettext and intltool
+dnl ---------------------------------------------------------------------------
+GETTEXT_PACKAGE=gnocam
+AC_DEFINE(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Gettext package])
+ALL_LINGUAS="no"
+AM_GLIB_GNU_GETTEXT
+AC_PROG_INTLTOOL
+
+dnl ---------------------------------------------------------------------------
+dnl Clean code is always good.
+dnl ---------------------------------------------------------------------------
+if test "$ac_cv_prog_gcc" = "yes"; then
+	CFLAGS="$CFLAGS -g -Wall -Wmissing-declarations -Wmissing-prototypes"
+	LDFLAGS="$LDFLAGS -g -Wall"
+fi
+
+dnl ---------------------------------------------------------------------------
+dnl gconf
+dnl ---------------------------------------------------------------------------
+AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
+if test x"$GCONFTOOL" = xno; then
+  AC_MSG_ERROR([gconftool-2 executable not found in your path])
+fi
+AM_GCONF_SOURCE_2
+
+dnl ---------------------------------------------------------------------------
+dnl gtk+
+dnl ---------------------------------------------------------------------------
+AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal, no)
+if test x"$GLIB_GENMARSHAL" = xno; then
+  AC_MSG_ERROR([glib-genmarshal executable not found in your path])
+fi
+PKG_CHECK_MODULES(GTK, gtk+-2.0)
+AC_SUBST(GTK_CFLAGS)
+AC_SUBST(GTK_LIBS)
+
+dnl ---------------------------------------------------------------------------
+dnl libgnocam
+dnl ---------------------------------------------------------------------------
+PKG_CHECK_MODULES(LIBGNOCAM, libglade-2.0 gtk+-2.0 bonobo-activation-2.0 libbonobo-2.0 libbonoboui-2.0 ORBit-2.0)
+GNOCAM_GLADE_DIR='$(datadir)/'${GETTEXT_PACKAGE}'/interfaces'
+GNOME_C_IDL="/usr/share/idl/GNOME_C.idl"
+ORBIT_IDL="`$PKG_CONFIG --variable=orbit_idl ORBit-2.0`"
+AC_SUBST(GNOCAM_GLADE_DIR)
+AC_SUBST(GNOME_C_IDL)
+AC_SUBST(ORBIT_IDL)
+AC_SUBST(LIBGNOCAM_CFLAGS)
+AC_SUBST(LIBGNOCAM_LIBS)
+
+dnl ---------------------------------------------------------------------------
+dnl tests
+dnl ---------------------------------------------------------------------------
+PKG_CHECK_MODULES(TEST, gtk+-2.0 libbonobo-2.0)
+AC_SUBST(TEST_CFLAGS)
+AC_SUBST(TEST_LIBS)
+
+dnl ---------------------------------------------------------------------------
+dnl panel
+dnl ---------------------------------------------------------------------------
+PKG_CHECK_MODULES(APPLET, libpanelapplet-2.0 ORBit-2.0)
+AC_SUBST(APPLET_CFLAGS)
+AC_SUBST(APPLET_LIBS)
+
+dnl ---------------------------------------------------------------------------
+dnl gconf
+dnl ---------------------------------------------------------------------------
+PKG_CHECK_MODULES(GCONF, gconf-2.0)
+AC_SUBST(GCONF_CFLAGS)
+AC_SUBST(GCONF_LIBS)
+
+dnl ---------------------------------------------------------------------------
+dnl ORBit
+dnl ---------------------------------------------------------------------------
+AM_PATH_ORBIT2([], [], [ORBit-2.0 required])
+
+dnl ---------------------------------------------------------------------------
+dnl bonobo
+dnl ---------------------------------------------------------------------------
+PKG_CHECK_MODULES(BONOBO, libbonobo-2.0)
+AC_SUBST(BONOBO_CFLAGS)
+AC_SUBST(BONOBO_LIBS)
+
+dnl ---------------------------------------------------------------------------
+dnl gnome-vfs-module
+dnl ---------------------------------------------------------------------------
+PKG_CHECK_MODULES(VFS, gnome-vfs-module-2.0 bonobo-activation-2.0 libbonobo-2.0 ORBit-2.0)
+AC_SUBST(VFS_CFLAGS)
+AC_SUBST(VFS_LIBS)
+
+dnl ---------------------------------------------------------------------------
+dnl libgphoto2
+dnl ---------------------------------------------------------------------------
+PKG_CHECK_MODULES(GPHOTO, libgphoto2)
+AC_SUBST(GPHOTO_CFLAGS)
+AC_SUBST(GPHOTO_LIBS)
+
+dnl ---------------------------------------------------------------------------
+dnl For gnocam, we need a couple of libraries.
+dnl ---------------------------------------------------------------------------
+PKG_CHECK_MODULES(GNOCAM, libbonobo-2.0 libgphoto2 libgnomeui-2.0)
+AC_SUBST(GNOCAM_CFLAGS)
+AC_SUBST(GNOCAM_LIBS)
+
+dnl ---------------------------------------------------------------------------
+dnl For the capplet, we need some libraries.
+dnl ---------------------------------------------------------------------------
+PKG_CHECK_MODULES(GNOCAM_CAPPLET, libgnomeui-2.0 libbonobo-2.0 bonobo-activation-2.0 libbonoboui-2.0 ORBit-2.0 libglade-2.0)
+AC_SUBST(GNOCAM_CAPPLET_CFLAGS)
+AC_SUBST(GNOCAM_CAPPLET_LIBS)
+
+dnl ---------------------------------------------------------------------------
+dnl test-gnocam
+dnl ---------------------------------------------------------------------------
+PKG_CHECK_MODULES(TEST_GNOCAM, bonobo-activation-2.0 ORBit-2.0 libbonobo-2.0)
+AC_SUBST(TEST_GNOCAM_CFLAGS)
+AC_SUBST(TEST_GNOCAM_LIBS)
+
+dnl ---------------------------------------------------------------------------
+dnl Makefiles
+dnl ---------------------------------------------------------------------------
+AC_OUTPUT([
+Makefile
+art/Makefile
+idl/Makefile
+applet/Makefile
+gnome-vfs-module/Makefile
+capplet/Makefile
+capplet/help/Makefile
+capplet/help/C/Makefile
+libgnocam/Makefile
+tests/Makefile
+idl/gnocam.pc
+po/Makefile.in
+intl/Makefile
+])
+
+dnl ---------------------------------------------------------------------------
+dnl Feedback
+dnl ---------------------------------------------------------------------------
+echo "
+
+Configuration
+
+	Source code location: ${srcdir}
+	Compiler:             ${CC}
+"

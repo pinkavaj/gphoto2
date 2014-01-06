@@ -1,0 +1,15 @@
+Makefile.in
+Makefile
+.deps
+*.lo
+.libs
+*.la
+qm100
+*~
+*.trace
+*.tgz
+*.tif
+*.jpg
+*.tar
+output
+core

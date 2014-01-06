@@ -1,0 +1,433 @@
+2003-09-05  Hubert Figuiere  <hfiguiere@teaser.fr>
+
+	* src/gphoto2.xml: remove gphoto.net reference
+
+	* configure.in: bump version to 2.1.2
+
+	* src/libgphoto2-usage-faq.xml: Add FAQ about webcam
+	Changed mailing list address
+	Fixed a few style problems
+	Fixed answer about JPEG rotation
+
+	* src/install-faq.xml: fix ulink tag
+
+2002-08-30  Lutz Müller <lutz@users.sourceforge.net>
+
+	* help: Basic setup for translatable gtkam documentation.
+	* configure.in: If scrollkeeper is found, install above.
+
+2002-08-29 18:05  hun
+
+	* src/figures/Makefile.am: magnification 1.0
+
+2002-08-29 18:04  hun
+
+	* m4/docbook-xml.m4, src/xsl/docbook-params.xsl: use XSL parameters
+
+2002-08-29  Lutz Müller <lutz@users.sourceforge.net>
+	
+	* src/gphoto2-manual.pc.in: I need xmldir. In addition, define
+	  exec_prefix.
+
+2002-08-29 16:33  hun
+
+	* configure.in, src/Makefile.am, src/gphoto2-manual.pc.in: allow
+	pkgconfig detection
+
+2002-08-25 21:05  hun
+
+	* src/gphoto2.xml: check whether hotplug setup worked
+
+2002-08-25 21:00  hun
+
+	* src/gphoto2.xml: fixed usbdevfs line
+
+2002-08-25 14:55  hun
+
+	* src/gphoto2.xml: all ids in lowercase, s/RS232/serial/
+
+2002-08-25 14:49  hun
+
+	* src/pdf/Makefile.am: this workaround is nicer (doesn't modify
+	$(srcdir))
+
+2002-08-25 14:48  hun
+
+	* src/gphoto2.xml: improved ids, moved from <section> to <sect1>
+
+2002-08-25 14:01  hun
+
+	* src/: html/.cvsignore, html-nochunks/.cvsignore, pdf/.cvsignore,
+	ps/.cvsignore, txt/.cvsignore, xhtml/.cvsignore,
+	xhtml-nochunks/.cvsignore: ignore built stuff
+
+2002-08-24 01:02  hun
+
+	* src/man/Makefile.am: install man pages into normal directory
+
+2002-08-24 01:01  hun
+
+	* src/gphoto2.xml: hopefully clearer versions
+
+2002-08-24 01:01  hun
+
+	* src/Makefile.am: man comes first
+
+2002-08-24 01:00  hun
+
+	* m4/documentation.m4: added --with-man-dir
+
+2002-08-24 01:00  hun
+
+	* contrib/make-docs.sh: try to clean up curdir if necessary, add
+	apache config file
+
+2002-08-23 04:32  mrensing
+
+	* src/screenshots/gtkam/: rt_click_dir.png, rt_click_list.png: ...
+	and two more screen shots.
+
+2002-08-23 04:30  mrensing
+
+	* src/: gphoto2.xml, screenshots/gtkam/help_about.png: More
+	revisions. Not done yet.
+
+2002-08-23 03:51  mrensing
+
+	* src/screenshots/gtkam/: cam.png, cam_sel.png, cam_sel_enh.png,
+	cam_sel_portadd.png, exp.png, file.png, file_save.png, gtkam.png,
+	help.png, help_debug.png, sel.png, view.png: New size for screen
+	shots. One new screen shot.
+
+2002-08-23 02:47  mrensing
+
+	* src/: gphoto2.xml, screenshots/gtkam/cam.png,
+	screenshots/gtkam/cam_sel.png, screenshots/gtkam/cam_sel_enh.png,
+	screenshots/gtkam/exp.png, screenshots/gtkam/file.png,
+	screenshots/gtkam/file_save.png, screenshots/gtkam/gtkam.png,
+	screenshots/gtkam/help.png, screenshots/gtkam/help_debug.png,
+	screenshots/gtkam/sel.png: Changes to begin process of updating to
+	current version of gtkam.
+
+2002-08-22 02:29  hun
+
+	* src/gphoto2.xml: fixed syntax error
+
+2002-08-22 02:27  hun
+
+	* src/gphoto2.xml: finally fixed up the print-usb-usermap stuff
+
+2002-08-22 01:03  hun
+
+	* ChangeLog: COTD
+
+2002-08-22 00:55  hun
+
+	* src/pdf/Makefile.am: We work around xmlto/passivetex/latex not
+	finding images in current directory, but only relative to the XML
+	source file.
+
+2002-08-22 00:52  hun
+
+	* m4/documentation.m4: abbreviated format message
+
+2002-08-22 00:52  hun
+
+	* contrib/make-docs.sh: build pdf by default, fixed quotation
+	handling in cmd()
+
+2002-08-22 00:07  hun
+
+	* m4/documentation.m4: added txt output msg
+
+2002-08-21 23:54  hun
+
+	* README: CVS build instructions
+
+2002-08-21 23:49  hun
+
+	* contrib/: README, make-docs.sh: added contrib/ stuff
+
+2002-08-21 23:39  hun
+
+	* src/gphoto2.xml: added publication date
+
+2002-08-21 23:39  hun
+
+	* src/html/Makefile.am: added note about relative paths for
+	symlinks
+
+2002-08-21 23:37  hun
+
+	* m4/documentation.m4: s/DOC_DIR/docdir/g
+
+2002-08-21 22:48  hun
+
+	* ChangeLog: COTD
+
+2002-08-21 22:47  hun
+
+	* m4/documentation.m4: forgot txt in XMLTOformat
+
+2002-08-21 22:41  hun
+
+	* src/gphoto2.xml: incorporated info found missing by Christophe
+
+2002-08-21 22:40  hun
+
+	* src/.cvsignore: removed man and html
+
+2002-08-21 22:17  hun
+
+	* configure.in, m4/documentation.m4, src/Makefile.am,
+	src/txt/.cvsignore, src/txt/Makefile.am: added TXT format
+
+2002-08-21 16:02  hun
+
+	* src/: html/.cvsignore, html-nochunks/.cvsignore,
+	xhtml/.cvsignore, man/.cvsignore, pdf/.cvsignore,
+	xhtml-nochunks/.cvsignore, css/.cvsignore, ps/.cvsignore: ignore
+	standard
+
+2002-08-21 15:54  hun
+
+	* autogen.sh: made autogen.sh work for $(srcdir) != $(builddir)
+
+2002-08-21 15:53  hun
+
+	* README: updated text to current state of universe
+
+2002-08-21 15:23  hun
+
+	* ChangeLog: COTD
+
+2002-08-21 15:22  hun
+
+	* Makefile.am: build ChangeLog if $(srcdir) != $(builddir)
+
+2002-08-21 15:15  hun
+
+	* src/gphoto2.xml: workaround for broken xmlto man
+
+2002-08-21 15:13  hun
+
+	* src/xhtml-nochunks/Makefile.am: install symlinks to figures and
+	screenshots directory
+
+2002-08-21 15:09  hun
+
+	* src/gphoto2.xml: workaround for broken xmlto man
+
+2002-08-21 15:06  hun
+
+	* src/: html/Makefile.am, xhtml/Makefile.am,
+	html-nochunks/Makefile.am: install symlinks to figures and
+	screenshots directory
+
+2002-08-21 15:06  hun
+
+	* src/screenshots/gtkam/Makefile.am: install screenshots
+
+2002-08-21 15:06  hun
+
+	* src/figures/Makefile.am: figuredir is defined somewhere else
+
+2002-08-21 15:02  hun
+
+	* src/Makefile.am: added comment about subdir sequence
+
+2002-08-21 15:02  hun
+
+	* m4/documentation.m4: added figures and screenshots dirs
+
+2002-08-21 15:01  hun
+
+	* configure.in: we require ln -s
+
+2002-08-21 14:15  hun
+
+	* src/: Makefile.am, html/Makefile.am, html-nochunks/Makefile.am,
+	man/Makefile.am, pdf/Makefile.am, ps/Makefile.am,
+	xhtml/Makefile.am, xhtml-nochunks/Makefile.am: moved generated docs
+	to seperate directories
+
+2002-08-21 14:12  hun
+
+	* configure.in: added new directories
+
+2002-08-21 14:12  hun
+
+	* m4/documentation.m4: added gphoto2xml var pointing to xml source,
+	added lots of specific doc dirs
+
+2002-08-21 14:10  hun
+
+	* .cvsignore: more precise *.patch pattern
+
+2002-08-20 02:54  hun
+
+	* src/css/Makefile.am: added Makefile.am for css dir
+
+2002-08-19 12:42  hun
+
+	* src/css/docbook-xml.css, configure.in: CSS stylesheet for Docbook
+	XML
+
+2002-08-19 12:42  hun
+
+	* src/gphoto2.xml: css stylesheet is in subdir, and gphoto2 CLI
+	docs at another URI
+
+2002-08-19 12:41  hun
+
+	* src/Makefile.am: added css/ dir, install XML docs
+
+2002-08-19 12:41  hun
+
+	* src/.cvsignore: ignore generated man pages
+
+2002-08-19 12:40  hun
+
+	* m4/documentation.m4: install path for XML docs
+
+2002-08-19 11:57  hun
+
+	* src/gphoto2.xml: added format descriptions for --filename option
+
+2002-08-19 05:33  mrensing
+
+	* src/gphoto2.xml: Added my name as an editor :-) (Couldn't resist)
+	 Also added some captions.
+
+2002-08-19 03:22  hun
+
+	* ChangeLog: COTD - with times in UTC
+
+2002-08-19 03:18  hun
+
+	* Makefile.am: Added rule for creation of ChangeLog
+
+2002-08-19 03:16  hun
+
+	* configure.in: re-added MAINTAINER_MODE
+
+2002-08-19 02:39  hun
+
+	* .cvsignore: added *.bak
+
+2002-08-19 02:38  hun
+
+	* autogen.sh: remove files not in CVS, echo commands before
+	execution
+
+2002-08-19 02:28  hun
+
+	* configure.in, m4/Makefile.am: added m4/Makefile.am
+
+2002-08-19 01:53  hun
+
+	* .cvsignore, ChangeLog, src/.cvsignore: COTD
+
+2002-08-19 01:52  hun
+
+	* src/figures/Makefile.am: replaced HTML_DIR by htmldir
+
+2002-08-19 01:48  hun
+
+	* src/screenshots/gtkam/Makefile.am: added png files to
+	distribution
+
+2002-08-19 01:48  hun
+
+	* src/gphoto2.xml: adapted to canonical faq.xml location
+
+2002-08-19 01:47  hun
+
+	* src/Makefile.am: build and install non-chunked HTML
+
+2002-08-19 01:46  hun
+
+	* m4/documentation.m4: htmldir instead of HTML_DIR - allows
+	html_DATA. Removed API_DIR.
+
+2002-08-19 01:46  hun
+
+	* configure.in: no extra maintainer mode
+
+2002-08-19 01:26  hun
+
+	* Makefile.am: added aclocal and automake options
+
+2002-08-19 01:26  hun
+
+	* autogen.sh: added rudimentary autogen.sh file
+
+2002-08-19 01:21  hun
+
+	* ChangeLog, README: Changes of the day
+
+2002-08-19 01:19  hun
+
+	* .cvsignore, AUTHORS, ChangeLog, Makefile.am, NEWS, configure.in,
+	m4/.cvsignore, m4/docbook-xml.m4, m4/documentation.m4,
+	m4/fig2dev.m4, m4/gtk-doc.m4, src/.cvsignore, src/Makefile.am,
+	src/figures/.cvsignore, src/figures/architecture.png,
+	src/figures/gphotofs.png, src/figures/libgphoto2-api.png,
+	src/figures/libgphoto2-camlib.png, src/figures/libgphoto2_port.png,
+	src/screenshots/.cvsignore, src/screenshots/Makefile.am,
+	src/screenshots/gtkam/.cvsignore,
+	src/screenshots/gtkam/Makefile.am: added build system, stolen from
+	libgphoto2
+
+2002-08-19 01:10  hun
+
+	* src/gphoto2.xml: added a few more web links
+
+2002-08-18 04:45  mrensing
+
+	* src/gphoto2.xml: Changes to add screenshots to gtkam docs.
+
+2002-08-18 04:38  mrensing
+
+	* src/figures/: architecture.png, gphotofs.png, libgphoto2-api.png,
+	libgphoto2-camlib.png, libgphoto2_port.png: Added .png files needed
+
+2002-08-18 04:22  mrensing
+
+	* src/screenshots/gtkam/: cam_conf_cam.png, cam_conf_driver.png,
+	cam_driver.png, cam_info.png, cam_sel.png, cam_sel_enh.png,
+	cam_sel_portadd.png, exp.png, file.png, file_save.png, fol.png,
+	fol_create.png, fol_uploadfile.png, gtkam.png, help.png,
+	help_about.png, help_debug.png, sel.png: Adding screen shots of
+	gtkam for the docs.
+
+2002-08-18 04:20  mrensing
+
+	* src/screenshots/gtkam/cam.png: Test addition of cam.png
+
+2002-08-17 23:15  hun
+
+	* README: notice about cvs2cl
+
+2002-08-17 23:09  hun
+
+	* src/figures/: Makefile.am, architecture.fig, gphotofs.fig,
+	libgphoto2-api.fig, libgphoto2-camlib.fig, libgphoto2_port.fig:
+	moved figure here from libgphoto2/doc/figures
+
+2002-08-17 23:01  hun
+
+	* ChangeLog: and we gotta have a ChangeLog (created by cvs2cl)
+
+2002-08-17 22:39  hun
+
+	* README: nothing is working yet
+
+2002-08-17 22:29  hun
+
+	* src/gphoto2.xml: moved gphoto2.xml here from libgphoto2/doc/
+
+2002-08-17 22:23  hun
+
+	* README: we gotta have a README.
+

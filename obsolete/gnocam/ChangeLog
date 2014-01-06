@@ -1,0 +1,399 @@
+2003-08-27  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* applet/*: Implement preview.
+
+2003-08-20  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* capplet/*: Some work. Nothing functional.
+
+2003-02-03  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* applet/*: Add a link to the capplet.
+
+2003-02-02  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* capplet/*: Watch out for changes done using the capplet.
+
+2003-01-27  Lutz Mller <lutz@users.sourceforge.net>
+
+	* capplet/*: Get it somewhat working. GConf is no pleasure to work
+	  with.
+
+2002-12-14  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gnome-vfs-module: First pieces of code.
+
+2002-12-08  Lutz Müller <lutz@users.sourceforge.net>
+
+	* capplet/*: You can now remove cameras from the list.
+
+2002-12-07  Lutz Müller <lutz@users.sourceforge.net>
+
+	* capplet/*: You can now add cameras to a list.
+
+2002-11-29  Lutz Müller <lutz@users.sourceforge.net>
+
+	* capplet/*: Prepare plugin for gnome-control-center.
+
+2002-11-26  Lutz Müller <lutz@users.sourceforge.net>
+
+	* applet/*: Fix various segfaults.
+
+2002-11-25  Lutz Müller <lutz@users.sourceforge.net>
+
+	* idl/GnoCam.h: Make some functions async.
+
+2002-11-20  Lutz Müller <lutz@users.sourceforge.net>
+
+	* applet/*: You can now capture images.
+
+2002-11-19  Lutz Müller <lutz@users.sourceforge.net>
+
+	* tests/gnocam-test.c: Get that working again.
+
+2002-11-18  Lutz Müller <lutz@users.sourceforge.net>
+
+	* gnocam/*
+	* applet/*: Implement "Connect" and "Disconnect". You still can't do
+	  anything with your camera.
+
+2002-11-18  Lutz Müller <lutz@users.sourceforge.net>
+
+	* applets/gnocam-prefs.c: Fix segfault.
+
+2002-11-18  Lutz Müller <lutz@users.sourceforge.net>
+
+	* applets/*: The preferences dialog is working.
+
+2002-11-17  Lutz Müller <lutz@users.sourceforge.net>
+
+	* applets/*: Rejoice - the "About"-Dialog is working :-)
+
+2002-11-15  Lutz Müller <lutz@users.sourceforge.net>
+
+	* applets/*: The code does not only compile, the applet is now even
+	  visible.
+
+2002-11-14  Lutz Müller <lutz@users.sourceforge.net>
+
+	The beast compiles again.
+
+2002-07-17  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Start GNOME-2 port.
+
+2002-03-10  Lutz Müller <lutz@users.sourceforge.net>
+
+	* configure.in: Fix warnings.
+	* libgnocam/gnocam-configuration.c: Fix headers.
+
+2002-01-15  Lutz Müller <lutz@users.sourceforge.net>
+
+	Updated for API changes in gphoto2.
+
+2001-10-14  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	* Remove references to bonobo-conf.
+
+2001-10-09  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	* Bump up version to 0.13
+
+2001-08-29  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	Patch from Fabrice Bellet <Fabrice.Bellet@creatis.insa-lyon.fr>:
+
+	* gnome-vfs-module/camera-method.c (do_get_file_info): Use 
+	gnome_vfs_uri_extract_short_name instead of gnome_vfs_uri_get_basename
+	because of potential trailing slashes
+
+2001-08-27  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	* libgnocam/gnocam-capplet-table.c: Update to new API.
+
+2001-08-25  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	* configure.in: Fix check for gconf
+
+2001-08-23  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	* gnocam/*:
+	* gnome-vfs-module/*: Adaption to gphoto2 API changes
+
+2001-08-21  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	* applet/gnocam-applet.desktop.in: New
+	* applet/Makefile.am: Add this file here
+
+2001-08-20  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	* gnocam/gnocam-main.c: Kill compile warnings
+
+2001-08-20  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	* applet/gnocam-applet.c: Use a toolbar
+	* art/gnocam-folder.png: New
+	* art/Makefile.am: Install gnocam-folder.png
+	* src/gnocam-main.[c,h]:
+	* src/gnocam.c:
+	* src/gnocam-camera.[c,h]:
+	* src/gnocam-shortcut-bar.[c,h]:
+	* src/gnocam-capture.[c,h]: Removed
+
+2001-08-18  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	* applet/*: New
+	* configure.in:
+	* Makefile.am: Adapt
+
+2001-08-18  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	* gnocam/gnocam-configuration.c: Use gp_widget_get_parent.
+
+2001-08-15  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+	
+	* bonobo-moniker/Makefile.am: Get "make distcheck" working again.
+
+2001-08-09  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	* gnocam/gnocam-main.c: (impl_GNOME_GnoCam_getCameraList): New
+	* idl/GnoCam.idl: Introduce getCameraList
+	* tests/test-gnocam.c: Test getCameraList
+
+2001-08-03  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	* gnocam/gnocam-main.c:
+	* gnocam/gnocam-capture.c: Let the dialogs disappear immediately after
+	user clicked on the buttons.
+
+2001-08-01  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	* tests/test-gnocam.c:
+	* gnocam/gnocam-capture.c:
+	* gnocam/gnocam-camera.c: Make capturing of images async.
+
+2001-07-31  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	* configure.in:
+	* gnocam/Makefile.am:
+	* capplet/Makefile.am: Fix "make distcheck".
+	* gnocam.spec.in: Removed.
+
+2001-07-31  Lutz Müller <urc8@rz.uni-karlsruhe.de>
+
+	* gnocam/gnocam-camera-selector.c: Make UI nicer. Fix error message.
+	* libgnocam/gnocam-capplet-model.c: Don't loop forever if table is
+	changed.
+
+2001-07-31	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* capplet/*: Moved some stuff to ...
+	* libgnocam/*: Here is some code that is used by the ...
+	* gnocam/gnocam-camera-selector.c
+
+2001-07-30	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* capplet/gnocam-capplet-table[.c,.h,-scrolled.[c,h]]: New files.
+	* capplet/Makefile.am: Fix IMAGEDIR.
+	* capplet/gnocam-capplet-content.c: Use above files.
+	* capplet/gnocam-capplet-model.h: Cosmetics...
+	* gnocam/gnocam-camera.c: Implement getInfo
+	* gnocam/gnocam-main.c: Oops, forgot a "while (TRUE);"
+	* idl/GnoCam.idl: Add getInfo.
+
+2001-07-30	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* gnocam/gnocam-main.c: Close the dialog if Cancel has been clicked.
+
+2001-07-30 	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* gnocam/bonobo-stream-camera.c: Don't use CameraFile everywhere, just
+	keep the buffer and the size. Improves readability of the code.
+	* gnome-vfs-module/camera-method.c: Return GNOME_VFS_ERROR_EOF when
+	the stream does no longer read any bytes.
+
+2001-07-30	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* configure.in: Warn people that this is a very experimental package.
+
+2001-07-17	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* gnocam/*: Prettier camera selection dialog.
+
+2001-07-16	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	Redesign: Everything through GnoCam.idl.
+
+	* (...)
+
+2001-07-13	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* Makefile.am: Don't enter SUBDIRS idl and bonobo-storage-module.
+	* configure.in: Make the whole stuff compiling faster by moving all
+	compiler/linker flags into GNOME_EXTRA_*.
+	* bonobo-storage-module/*: Moved to bonobo-moniker/* as there won't be
+	storage modules in bonobo2.
+	* bonoob-moniker/*: New home of bonobo-storage-camera.
+	* (...)
+
+2001-07-06	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	Do "export DEBUG_GNOCAM=1" in order to get the debugging stuff.
+
+	* bonobo-moniker/bonobo-moniker-camera.c: Debugging stuff.
+	* bonobo-storage-module/bonobo-storage-camera.c: Debugging stuff.
+	* libgnocam/gphoto-extensions.c: Removed debugging stuff.
+
+2001-07-06	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* gnome-vfs-module/Makefile.am: Add BONOBO_[LIBS,CFLAGS].
+
+2001-06-12	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* configure.in: Version 0.10 - there are people out there that want
+	tar-balls... Remove "no" from ALL_LINGUAS - make distcheck won't work
+	otherwise? Modify test for bonobo.
+	* bonobo-moniker/Makefile.am: Fix to make distcheck work.
+
+2001-06-07	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* bonobo-moniker/bonobo-moniker-camera.c: If resolving as stream, check
+	if we have to pass the COMPRESSED flag. That lets us display previews
+	again.
+	* gnome-vfs-module/camera-method.c: (do_get_file_info): Add another
+	usleep(300) :-(
+
+2001-06-06	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* bonobo-storage-module/bonobo-stream-camera.c: 
+	(bonobo_stream_camera_new): Always do a gp_camera_folder_list_files
+	in order to give the camera drivers a chance to populate their
+	filesystems. Thanks to Fabrice Bellet.
+
+2001-06-05	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* gnome-vfs-module/camera-method.c: (do_open_directory): Let us
+	sleep for 2 seconds so that bonobo/oaf/whatever isn't angry with our
+	super-giga-multi-thread-high-speed-processing. BAD UGLY HACK.
+
+2001-06-05	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* tests/[.cvsignore,Makefile.am]: New directory including files.
+	* tests/test-vfs-module.c: New file. Test program to test the
+	gnome-vfs-module.
+	* Makefile.am: Add tests to SUBDIRS
+	* configure.in: Generate tests/Makefile
+	* gnome-vfs-module/camera-method.c:
+	(GNOME_VFS_RESULT): Oops - this function always returned
+	GNOME_VFS_ERROR_GENERIC because of a missing 'else'. Fixed.
+	(do_open_directory): Correctly release_unref the storage.
+	(get_basename): New function handling uris with trailing slashes.
+	(do_get_file_info): Get the correct basename. Release_unref the 
+	storage.
+	(vfs_module_init): Make sure gtk is initialized.
+
+2001-05-29	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* gnome-vfs-module/camera-method.c: Added a note about ORBit not 
+	being thread-safe.
+
+2001-05-29	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* bonobo-storage-module/bonobo-storage-camera.c: If name of storage
+	is ".", return information about the storage itself. As we cannot
+	create folders, don't allow the opening of non-existant folders.
+	* gnome-vfs-module/camera-method.c: Correctly translate exceptions
+	into gnome-vfs results. Serialize all requests for storages - the
+	moniker will hang otherwise.
+	* libgnocam/gphoto-extensions.c: Additional debugging message.
+
+2001-05-28	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* gnome-vfs-module/camera-method.c: Put mutexes in again...
+
+2001-05-28	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	While desparately trying to get the gnome-vfs-module to work again...
+
+	* bonobo-moniker/bonobo-moniker-camera.c: More elaborate debugging 
+	messages.
+	* gnome-vfs-module/camera-method.c: Remove mutex stuff - shouldn't be
+	necessary any more?
+	* libgnocam/gphoto-extensions.c: 'Mutex' the static variables.
+
+2001-05-28	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* gnome-vfs-module/*: Moved it over to use the bonobo-moniker-camera.
+	There is now no longer any gphoto code in the gnome-vfs-module.
+	* libgnocam/gphoto-extensions.c: Try to avoid the 'previews@' in 
+	'previews@camera'. Didn't test it, though.
+	* bonobo-moniker/bonobo-moniker-camera.c: Try opening READ | WRITE. If
+	this fails, try opening READ.
+
+2001-05-27	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* gnome-vfs-module/camera-method.c: Bonoboized more functions.
+
+2001-05-27	Fabrice Bellet  <fabrice@gnu.org>
+
+	* gnome-vfs-module/camera-method.c: Fixed the locking problem.
+	Also fixed the test when exceeding folders+files list length 
+	in do_read_directory().
+
+2001-05-24	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* gnome-vfs-module/camera-method.c: Work on the bonoboized version.
+	Remove comments before "#define USE_BONOBO" if you'd like to check
+	it out.
+	* configure.in: Don't use AM_PATH_GCONF - there seem to be systems 
+	with GConf out there that don't have this macro. Then, use
+	gphoto-config instead of gnome-config - there are people out there
+	that don't have gphoto2 and GNOME in the same path.
+
+2001-05-07	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* bonobo-storage-module/bonobo-storage-camera.c: 
+	'mode' is for permissions, 'flags' are for example Bonobo_Storage_READ. 
+	Not the other way round.
+	* bonobo-moniker: For now, just open with READ (not WRITE). Added 
+	FIXME about this.
+
+2001-05-01	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* libgnocam/gphoto-extensions.c: Use gnome_vfs_mime_type_from_name 
+	when the camera library doesn't set the mime type.
+
+2001-04-21	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	Regarding a suggestion Fabrice Bellet made:
+
+	* libgnocam/gphoto-extensions.c: Keep references to all cameras in
+	a hash table in order to reduce redundancy. Speeds up the 
+	gnome-vfs-module enormously.
+
+2001-04-21	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* gnome-vfs-module/*: More debugging stuff. Files are now local because
+	we don't know if the camera is based on the "Directory Browse". 
+
+2001-04-21	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* gnome-vfs-module/*: Tried to get it working with the konica driver.
+	Didn't succeed...
+
+2001-04-20	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* gnome-vfs-module/*: 
+	* libgnocam/*: Preliminary gp_camera_file_info_* support.
+
+2001-04-20	Lutz Müller  <urc8@rz.uni-karlsruhe.de>
+
+	* configure.in:
+	* src/gnocam_storage_view.c: Bring API in sync with gal-0.7.99.0
+
+2001-04-14	Lutz Mueller  <urc8@rz.uni-karlsruhe.de>
+
+	* configure.in: Applied patch from Martin Pool <mbp@samba.org> which
+	fixes a typo in configure.in.
+
+

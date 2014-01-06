@@ -1,0 +1,47 @@
+The gPhoto roadmap
+
+Odd number version are development versions only. They are not 
+stable releases. All stable release will use even number versions.
+
+gPhoto 0.6
+   - GUI rewrite
+   - Camera support for:
+     Kodak DC40/50/120
+   - Full-screen slideshow (1 or more images at a time)
+	with music support via external player (Plug-in)
+   - Thumbnail index picture
+   - xSlideshow output (Plug-in)
+   - Thumbnail index views (regular, list)
+   - HTML Gallery updates
+	(Use camera name, new tags, non-HTML support, 
+	output image size, lowres images, create gallery
+	in-place, internal tag parsing)
+   - Send image via Email
+   - Overlay text
+   - Thumbnail rotation stack
+   - Asynchronous I/O
+   - Common serial I/O library
+   - HTML gallery updates/changes 			(75%)
+   - Make gdk_imlib_load_image_mem really do in memory conversions
+   - XML gallery					(10%)
+   - Message handling
+   - Developer's Manual
+   - Updated User's Manual
+
+gPhoto 0.8
+   - Camera support for:
+   - Dynamic loading of libraries
+   - CORBA
+   - Photo Album 
+
+gPhoto 1.0
+   - Camera support for:
+     75% of the digital cameras out there (BOLD STATEMENT BY SCOTT :)
+   - Updated Developer's Manual
+   - Updated User's Manual
+
+Non-version related
+   - Gnome version
+   - Tcl Interpreter
+   - Camera interface specs
+   - Vendor contact / support

@@ -1,0 +1,23 @@
+#!/bin/sh
+
+base="$(dirname "$0")"
+date="$(env TZ=UTC date -I)"
+sshost="$(cat .sshost)"
+cd "$base" || exit 1
+
+
+rsyncopt="-avc --delete-excluded --bwlimit=12"
+
+echo "Making directory..."
+ssh "${sshost}" "mkdir -p n-dimensional.de/snapshots/${date}/{bz2,gz}"
+
+echo "Running upload..."
+rsync ${rsyncopt} dist-files/*.tar.bz2 gphoto-meta-[0-9]*.tar.gz "${sshost}:n-dimensional.de/snapshots/${date}/bz2/"
+rsync ${rsyncopt} dist-files/SUPPORTED-CAMERAS "${sshost}:n-dimensional.de/snapshots/${date}/"
+rsync ${rsyncopt} .htfixupload "${sshost}:n-dimensional.de/snapshots/${date}/"
+rsync ${rsyncopt} .htaccess "${sshost}:n-dimensional.de/snapshots/"
+
+echo "Fixing stuff..."
+ssh "${sshost}" "n-dimensional.de/snapshots/${date}/.htfixupload"
+
+echo "Done."

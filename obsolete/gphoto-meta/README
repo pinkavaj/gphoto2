@@ -1,0 +1,98 @@
+========================================================================
+What can you do with gphoto-meta?
+========================================================================
+
+
+1. run bootstrap.sh - if you downloaded gphoto-meta via CVS
+===========================================================
+
+If you don't have current autoconf, automake, gettext and libtool
+installed (i.e. you run into trouble), run bootstrap.sh with the 
+"--tools" parameter and it will download, build and locally install
+all these tools in a working version.
+
+bootstrap.sh downloads sources for all subprojects from CVS into 
+cvs-orig/ - if this hasn't already been done before. If you already
+have CVS sources in cvs-orig, you can have bootstrap.sh update to
+current CVS by running it with the --update parameter.
+
+Then bootstrap.sh initializes the build system in a copy in cvs-src/.
+
+It configures the copy, builds distribution tarballs in 
+dist-files/ and installs into dist-root/ if necessary.
+Unfortunately, (due to usage of pkgconfig), we have to install
+libgphoto2 before gtkam or gphoto2 will even configure.
+
+
+2. run compileinstall.sh
+========================
+
+Unpacks the source packages from dist/ in src/ and installs them
+to ${instroot} (default is inst-root/, but the dir can be given as
+parameter to compileinstall.sh):
+
+   compileinstall /absolute/path
+
+
+3. run "autogen.sh; configure; make dist"
+=========================================
+
+Creates a gphoto-meta-VERSION.tar.gz package containing all the
+packages found in dist. This package can then be distributed and
+used to build everything using compileinstall.sh.
+
+
+========================================================================
+How does it work?
+========================================================================
+
+The file "cvs-module-list" contains a list of CVS modules to download
+and compile. Every line describes a CVS module with its location,
+name, the revision to download and some options describing how to
+process it.
+
+You may want to change the sequence of the modules in cvs-module-list
+or remove some modules altogether. However, keep in mind the following
+dependency graph.
+
+E.g., if you want to use gtkam with a USB camera, you need at least
+libusb, libgphoto2 and gtkam in cvs-module-list, probably also
+libexif. Also, you must have gtk+-2.0 with the development files
+installed.
+
+Module dependency graph:
+
+                 libusb
+                    |
+                   [2]
+                    V
+     gphoto2 <-- libgphoto2 --> gtkam
+        ^           ^             ^
+        |           |             |
+(popt)--+          [1]            +------------+------- (gtk+-2.0)
+        |           |             |            |
+        V           |             V            V
+       exif <-- libexif --> libexif-gtk --> gexif
+        ^
+        |
+     libmnote
+
+Footnotes:
+  [1] - libexif is recommended for cameras using EXIF JPEG images
+        (almost all cameras do that)
+  [2] - libusb is required if libgphoto2 must be able to use 
+        USB cameras
+
+The two modules popt and gtk+-2.0 are optional and not contained in
+this package, but required for some modules:
+
+- all graphical applications (gtkam, gexif) require gtk+-2.0
+- the command line applications (gphoto2, exif) require popt
+
+
+========================================================================
+What is still missing?
+========================================================================
+
+- better dependency tracking in compileinstall.sh
+- install required tools and libs in compileinstall.sh

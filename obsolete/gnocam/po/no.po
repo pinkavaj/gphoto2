@@ -1,0 +1,659 @@
+# Norwegian (bokmål) message catalog for GnoCam, a GNOME front end for gphoto2
+# Copyright © 2000 Free Software Foundation, Inc.
+# Ole Aamot <ole@gnu.org>, 2000.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: GnoCam 0.7\n"
+"POT-Creation-Date: 2001-06-12 11:50+0200\n"
+"PO-Revision-Date: 2000-09-08 23:29+0200\n"
+"Last-Translator: Ole Aamot <ole@gnu.org>\n"
+"Language-Team: Norwegian (bokmål) <i18n-nb@lister.ping.uio.no>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Init GPhoto2
+#: src/gnocam.c:69
+#, fuzzy, c-format
+msgid "Could not initialize gphoto! (%s)"
+msgstr ""
+"Klarte ikke å initiere gconf!\n"
+"\n"
+"%s"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not get camera manual!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å sette kameramodell!"
+
+#, fuzzy
+#~ msgid "Could not get widget to show the item '%s'!"
+#~ msgstr "Klarte ikke å sette kameramodell!"
+
+#, fuzzy
+#~ msgid "Not yet implemented."
+#~ msgstr "Ikke implementert enda!"
+
+#, fuzzy
+#~ msgid "Could not get storage for '%s'! (%s)"
+#~ msgstr "Klarte ikke å laste ned miniatyr fra kameraet!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not get list of contents for '%s'!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å laste ned miniatyr fra kameraet!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not connect to the camera!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å laste ned fil fra kameraet!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not get camera configuration!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å sette kameramodell!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not create popup for '%s'!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å finne port!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not get capture from camera!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å laste ned miniatyr fra kameraet!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not download the file '%s'!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å hente fotografi!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not upload the file!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å hente fotografi!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not save file!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å sette kameramodell!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not erase '%s'!\n"
+#~ "(%s)"
+#~ msgstr "Kunne ikke slette fil!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not initialize gconf!\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Klarte ikke å initiere gconf!\n"
+#~ "\n"
+#~ "%s"
+
+#, fuzzy
+#~ msgid "Could not get property bag for "
+#~ msgstr "Klarte ikke å hente portinformasjon!"
+
+#, fuzzy
+#~ msgid "Could not get property 'debug_level! (%s)"
+#~ msgstr "Klarte ikke å hente portinformasjon!"
+
+#, fuzzy
+#~ msgid "Could not get property 'debug_level'! (%s)"
+#~ msgstr "Klarte ikke å hente portinformasjon!"
+
+#, fuzzy
+#~ msgid "Could not set property 'debug_level'! (%s)"
+#~ msgstr "Klarte ikke å lagre kamerainnstillinger!"
+
+#~ msgid "Add camera to list."
+#~ msgstr "Legg kamera til listen"
+
+#~ msgid "Debug Level"
+#~ msgstr "Debug-nivå"
+
+#~ msgid "Delete"
+#~ msgstr "Slett"
+
+#~ msgid "GnoCam"
+#~ msgstr "GnoCam"
+
+#~ msgid ""
+#~ "GnoCam - a small but powerful front-end to gphoto2 for the GNOME desktop"
+#~ msgstr ""
+#~ "GnoCam - en liten og kraftig front-end til gphoto2 for GNOME skrivebordet"
+
+#, fuzzy
+#~ msgid "Gnome"
+#~ msgstr "GnoCam"
+
+#, fuzzy
+#~ msgid "How did you connect your camera to this computer?"
+#~ msgstr "Hvordan koblet du kameraet til datamaskinen?"
+
+#~ msgid "Model"
+#~ msgstr "Modell"
+
+#, fuzzy
+#~ msgid "Model:"
+#~ msgstr "Modell"
+
+#, fuzzy
+#~ msgid "Model?"
+#~ msgstr "Modell"
+
+#~ msgid "Name"
+#~ msgstr "Navn"
+
+#, fuzzy
+#~ msgid "Name:"
+#~ msgstr "Navn"
+
+#~ msgid "New File"
+#~ msgstr "Ny Fil"
+
+#, fuzzy
+#~ msgid "Open File"
+#~ msgstr "Ny Fil"
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#, fuzzy
+#~ msgid "Port:"
+#~ msgstr "Port"
+
+#, fuzzy
+#~ msgid "Port?"
+#~ msgstr "Port"
+
+#~ msgid "Prefix"
+#~ msgstr "Prefiks"
+
+#, fuzzy
+#~ msgid "Remove selected cameras from list."
+#~ msgstr "Velg ett kamera først."
+
+#~ msgid "Save"
+#~ msgstr "Lagre"
+
+#~ msgid "Save File"
+#~ msgstr "Lagre fil"
+
+#~ msgid "Select File"
+#~ msgstr "Velg fil"
+
+#, fuzzy
+#~ msgid "_New File"
+#~ msgstr "Ny Fil"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not get number of supported models!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å hente antall støttede modeller!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not get information about port number %i!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å finne portinformasjon!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not get abilities for model '%s'!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å sette kameramodell!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not get property bag of '%s'!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å laste ned kamerainnstillinger!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not get property 'name' of '%s'!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å laste ned miniatyr fra kameraet!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not get value of property 'name' of '%s'!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å laste ned kamerainnstillinger!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not get property 'port' of '%s'!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å finne portinformasjon!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not get value of property 'port' of '%s'!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å laste ned kamerainnstillinger!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not get property 'model' of '%s'!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å sette kameramodell!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not get value of property 'model' of '%s'!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å sette kameramodell!"
+
+#, fuzzy
+#~ msgid "Save Files"
+#~ msgstr "Lagre fil"
+
+#, fuzzy
+#~ msgid "Save Files As"
+#~ msgstr "Lagre fil som..."
+
+#, fuzzy
+#~ msgid "Save Previews"
+#~ msgstr "Lagre _forhåndsvisning"
+
+#, fuzzy
+#~ msgid "Save Previews As"
+#~ msgstr "Lagre forhåndsvisning som..."
+
+#, fuzzy
+#~ msgid "_File"
+#~ msgstr "Tiller"
+
+#, fuzzy
+#~ msgid "_Settings"
+#~ msgstr "Innstilling"
+
+#~ msgid "Capture Image"
+#~ msgstr "Knips bilde"
+
+#~ msgid "Capture Preview"
+#~ msgstr "Forhåndsvisning"
+
+#~ msgid "Capture Video"
+#~ msgstr "Spill inn video"
+
+#~ msgid "Refresh"
+#~ msgstr "Oppfrisk"
+
+#, fuzzy
+#~ msgid "Save As"
+#~ msgstr "Lagre som..."
+
+#, fuzzy
+#~ msgid "_Close"
+#~ msgstr "Fjern"
+
+#, fuzzy
+#~ msgid "Could not initialize gphoto2! (%s)"
+#~ msgstr ""
+#~ "Klarte ikke å initiere gconf!\n"
+#~ "\n"
+#~ "%s"
+
+#, fuzzy
+#~ msgid "Could not execute command '%s'! (%s)"
+#~ msgstr "Kunne ikke slette fil!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not set configuration!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å finne portinformasjon!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not set camera configuration!\n"
+#~ "(%s)"
+#~ msgstr "Klarte ikke å lagre kamerainnstillinger!"
+
+#, fuzzy
+#~ msgid "Could not set configuration of '%s'! (%s)"
+#~ msgstr "Klarte ikke å sette kameramodell!"
+
+#, fuzzy
+#~ msgid "Could not get widget for camera configuration! (%s)"
+#~ msgstr "Klarte ikke å laste ned miniatyr fra kameraet!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Could not get widget for configuration of file '%s' in folder '%s'! (%s)"
+#~ msgstr "Klarte ikke å laste ned liste over mapper!"
+
+#, fuzzy
+#~ msgid "Could not get widget for configuration of folder '%s'! (%s)"
+#~ msgstr "Klarte ikke å finne portinformasjon!"
+
+#, fuzzy
+#~ msgid "Could not create camera '%s'!"
+#~ msgstr "Klarte ikke å sette kameramodell!"
+
+#, fuzzy
+#~ msgid "Could not create viewer for '%s'! (%s)"
+#~ msgstr "Klarte ikke å laste ned miniatyr fra kameraet!"
+
+#~ msgid "How long should the video be (in seconds)?"
+#~ msgstr "Hvor lenge skal videoen vare? (i sekunder)"
+
+#, fuzzy
+#~ msgid "Could not get preview of file '/%s' from the camera!"
+#~ msgstr "Klarte ikke å laste ned miniatyr fra kameraet!"
+
+#, fuzzy
+#~ msgid "Could not get preview of file '%s/%s' from the camera!"
+#~ msgstr "Klarte ikke å laste ned miniatyr fra kameraet!"
+
+#, fuzzy
+#~ msgid "Could not load gallery."
+#~ msgstr "Klarte ikke å hente fotografi!"
+
+#~ msgid "An error occurred while trying to open file '%s' (%s)."
+#~ msgstr "En feil oppstod idet filen '%s' (%s) ble forsøkt åpnet."
+
+#~ msgid "An error occurred while trying to read file '%s' (%s)."
+#~ msgstr "En feil oppstod idet filen '%s' (%s) ble forsøkt lest."
+
+#~ msgid ""
+#~ "An error occurred while trying to open file '%s' for write access (%s)."
+#~ msgstr ""
+#~ "En feil oppstod idet filen '%s' (%s) ble forsøkt åpnet for skriving."
+
+#~ msgid "An error occurred while trying to write into file '%s' (%s)."
+#~ msgstr "En feil oppstod idet filen '%s' (%s) ble forsøkt skrevet til."
+
+#~ msgid "An error occurred while trying to close the file '%s' (%s)."
+#~ msgstr "En feil oppstod idet filen '%s' (%s) ble forsøkt lukket."
+
+#, fuzzy
+#~ msgid "Could not get preview of file '%s/%s' from camera!"
+#~ msgstr "Klarte ikke å laste ned miniatyr fra kameraet!"
+
+#, fuzzy
+#~ msgid "Could not get file '%s/%s' from camera!"
+#~ msgstr "Klarte ikke å laste ned fil fra kameraet!"
+
+#, fuzzy
+#~ msgid "Could not delete '%s/%s'!"
+#~ msgstr "Kunne ikke slette fil!"
+
+#, fuzzy
+#~ msgid "Could not initialize gnome-vfs!"
+#~ msgstr "Klarte ikke å laste ned fil fra kameraet!"
+
+#~ msgid "Could not find "
+#~ msgstr "Klarte ikke å finne "
+
+#~ msgid "It seems that you are running\n"
+#~ msgstr "Det ser ut som om du kjører\n"
+
+#~ msgid "Could not get number of ports!"
+#~ msgstr "Klarte ikke å finne antall porter!"
+
+#~ msgid "Could not find port!"
+#~ msgstr "Klarte ikke å finne port!"
+
+#~ msgid "Could not set camera model!"
+#~ msgstr "Klarte ikke å sette kameramodell!"
+
+#, fuzzy
+#~ msgid "Please indicate a name!"
+#~ msgstr "Du må angi et navn!"
+
+#, fuzzy
+#~ msgid "Please indicate a model!"
+#~ msgstr "Du må angi en modell!"
+
+#~ msgid "Please select only one camera."
+#~ msgstr "Velg kun ett kamera."
+
+#~ msgid "Please select one camera first."
+#~ msgstr "Velg ett kamera først."
+
+#~ msgid "Please select a camera first!"
+#~ msgstr "Velg et kamera først!"
+
+#~ msgid "Could not get camera abilities!"
+#~ msgstr "Klarte ikke å hente kamerafunksjoner!"
+
+#~ msgid "Could not get model name!"
+#~ msgstr "Klarte ikke å hente modellnavn!"
+
+#~ msgid "%Y/%m/%d %H:%M:%S"
+#~ msgstr "%Y/%m/%d %H:%M:%S"
+
+#~ msgid "Add"
+#~ msgstr "Legg til"
+
+#~ msgid "Bilinear"
+#~ msgstr "Bilineær"
+
+#~ msgid "Clear"
+#~ msgstr "Fjern"
+
+#, fuzzy
+#~ msgid "Delete selected files"
+#~ msgstr "Kunne ikke slette fil!"
+
+#~ msgid "High"
+#~ msgstr "Høy"
+
+#~ msgid "Hyper"
+#~ msgstr "Hyper"
+
+#~ msgid "If you leave this blank, the default speed will be used."
+#~ msgstr ""
+#~ "Hvis du lar dette feltet stå blankt, vil standardhastigheten bli benyttet."
+
+#~ msgid "Interpolation Mode:"
+#~ msgstr "Interpolation modus:"
+
+#~ msgid "Low"
+#~ msgstr "Lav"
+
+#~ msgid "Magnification:"
+#~ msgstr "Forstørrelse:"
+
+#, fuzzy
+#~ msgid "Manual"
+#~ msgstr "Bruker_manual"
+
+#~ msgid "Medium"
+#~ msgstr "Medium"
+
+#~ msgid "Nearest"
+#~ msgstr "Nærmest"
+
+#~ msgid "None"
+#~ msgstr "Ingen"
+
+#~ msgid "Previews"
+#~ msgstr "Forhåndsvisninger"
+
+#~ msgid "Revert"
+#~ msgstr "Gjenopprett"
+
+#~ msgid "Save As..."
+#~ msgstr "Lagre som..."
+
+#~ msgid "Save File As..."
+#~ msgstr "Lagre fil som..."
+
+#~ msgid "Save File(s)"
+#~ msgstr "Lagre fil(er)"
+
+#~ msgid "Save File(s) As..."
+#~ msgstr "Lagre fil(er) som..."
+
+#~ msgid "Save Preview As..."
+#~ msgstr "Lagre forhåndsvisning som..."
+
+#~ msgid "Save Preview(s)"
+#~ msgstr "Lagre forhåndsvisning(er)"
+
+#~ msgid "Save Preview(s) As..."
+#~ msgstr "Lagre forhåndsvisning(er) som..."
+
+#~ msgid "Save _File"
+#~ msgstr "Lagre _fil"
+
+#~ msgid "Save _File(s)"
+#~ msgstr "Lagre _fil(er)"
+
+#~ msgid "Save _Preview"
+#~ msgstr "Lagre _forhåndsvisning"
+
+#~ msgid "Save _Preview(s)"
+#~ msgstr "Lagre _forhåndsvisning(er)"
+
+#~ msgid "Save selected files"
+#~ msgstr "Lagre valgte filer"
+
+#~ msgid "Save selected previews"
+#~ msgstr "Lagre valgte forhåndsvisning(er)"
+
+#~ msgid "Select your camera model here."
+#~ msgstr "Velg kameramodellen din her."
+
+#~ msgid "Speed"
+#~ msgstr "Hastighet"
+
+#~ msgid "The camera will show up in the program with this name."
+#~ msgstr "Kameraet vil vises i programmet med dette navnet"
+
+#~ msgid "Tiles"
+#~ msgstr "Tiller"
+
+#~ msgid "Update"
+#~ msgstr "Oppdatere"
+
+#~ msgid "Update settings of selected camera."
+#~ msgstr "Oppdatere innstillingene på det valgte kameraet"
+
+#~ msgid "Upload File"
+#~ msgstr "Last opp fil"
+
+#~ msgid "Upload file"
+#~ msgstr "Last opp fil"
+
+#~ msgid "_Delete"
+#~ msgstr "_Slett"
+
+#, fuzzy
+#~ msgid "_Manual"
+#~ msgstr "Bruker_manual"
+
+#, fuzzy
+#~ msgid "_New Gallery"
+#~ msgstr "Ny Fil"
+
+#~ msgid ""
+#~ "Couldn't find the GnoCam manual.\n"
+#~ "Check that it is installed correctly in $PREFIX/share/gnome/help/gnocam\n"
+#~ msgstr ""
+#~ "Finner ikke GnoCam brukermanualen.\n"
+#~ "Sjekk at den er innstallert i $PREFIX/share/gnome/help/gnocam\n"
+
+#~ msgid ""
+#~ "Couldn't find the GnoCam manual!\n"
+#~ "\n"
+#~ "Check that it is installed correctly in $PREFIX/share/gnome/help/gnocam\n"
+#~ msgstr ""
+#~ "Finner ikke GnoCam brukermanualen.\n"
+#~ "\n"
+#~ "Sjekk at den er innstallert i $PREFIX/share/gnome/help/gnocam\n"
+
+#~ msgid "Folder '%s' does neither contain folders nor files."
+#~ msgstr "'%s' inneholder verken foldere eller filer."
+
+#~ msgid "Folder '%s' contains 1 folder."
+#~ msgstr "'%s' inneholder 1 katalog."
+
+#~ msgid "Folder '%s' contains %i folders."
+#~ msgstr "'%s' inneholder %i kataloger."
+
+#~ msgid "Folder '%s' contains 1 file."
+#~ msgstr "'%s' inneholder 1 fil."
+
+#~ msgid "Folder '%s' contains 1 folder and 1 file."
+#~ msgstr "'%s' inneholder 1 katalog og en fil."
+
+#~ msgid "Folder '%s' contains %i folders and 1 file."
+#~ msgstr "'%s' inneholder 1 katalog og 1 fil."
+
+#~ msgid "Folder '%s' contains %i files."
+#~ msgstr "'%s' inneholder %i filer."
+
+#~ msgid "Folder '%s' contains 1 folder and %i files."
+#~ msgstr "'%s' inneholder 1 katalog og %i filer."
+
+#~ msgid "Folder '%s' contains %i folders and %i files. "
+#~ msgstr "'%s' inneholder %i kataloger og %i filer."
+
+#~ msgid ""
+#~ "%s\n"
+#~ "\n"
+#~ "Camera summary:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "%s\n"
+#~ "\n"
+#~ "Kamera status:\n"
+#~ "%s"
+
+#~ msgid "gnocam.glade. Check if "
+#~ msgstr "gnocam.glade.  Sjekk at "
+
+#~ msgid " was installed correctly."
+#~ msgstr " den ble innstallert korrekt."
+
+#~ msgid " for the first time.\n"
+#~ msgstr " for første gang.\n"
+
+#~ msgid ""
+#~ " is a small but powerful\n"
+#~ "front-end to gphoto. Welcome to\n"
+#~ "the wunderful world of gphoto!\n"
+#~ "\n"
+#~ "Before you do anything else, you \n"
+#~ "should probably first open the \n"
+#~ "preferences dialog and add a \n"
+#~ "camera.\n"
+#~ "\n"
+#~ "Enjoy!\n"
+#~ "\n"
+#~ "(Default prefix has been set to '%s'.)"
+#~ msgstr ""
+#~ " er en liten og kraftig grensesnitt til gphoto.  Velkommen til gPhoto!\n"
+#~ "\n"
+#~ "Før du gjør noe annet, bør du antagelig \n"
+#~ "først åpne innstillingsdialogen og legge \n"
+#~ "til et kamera.\n"
+#~ "\n"
+#~ "Lykke til!\n"
+#~ "\n"
+#~ "(Standard katalogprefiks er satt til '%s'.)"
+
+#~ msgid "Couldn't find the GnoCam manual!"
+#~ msgstr "Klarte ikke å finne GnoCam brukermanualen!"

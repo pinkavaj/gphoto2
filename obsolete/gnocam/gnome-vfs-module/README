@@ -1,0 +1,8 @@
+You should be able to access a file with something 
+like 
+
+camera:<manufacturer>:<model>:<port>:/directory/<interface>/filename.jpg
+
+Have fun!
+
+Lutz Müller <lutz@users.sourceforge.net>

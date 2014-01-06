@@ -1,0 +1,108 @@
+#ifndef GNOME_CAMERA_IDL
+#define GNOME_CAMERA_IDL
+
+#include <Bonobo_Unknown.idl>
+#include <Bonobo_Control.idl>
+
+module GNOME {
+module C {
+
+	exception BadID {};
+	exception Error {};
+
+	typedef unsigned long ID;
+	typedef sequence<unsigned long> IDList;
+
+	interface ReadCallback : Bonobo::Unknown {
+
+		exception Cancel {};
+
+		typedef sequence<octet> Data;
+
+		void read (in Data data) raises (Cancel);
+	};
+
+	interface If : Bonobo::Unknown {
+
+		/* The 'name' of the file, for example 'image.jpeg'. */
+		attribute string name;
+
+		/* The type of the interface, for example 'preview'. */
+		attribute string type;
+
+		/* The description of the interface. */
+		attribute string description;
+
+		void   read (in ReadCallback callback);
+		void   write ();
+	};
+
+	interface File : Bonobo::Unknown {
+
+		IDList get_ifs () raises (Error);
+		ID add_if (in If i);
+		If get_if (in ID id) raises (BadID);
+		void rm_if  (in ID id) raises (BadID);
+	};
+
+	interface Dir : Bonobo::Unknown {
+
+		attribute string name;
+
+		IDList get_files () raises (Error);
+		ID add_file (in File file);
+		File get_file (in ID id) raises (BadID, Error);
+		void rm_file  (in ID id) raises (BadID, Error);
+
+		IDList get_dirs () raises (Error);
+		ID add_dir (in Dir dir);
+		Dir get_dir (in ID id) raises (BadID, Error);
+		void rm_dir  (in ID id) raises (BadID, Error);
+	};
+
+	interface Preview : Bonobo::Control {
+
+		void refresh () raises (Error);
+		void start () raises (Error);
+		void stop () raises (Error);
+	};
+
+	interface Camera : Bonobo::Unknown {
+
+		readonly attribute string manufacturer;
+		readonly attribute string model;
+		readonly attribute Dir dir;
+		readonly attribute Bonobo::Control prefs;
+		readonly attribute Bonobo::Control capture;
+		readonly attribute Preview preview;
+	};
+
+	interface Mngr : Bonobo::Unknown {
+
+		/* Querying the supported devices */
+		typedef sequence<string> PortList;
+		struct Model {
+			string model;
+			PortList ports;
+		};
+		typedef sequence<Model> ModelList;
+		struct Manufacturer {
+			string manufacturer;
+			ModelList models;
+		};
+		typedef sequence<Manufacturer> ManufacturerList;
+
+		readonly attribute ManufacturerList devices;
+		readonly attribute IDList cameras;
+
+		/* Querying cameras we are already connected to. */
+		Camera get_camera (in ID id_device) raises (BadID);
+
+		/* Connecting to cameras */
+		Camera connect (in string manufacturer, in string model,
+				in string port) raises (Error);
+	};
+};
+};
+
+#endif

@@ -1,0 +1,54 @@
+========================================================================
+====== The gPhoto2 Manual ==============================================
+========================================================================
+
+
+Detailed information:
+=====================
+
+- this package depends on data from other packages
+- this package depends on xmlto
+- if we keep ChangeLog as created by cvs2cl we can save us a lot of hassle
+- etc. pp.
+
+
+Short build instructions:
+=========================
+
+If you use CVS, run autogen.sh first.
+
+If you are a developer, add --enable-maintainer-mode to your configure
+parameters.
+
+Then configure and build The gPhoto2 Manual:
+
+	./configure --with-doc-dir="/path/to/The_gPhoto2_Manual"
+	make install
+
+After that, you should have the manual in all built formats in
+/path/to/The_gPhoto2_Manual
+
+E.g., you may use something like
+
+	./autogen.sh
+	./configure --prefix=$PWD/tmp \
+		--with-doc-dir=$HOME/web/gphoto2-manual \
+		--enable-maintainer-mode \
+		--with-doc-formats=man,html,txt
+	make install
+
+And BTW, you can build in a different directory if you wish.
+
+
+Web site build instruction:
+===========================
+
+If your local copy of the gphoto website CVS module is in the directory
+"$PWD/../website-gphoto", then just run
+
+	./configure --with-html-dir=$PWD/../website-gphoto/doc/manual \
+	   --with-figure-dir=$PWD/../website-gphoto/doc/manual/figures \
+	   --with-screenshots-dir=$PWD/../website-gphoto/doc/manual/screenshots
+	make clean all install
+
+to (re)build the manual for the website.

@@ -1,0 +1,46 @@
+gtkam 0.2.0
+
+* ported to libgphoto2 2.5.0
+
+gtkam 0.1.18
+
+* fixed translation issues for GIMP
+
+gtkam 0.1.17
+
+* ported to libgphoto2 2.5
+* updated italian translation
+* missing gtkam.pot file in the tarball
+* gtkam.desktop correctly generated
+
+gtkam 0.1.16
+
+* updated translations from translationproject.org
+* fixed requires on libgphoto2
+* intltoolize from/for solaris
+* adjusted licenses in C files to be GPL, just as intended
+
+gtkam 0.1.15
+
+* updated all translations from translation project
+	- added Belarusian, Dutch, Punjabi, Polish, Slovakian, Vietnamese
+* fixed PNG files corrupted by cvs -> svn migration
+
+gtkam 0.1.14
+
+* fix make distcheck
+* misc bug fixes.
+* always show capture/capture preview menu.
+* updated various translations
+* changed for some important fixes in libgphoto2
+
+gtkam 0.1.11 (March 5, 2004)
+
+* Bug fixes
+* Changes to adhere to the Gnome Human Interface Guidelines (HIG)
+
+gtkam 0.1.10 (November 30, 2002)
+
+* Moved to GTK2
+* New/updated translations
+* Bug fixes

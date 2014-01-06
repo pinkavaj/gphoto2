@@ -1,0 +1,7 @@
+#
+# Configuration file for using the GPIO library
+#
+GPIO_LIBDIR="@GPIO_LIBDIR@"
+GPIO_LIBS="@GPIO_LIBS@"
+GPIO_INCLUDEDIR="@GPIO_INCLUDEDIR@"
+MODULE_VERSION="gpio-@LIBGPIO_VERSION@"

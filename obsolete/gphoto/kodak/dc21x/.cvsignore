@@ -1,0 +1,8 @@
+dc21x_cam
+Makefile.in
+Makefile
+.deps
+*.lo
+.libs
+*.la
+dc21x_cam

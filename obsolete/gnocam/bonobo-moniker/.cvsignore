@@ -1,0 +1,10 @@
+GnoCam*
+Makefile
+Makefile.in
+*.o
+Bonobo_Moniker_camera.oaf
+Bonobo_Moniker_camera.oaf.in
+libmoniker_camera.la
+*.lo
+.libs
+.deps

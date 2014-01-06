@@ -1,0 +1,5480 @@
+<?xml version='1.0' encoding="iso-8859-15"?>
+
+<!-- =================================================================
+About this file:
+
+ - It is written in Docbook XML
+
+ - You're best off using an XML editor for this file
+
+ - If you have installed the Docbook XML DTDs properly, 
+   you can do syntax checks
+
+ - You can view this file directly using any XML+CSS capable browser. 
+   Examples are Mozilla, Galeon, Opera.
+
+ - If you need more information about Docbook and XML, have a look at
+   http://docbook.org/ and http://nwalsh.com/
+
+ - We use Tim Waugh's xmlto to process this file within the build
+   system, but you're free to use any other adequate processing tool,
+   of course :-)
+
+ - please use id="xxx" attributes for all elements which get linked to
+   (chapter, sect1, refsect1, etc.)
+
+================================================================= -->
+
+<?xml-stylesheet type="text/css" href="css/docbook-xml.css"?>
+
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+ "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd" [
+<!-- "file:///usr/share/sgml/docbook/dtd/xml/4.2/docbookx.dtd" [ -->
+
+<!ENTITY themanual "The gPhoto2 Manual">
+
+<!-- change name of hotplug config script here -->
+<!ENTITY usbcam "usbcam">
+
+<!-- example prompts -->
+<!ENTITY user "alice">
+<!ENTITY host "host">
+<!ENTITY promptdir "~">
+<!ENTITY prompt "&user;@&host;:&promptdir;$ ">
+<!ENTITY mprompt "&user;@&host;:&promptdir;/gphoto-meta$ ">
+<!ENTITY rprompt "&host;:~# ">
+<!ENTITY devellist "gphoto-devel@lists.sourceforge.net">
+
+<!-- ENTITY camera SYSTEM "api/sgml/gphoto2-camera.sgml" -->
+
+]>
+<book id="index">
+
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+
+  <bookinfo>
+    <title>&themanual;</title>
+    <pubdate>2009-08-09</pubdate>
+    <authorgroup>
+      <!--author>
+        <firstname>The gPhoto2</firstname>
+        <surname>Team</surname>
+      </author-->
+      <!--+
+          | some people's mail addresses commented out because they
+          | currently don't seem to be active
+          +-->
+      <author>
+        <firstname>Tim</firstname>
+        <surname>Waugh</surname>
+	<!--
+	<email>twaugh@redhat.com</email>
+	-->
+      </author>
+      <author>
+        <firstname>Hans Ulrich</firstname>
+        <surname>Niedermann</surname>
+	<lineage>current maintainer</lineage>
+	<email>gp@n-dimensional.de</email>
+      </author>
+      <author>
+	<firstname>Michael</firstname>
+	<othername>J.</othername>
+	<surname>Rensing</surname>
+	<!--
+	<email>michael.rensing@shaw.ca</email>
+	-->
+      </author>
+      <author>
+        <firstname>Marcus</firstname>
+        <surname>Meissner</surname>
+	<email>marcus@jet.franken.de</email>
+      </author>
+      <othercredit>
+	<honorific>Miscellanous Contributors</honorific>
+      </othercredit>
+    </authorgroup>
+  </bookinfo>
+ 
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+
+  <preface id="about-manual">
+    <title>About this document</title>
+    <subtitle>Mission statement, history and options for the future</subtitle>
+
+    <epigraph>
+      <attribution>Calvin, in one of Bill Watterson's <quote>Calvin and Hobbes</quote> comic strips</attribution>
+      <para>
+	The purpose of writing is to inflate weak ideas, 
+	obscure poor reasoning, 
+	and inhibit clarity.
+      </para>      
+    </epigraph>
+
+    <para>
+      This document is called <quote>&themanual;</quote>. You can get it
+      from the gphoto homepage, found in at least one of these places:
+      <ulink url="http://gphoto.org/">http://gphoto.org/</ulink>,
+      <ulink url="http://gphoto.com/">http://gphoto.com/</ulink>,
+      <ulink url="http://gphoto.sf.net/">http://gphoto.sf.net/</ulink>.
+    </para>
+
+    <formalpara>
+      <title>Mission statement</title>
+      <para>
+	&themanual; intends to be a comprehensive source of
+	information helping users and developers to get more value out
+	of the gPhoto2 software suite (i.e. libgphoto2, gphoto2 CLI
+	interface, gtkam). 
+      </para>
+    </formalpara>
+
+    <formalpara>
+      <title>Document history</title>
+      <para>
+	Hans Ulrich Niedermann first wrote a few text files of
+	user documentation for gphoto2. Then shortly before the 2.0
+	release, Tim Waugh wrote the man pages in Docbook XML. Then 
+	Hans Ulrich Niedermann migrated the text files into the XML 
+	file and began with general improvements. Then after the 2.1.0
+	release, Michael J. Rensing joined us with gtkam documentation.
+	Marcus Meissner improved documentation with the new options after
+	the 2.4 release series.
+      </para>
+    </formalpara>
+
+    <formalpara>
+      <title>Ideas for the future</title>
+      <para>
+	The following ideas are just ideas, not mandatory policy.
+      </para>
+    </formalpara>
+    
+    <orderedlist>
+      <listitem>
+	<simpara>	
+	  Add the FAQ, a gtkam manual, the older developer
+	  docs and the current autogenerated source code documentation
+	  in convenient places.
+	</simpara>	
+      </listitem>
+	<listitem>
+	<simpara>
+	  Improve the document structure.
+	</simpara>
+      </listitem>
+      <listitem>
+	<simpara>
+	  Create a pure ASCII text version of specific parts (like
+	  e. g. installation FAQs, compilation FAQs etc.) for
+	  inclusion into the respective distributions.
+	</simpara>
+      </listitem>
+    </orderedlist>
+
+    <formalpara id="manual-credits">
+      <title>Credits</title>
+      <para>
+	The editors want to thank all those who gave us feedback and
+	suggestions about this manual, including (but not limited to)
+
+	Mikko Hänninen, 
+	Andreas Klemm,
+	Matthias Schuendehuette,
+	Cosmin Stroe,
+
+	and all the others whom we didn't list here (mail us if
+	you want your name mentioned here).
+      </para>
+    </formalpara>
+
+    <!--
+    <variablelist>
+      <title>Typographic conventions</title>
+      <varlistentry>
+        <term><command>command</command></term>
+        <listitem>
+          <simpara>This is a system command which can be executed by
+            entering it into a shell. </simpara>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><systemitem class="library">library</systemitem></term>
+        <listitem>
+          <simpara>This is a system library.</simpara>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    -->
+ 
+  </preface>
+
+
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+ 
+  <chapter id="what-you-need">
+    <title>Finding what you need</title>
+    <abstract>
+      <para>This chapter lists information about what you need to run
+	gphoto2. This information is intended to assist you in setting
+	up your computer so that you can connect a camera and use
+	libgphoto2 software to download images.
+      </para>
+    </abstract>
+    <para>What you need:</para>
+    <orderedlist>
+      <listitem>
+	<para>A camera and whatever cables (serial RS232, USB, ...) 
+	  you need to connect your camera to your computer</para>
+	<para>A list of currently supported cameras is maintained
+	  at 
+	  <ulink url="http://www.teaser.fr/~hfiguiere/linux/digicam.html">http://www.teaser.fr/~hfiguiere/linux/digicam.html</ulink>
+	</para>
+	<important>
+	  <para>
+	    If you want to use a camera using the <systemitem
+	    class="protocol">USB mass storage</systemitem> protocol,
+	    <systemitem class="library">libgphoto2</systemitem> will
+	    not help you. Your operating system already contains an
+	    <systemitem class="protocol">USB mass storage</systemitem>
+	    driver, so there is no need for us to write another one.
+	  </para>
+	  <para>
+	    For information on how to use a USB mass storage
+	    camera with Linux, see the
+	    <ulink
+	    url="http://www.tldp.org/HOWTO/USB-Digital-Camera-HOWTO/">USB Digital Camera HOWTO</ulink>
+	    (which is more a USB mass storage camera HOWTO). There is
+	    another nice description at the
+	    <ulink
+	     url="http://digikam.sourceforge.net/docs.html#q3">digikam
+	     web site</ulink>.
+	  </para>
+	</important>
+      </listitem>
+      <listitem>
+	<para>A computer with the right kind of port (serial RS232,
+	  USB, ...) running a Unix-like operating system:</para>
+	<itemizedlist>
+	  <listitem>
+	    <simpara>BSD (FreeBSD, OpenBSD, NetBSD, ...)</simpara>
+	  </listitem>
+	  <listitem>
+	    <simpara>Linux (RedHat 7.3, SuSE 8.x, Mandrake 8.x, 
+	      Debian 3.0 Woody, Debian Unstable Sid, Gentoo, ...)</simpara>
+	  </listitem>
+	  <listitem>
+	    <simpara>OS/2 (ancient gphoto2 2.1.0 has been ported to
+	    OS/2, but contemporary versions won't work any more like
+	    2.1.0 did)
+	    </simpara>
+	  </listitem>
+	  <listitem>
+	    <simpara>MacOS X (basically working in 2005-06, with a few
+	    quirks still to be ironed out)</simpara>
+	  </listitem>
+	  <listitem>
+	    <simpara>FIXME: Is there a list somewhere, or can we get
+	    contributions of verified operating systems? IRIX?
+	    Solaris? ...</simpara>
+	  </listitem>
+	</itemizedlist>
+	<para>
+	  The hardware architecture (x86, PowerPC, Sparc ) doesn't
+	  matter. Or at least, it shouldn't.
+	</para>
+	<para>
+	  For USB cameras, your Unix OS must be supported by
+	  <systemitem class="library">libusb</systemitem>. As of
+	  2002-08-29, this is the case for Linux 2.2 and 2.4, FreeBSD
+	  and OpenBSD. FIXME: Is the USB support for OS/2 independent
+	  of libusb?
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>libgphoto2, some libgphoto2 frontend and (if you want to
+	  use USB cameras) libusb
+	</para>
+
+	<variablelist>
+	  <title>libgphoto2 frontends</title>
+	  <varlistentry>
+	    <term>gphoto2</term>
+	    <listitem>
+	      <simpara>
+		Our own official command line interface (CLI) frontend.
+		Simple command line interface and kind of a reference
+		implementation. This libgphoto2 frontend i very useful
+		for debugging camera drivers and other problems.
+	      </simpara>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>gtkam</term>
+	    <listitem>
+	      <simpara>	   
+		Our own official GUI frontend using GTK+ 2.
+		Shows
+		thumbnails of pictures on the camera, and supports
+		upload, download, capturing of pictures. No advanced
+		album management or stuff.
+	      </simpara>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>gnocam</term>
+	    <listitem>
+	      <simpara>
+		Our own Gnome VFS interface. Has been quite dead for
+		several years. Still has to be ported to Gnome 2. 
+		Volunteers welcome.
+	      </simpara>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>kamera</term>
+	    <listitem>
+	      <simpara>
+		The KDE IO slave interface.
+		Using kamera is simple: Just open 
+		<ulink url="camera:/">camera:/</ulink> 
+		in Konqueror. That's it. Has been and still is a
+		standard feature of most KDE installations.
+	      </simpara>
+              <simpara>
+		It also features a configuration frontend in the KDE control center..
+	      </simpara>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><ulink url="http://digikam.sourceforge.net/">digikam</ulink></term>
+	    <listitem>
+	      <simpara>
+		Digikam is a standalone KDE frontend with advanced
+		image management functions.
+	      </simpara>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>kipi-plugins</term>
+	    <listitem>
+	      <simpara>
+		gPhoto support integrated into KDE image plugins
+		architecture, originating from the former digikam.
+	      </simpara>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><ulink url="http://www.easysw.com/~mike/flphoto/">flPhoto</ulink></term>
+	    <listitem>
+	      <simpara>
+		FLTK-based frontend for gPhoto
+		which provides some nice functionality
+		beyond the current GTK-based gtkam frontend.  Aside from
+		downloading images from a camera, you can also
+		"import" your existing files on disk, adjust/transform
+		the images, print them, and do slideshows.  The final
+		version will also offer a web export to a directory or
+		uploaded to a web server.
+	      </simpara> 
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><ulink
+		      url="http://lphoto.com/">lphoto</ulink></term>
+	    <listitem>
+	      <simpara>
+		Chose the most inconvenient interface: Calls the
+		gphoto2 command line.
+	      </simpara> 
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><ulink
+		      url="http://fdcl.sourceforge.net/">camera life</ulink></term>
+	    <listitem>
+	      <simpara>
+		XXX write a few lines here XXX
+	      </simpara>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><ulink
+		      url="http://f-spot.org/">f-spot</ulink></term>
+	    <listitem>
+	      <simpara>
+		C#/mono/Gnome.
+		XXX write a few lines here XXX
+	      </simpara>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><ulink
+		      url="http://www.banshee-project.org/">banshee</ulink></term>
+	    <listitem>
+	      <simpara>
+		C#/mono digital audio player.
+		XXX write a few lines here XXX
+	      </simpara>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><ulink
+		      url="http://gthumb.sourceforge.net/">gthumb</ulink></term>
+	    <listitem>
+	      <simpara>
+		C/Gnome.
+		XXX write a few lines here XXX
+	      </simpara>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term><ulink
+		      url="http://www.sane-project.org/">sane</ulink></term>
+	    <listitem>
+	      <simpara>
+		C software, properly a scanner interface ("Scanner
+		Access Now Easy").
+		XXX write a few lines here XXX
+	      </simpara>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>Special purpose applications</term>
+	    <listitem>
+	      <simpara>
+		Automatically take pictures of visitors on amusement
+		park rides, to record data in scientific experiments,
+		...
+	      </simpara>
+	    </listitem>
+	  </varlistentry>
+	</variablelist>
+
+	<variablelist>
+	  <title>Available software formats</title>
+	  <varlistentry>
+	    <term>source tarballs</term>
+	    <listitem>
+	      <simpara>
+		Building requires mainly make and a C compiler.
+	      </simpara>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>SVN sources</term>
+	    <listitem>
+	      <simpara>
+		Building requires a certain set of build tools
+		(automake, autoconf, gettext, libtool), and possibly
+		even a combination of certain releases.
+	      </simpara>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>system-specific packages</term>
+	    <listitem>
+	      <simpara>
+		As packages are specifically created for your system,
+		this is probably the easiest way to install the
+		software.
+		Packages for your system can be source packages or
+		binary packages, depending on your system. 
+		They have names like RPM (Redhat, SuSE), DEB (Debian),
+		port (BSD), ebuild (Gentoo). 
+	      </simpara>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>FIXME</term>
+	    <listitem>
+	      <simpara>Need improved descriptions and lists of
+		various forms of source code and binaries.</simpara>
+	    </listitem>
+	  </varlistentry>
+	</variablelist>
+      </listitem>
+
+      <!--listitem>
+	<para>FIXME: What else do you need to get
+	  started?</para>
+      </listitem-->
+
+    </orderedlist>
+
+  </chapter>
+
+  <!-- =========================================================== --> 
+
+  <chapter id="quickstart">
+    <title>Quick start</title>
+
+    <abstract>
+      <para>
+        How you quickly get your pictures to your computer,
+        assuming somebody has already set up everything correctly.
+      </para>
+    </abstract>
+
+    <para>This chapter assumes that somebody has set up your system
+      correctly for use with 
+      <systemitem class="library">libgphoto2</systemitem>. This is
+      something the packages from your system vendor
+      (<acronym>RPM</acronym> packages, <acronym>DEB</acronym>
+      packages or <acronym>BSD</acronym> ports) and/or your system
+      administrator should already have done for you. If not, follow
+      the instructions in the <link linkend="permissions">chapter on
+	permission setup</link>
+      <!-- for some reasons, 
+         <xref linkend="permissions"/>
+        doesn't work
+      -->
+      first. 
+    </para>
+
+    <para>
+      FIXME: We need examples using <acronym>RS232</acronym>
+      cameras and the gphoto2 shell.
+    </para>
+
+    <sect1 id="using-gtkam">
+      <title>Using gtkam</title>
+      <para>FIXME: gtkam docs under construction. Please report errors, 
+	omissions, and constructive suggestions about the gtkam
+	documentation to <email>michael.rensing@shaw.ca</email></para>
+      <abstract>
+	<para>gtkam is a graphical front end for the gphoto2 library. 
+	  It does not communicate directly with the camera, but uses gphoto2 
+	  to do so. As a result, it is necessary to have gphoto2 installed 
+	  and running correctly before gtkam will work.</para>
+      </abstract>
+      <para>If everything is configured correctly, the following steps 
+	should work:</para>
+      <orderedlist>
+	<listitem>
+	  <para>Plug in the connecting cable to your camera and to the 
+	    computer.</para>
+	</listitem>
+	<listitem>
+	  <para>Turn on your camera and switch to the mode which enables 
+	    communication with a computer.</para>
+	</listitem>
+	<listitem>
+	  <para>Run gtkam. This may be from a menu (in RedHat, it's 
+	    <menuchoice>
+	      <guimenu>Main Menu</guimenu>
+	      <guimenuitem>Programs</guimenuitem>
+	      <guimenuitem>Graphics</guimenuitem>
+	      <guimenuitem>gtKam</guimenuitem>
+	    </menuchoice>
+	    )(in Debian, it's
+	    <menuchoice>
+	      <guimenu>Debian Menu</guimenu>
+	      <guimenuitem>Viewers</guimenuitem>
+	      <guimenuitem>gtKam</guimenuitem>
+	    </menuchoice>). Otherwise, typing <command>gtkam</command> from the command 
+	    line should start the application.</para>
+	</listitem>
+      </orderedlist>
+
+      <para>
+	If all is well, and your camera has been added previously, you
+	should see your camera listed in the left frame with a plus
+	sign in a box to the left.
+      </para>
+
+      <screenshot>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="screenshots/gtkam/gtkam.png" format="PNG"/>
+	  </imageobject>
+	</mediaobject>
+      </screenshot>
+
+      <para>
+	Click on the plus sign (v.0.1.3) or the arrow (v.0.1.9) to
+	expand the listings of directories. The number in brackets to
+	the right of the directory name is the number of images
+	detected in that directory.
+      </para>
+      <para>
+	Click on directory containing images, and you should see a
+	listing of the images in the right frame.
+      </para> 
+
+      <screenshot>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="screenshots/gtkam/exp.png" format="PNG"/>
+	  </imageobject>
+	</mediaobject>
+      </screenshot>
+
+      <sidebar>
+	<title>Troubleshooting</title>
+	<para>
+	  If you do not see any images listed, be sure that there are
+	  images in the camera. If there are, then you need to do some
+	  troubleshooting. Start with the 
+	  <link linkend="FAQ">FAQ</link> <!-- FAQ-generic -->.
+	</para>
+      </sidebar>
+    </sect1>
+
+
+    <sect1 id="using-gphoto2">
+      <title>Using the <command>gphoto2</command> command line
+	interface (<acronym>CLI</acronym>)</title>
+
+      <para>
+	OK, we begin with finding out how you can connect a camera to
+	your computer:
+      </para>
+      <screen>
+<prompt>&prompt;</prompt><userinput>gphoto2 <parameter>--list-ports</parameter></userinput>
+<computeroutput>Devices found: 4
+Path                             Description
+--------------------------------------------------------------
+serial:/dev/ttyS0                Serial Port 0                   
+serial:/dev/ttyS2                Serial Port 2                   
+serial:/dev/ttyS3                Serial Port 3                   
+usb:                             Universal Serial Bus	  </computeroutput>
+<prompt>&prompt;</prompt><!-- XXX FIXME usb:001,002 ports XXX FIXME-->
+      </screen>
+      <para>
+	In this example, we see that we have the three serial devices
+	<filename class="devicefile">/dev/ttyS0</filename>, 
+	<filename class="devicefile">/dev/ttyS2</filename> and
+	<filename class="devicefile">/dev/ttyS3</filename> which are
+	configured properly and to which <command>gphoto2</command> has
+	write permissions for.
+	Additionally, there is also a <acronym>USB</acronym>
+	bus. However, we cannot tell yet whether we will have write
+	access to the <acronym>USB</acronym> device file your camera
+	will be assigned by your operating system. 
+      </para>
+
+      <para>
+	The next step is to connect your camera and find out whether the
+	<command>gphoto2</command> can find it. This only works with
+	<acronym>USB</acronym>. If you are using a camera that connects over
+	<acronym>RS232</acronym>, then you need to specify the model
+	explicitly: <command>gphoto2</command> cannot detect serial 
+	cameras (unlike <acronym>USB</acronym>,
+	<acronym>RS232</acronym> ports are dumb).
+      </para>
+      <screen>
+<prompt>&prompt;</prompt><userinput>gphoto2 <parameter>--auto-detect</parameter></userinput>
+<computeroutput>Model                          Port                                             
+----------------------------------------------------------
+Canon PowerShot G2             usb:            </computeroutput>
+<prompt>&prompt;</prompt>
+      </screen>
+
+      <para>
+	In this case, a camera called 
+	<quote>Canon PowerShot G2</quote> is connected
+	to your system's <acronym>USB</acronym> bus.
+      </para>
+
+      <para>
+        If your camera is a Kodak EasyShare&trade; and if you use the dock, then
+	you need to press the button to have the camera detected by the 
+	computer.
+      </para>
+
+      <para>
+	OK, so now let's see what we can find out about the camera:
+      </para>
+      <screen>
+<prompt>&prompt;</prompt><userinput>gphoto2 <parameter>--summary</parameter></userinput>
+<computeroutput>Detected a 'Canon PowerShot G2'.                                                
+Camera Summary:
+
+Camera identification:
+  Model: Canon PowerShot G2
+  Owner: Alice Smith
+
+Power status: on battery (power OK)
+
+Flash disk information:
+  Drive D:
+   31'885'312 bytes total
+   27'668'480 bytes available
+
+Time: 2002-07-09 20:45:15 (host time +0 seconds)
+</computeroutput>
+<prompt>&prompt;</prompt>
+      </screen>
+      <para>
+	The actual result of 
+	<userinput>gphoto2 <parameter>--summary</parameter></userinput>
+	may be different from camera to camera. However, we can see that
+	<command>gphoto2</command> obviously can talk to the camera, and
+	we get some information about the camera.
+      </para>
+
+      <para>
+	OK, now that we have seen that there is some space occupied on
+	the storage medium of the camera, let's have a look at what is
+	stored there:
+      </para>
+      <screen>
+<prompt>&prompt;</prompt><userinput>gphoto2 <parameter>--list-files</parameter></userinput>
+<computeroutput>Detected a 'Canon PowerShot G2'.                                                
+There are no files in folder '/'.
+There are no files in folder '/DCIM'.
+There are 4 files in folder '/DCIM/154CANON':
+#1     CRW_5417.CRW               rd  2334 KB image/x-canon-raw
+#2     IMG_5415.JPG               rd  1044 KB image/jpeg
+#3     IMG_5416.JPG               rd    31 KB image/jpeg
+#4     MVI_5418.AVI               rd   682 KB video/x-msvideo
+There are no files in folder '/DCIM/CANONMSC'.</computeroutput>
+<prompt>&prompt;</prompt>
+      </screen>
+      <para>
+	There are multiple folders on the camera, and there are several
+	files of different types and sizes on stored in one of them. One
+	is a raw file of the type this camera produces, two are <acronym>JPEG</acronym>
+	files (one large and one small) and one seems to be a short
+	video sequence.
+      </para>
+
+      <para>
+	Now that we have an impression of what expects us when we
+	actually download the images from the camera, we are going to do
+	that:
+      </para>
+      <screen>
+<prompt>&prompt;</prompt><userinput>gphoto2 <parameter>--get-all-files</parameter></userinput>
+<computeroutput>Detected a 'Canon PowerShot G2'.                                                
+Downloading 'CRW_5417.CRW' from folder '/DCIM/154CANON'...
+Saving file as CRW_5417.CRW                                                     
+Downloading 'IMG_5415.JPG' from folder '/DCIM/154CANON'...
+Saving file as IMG_5415.JPG                                                     
+Downloading 'IMG_5416.JPG' from folder '/DCIM/154CANON'...
+Saving file as IMG_5416.JPG                                                     
+Downloading 'MVI_5418.AVI' from folder '/DCIM/154CANON'...
+Saving file as MVI_5418.AVI                                                     </computeroutput>
+<prompt>&prompt;</prompt>
+      </screen>
+      <para>
+	And now we have all the files in our current directory (in
+	this case in directory <filename class="directory">&promptdir;</filename>) and can do something with them.
+      </para>
+
+      <para>
+	Well, that's about it.
+	You may also want to have a look at the
+	<link linkend="cli-examples">command line examples</link> from
+	the <xref linkend="ref-gphoto2-cli"/> man page.
+      </para>
+    </sect1>
+    
+    <sect1 id="using-gphotofs">
+      <title>Using gphotofs</title>
+      <para>FIXME: We need to write this section</para>
+      <para>
+	<systemitem>gphotofs</systemitem> is a libgphoto2 frontend
+	which acts as user space filesystem. It is based on FUSE, the
+	Linux user space filesystem.
+      </para>
+    </sect1>
+
+    <sect1 id="using-gnome">
+      <title>Using Gnome VFS</title>
+      <para>FIXME: We need to write this section</para>
+      <para>
+	This still has to be ported to the new Gnome
+	2 VFS. If you can help, please contact the developers at
+	<email>&devellist;</email>.
+      </para>
+    </sect1>
+
+    <sect1 id="using-kde">
+      <title>Using kioslave (kamera)</title>
+      <para>Open konqueror, enter <command>camera:/</command> into the URL bar. You can then
+            select the camera (USB cameras are autodetected) and descend into the camera
+            filesystem like any other UNIX directory.
+      </para>
+      <para>
+            To configure the camera, or to add serial cameras, use the KDE Control Center,
+            it has a camera configuration module.
+      </para>
+    </sect1>
+
+  </chapter>
+
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+
+  <chapter id="FAQ">
+    <title>Frequently Asked Questions (FAQ)</title>
+
+    <qandaset>
+      <qandadiv id="FAQ-support">
+
+	<title>Questions about camera support</title>
+
+	<qandaentry id="FAQ-camera-support">
+	  <question>
+	    <simpara>Is my camera supported?</simpara>
+	  </question>
+	  <answer>
+	    <para>Possible answers:</para>
+	    <variablelist>
+	      <varlistentry>
+		<term>yes</term>
+		<listitem>
+		  <simpara>Very nice. Have fun!</simpara>
+		</listitem>
+	      </varlistentry>
+
+	      <varlistentry>
+		<term>not yet</term>
+		<listitem>
+		  <simpara>
+		    Not so good. You'll have to write your own driver or
+		    modify an existing one. You should contact the
+		    developers at <email>&devellist;</email> to coordinate
+		    your efforts with others who may already working it.
+		  </simpara>
+		</listitem>
+	      </varlistentry>
+
+	      <varlistentry>
+		<term>no, but it is listed as PictBridge(tm) or PTP compatible</term>
+		<listitem>
+		  <simpara>
+                    Then the camera will likely work without changes to the sourcecode.
+		  </simpara>
+		  <simpara>
+                    <command>gphoto2 --auto-detect</command> will detect it as
+		    USB PTP Class camera and it will work (depending on permissions problems
+                    perhaps only as root user).
+		  </simpara>
+		</listitem>
+	      </varlistentry>
+
+	      <varlistentry>
+		<term>not any more</term>
+		<listitem>
+		  <simpara>
+		    There have been few drivers in gphoto 0.x.x which
+		    haven't been ported to libgphoto2 because there was
+		    no one to test them. But now that you have entered the
+		    stage, you can either port the driver yourself or ask
+		    whether a developers wants to do it. In either case,
+		    please coordinate your efforts with the rest of the 
+		    world at 
+		    <email>&devellist;</email>.
+		  </simpara>
+		</listitem>
+	      </varlistentry>
+
+	      <varlistentry>
+		<term>no (and will never be)</term>
+		<listitem>
+		  <simpara>
+		    We will not support cameras in USB mass storage
+		    mode. Your operating system already has drivers for
+		    these. Just use the cameras like you would use a USB disk
+		    drive or USB flash disk. See the
+		    <ulink
+		    url="http://www.tldp.org/HOWTO/USB-Digital-Camera-HOWTO/">USB Digital Camera HOWTO</ulink>
+		    and the <ulink
+		    url="http://digikam.sourceforge.net/docs.html#q3">digicam
+		    web site</ulink>.
+		  </simpara>
+		</listitem>
+	      </varlistentry>
+
+	    </variablelist>
+	    <para>
+	      Check
+	      <ulink
+		url="http://www.teaser.fr/~hfiguiere/linux/digicam.html">http://www.teaser.fr/~hfiguiere/linux/digicam.html</ulink>
+	      for general information about digicam support under Linux,
+	      BSD, and others.
+	    </para>
+	    <para>
+	      Check
+	      <ulink
+		url="http://gphoto.org/proj/libgphoto2/support.php">http://gphoto.org/proj/libgphoto2/support.php</ulink>
+	      for camera support in the latest libgphoto2 release.
+	    </para>
+	  </answer>
+	</qandaentry>
+
+	<qandaentry id="FAQ-webcam">
+	  <question>
+	    <simpara>
+	      Is my webcam supported by libgphoto2 ? How can I use it ?
+	    </simpara>
+	  </question>
+	  <answer>
+	    <para>
+	      libgphoto2 is not meant in any way to use webcams. It only works
+	      with still image cameras, and is designed to fetch images out of the
+	      internal storage of these cameras. It also eventually can be used to 
+	      remote control the camera to take pictures, it the camera has support 
+	      for it and if the driver can do it. But not at all libgphoto2 has been
+	      designed to be tool to operate webcams nor do we support these devices. 
+	      There are other solutions for that. Try searching
+	      <ulink url="http://www.google.com/">Google</ulink>.
+	    </para>
+	  </answer>
+	</qandaentry>
+
+      </qandadiv>
+
+      <qandadiv id="FAQ-generic">
+
+	<title>Generic libgphoto2 FAQs (frontend-independent)</title>
+
+	<qandaentry id="FAQ-could-not-find-usb">
+	  <question>
+	    <simpara>What can I do about the error message "Could not find USB device"?</simpara>
+	  </question>
+	  <answer>
+	    <para>
+	      The exact error message looks like
+	    </para>
+	    <screen>
+	      Could not find USB device (vendor 0x0000, product 0x0000). Make
+	      sure this device is connected to the computer
+	    </screen>
+	    <para>
+	      You have to set up the permissions on your USB device correctly.
+	      See <xref linkend="permissions-usb"/>.
+	    </para>
+	  </answer>
+	</qandaentry>
+
+	<qandaentry id="FAQ-could-not-claim-USB">
+	  <question>
+	    <simpara>Why do I get the error message "Could not claim the USB device"?</simpara>
+	  </question>
+	  <answer>
+	    <para>
+	      The exact message looks like
+	    </para>
+	    <screen>
+	      *** Error ('Could not claim the USB device') ***
+
+	      Could not claim interface 0 (Operation not permitted). Make sure no
+	      other program or kernel module (e.g. dc2xx or stv680) is using the 
+	      device and you have read/write access to the device. 
+	    </screen>
+	    <para>
+	      You have to make sure that no such kernel module is loaded and that
+	      you have set up the permissions on your USB device correctly,
+	      such that you have (non-root) write access to the camera device.
+	      How to set this up, is described at <xref linkend="permissions-usb"/>.
+	    </para>
+	    <para>
+	      This can also happen with cameras that works as USB Mass Storage devices.
+	      A notable example is if you have an Olympus Camera that gets auto-
+	      detected as an Olympus C-2040Z. In this case, you can try, if you run 
+	      Linux, to remove the usb-storage kernel module and attempt to use
+	      libgphoto2 with it. But, unless you want to control the camera (not all
+	      the model supports it), it is not a recommended solution. Keeps using USB
+	      Mass Storage. Some of these Olympus supports to be switched to "PC Control"
+	      mode in order to be remote controlled with an external program like one using 
+	      libgphoto2.
+	    </para>
+	  </answer>
+	</qandaentry>
+
+	<qandaentry id="FAQ-find-camera">
+	  <question>
+	    <simpara>gphoto2 does not find my camera. What shall I do?</simpara>
+	  </question>
+	  <answer>
+	    <para>
+	      First <link linkend="FAQ-camera-support">check that your camera is supported</link>.
+	    </para>
+	    <para>      
+	      Then try to run 
+	      <userinput>gphoto2 <parameter>--list-ports</parameter></userinput>
+	      and look whether the ports  
+	      you want to use are listed there:
+	    </para>
+	    <itemizedlist>
+	      <listitem>
+		<simpara>
+		  For serial devices, the port with the appropriate device must be
+		  listed
+		</simpara>
+	      </listitem>
+	      <listitem>
+		<simpara>
+		  For USB devices, you need the "usb:" port in the list. If you
+		  don't see it, check whether you compiled gphoto2 with libusb
+		  support <emphasis>and that you have mounted the 
+		  <systemitem>usbfs</systemitem> 
+		  (or <systemitem>usbdevfs</systemitem>)
+		  on <filename>/proc/bus/usb</filename>
+		  (usbfs applies to Linux systems only)</emphasis>.
+		</simpara>
+	      </listitem>
+	    </itemizedlist>
+	    <para>
+	      Then try to run <userinput>gphoto2 <parameter>--auto-detect</parameter></userinput> and look whether the camera
+	      is detected.
+	    </para>
+	    <para>
+	      If your gphoto2 cannot access the USB device as non-root users, you
+	      have to set up hotplugging correctly. 
+	      See <xref linkend="permissions-usb"/> for details.
+	    </para>
+	    <para>
+	      AND DO NOT RUN gphoto2 AS ROOT. And no other libgphoto2 frontend either.
+	    </para>
+	  </answer>
+	</qandaentry>
+
+	<qandaentry id="FAQ-library-revision">
+	  <question>
+	    <simpara>
+	      I just downloaded the libgphoto2-2.1.1 distribution off
+	      sourceforge and it builds "libgphoto2.so.2.0.3". Has anyone
+	      else reported this?
+	    </simpara>
+	  </question>
+	  <answer>
+	    <para>
+	      Yes, many times. The release number ("2.1.1") and the
+	      library version ("2.0.3") are by their respective definitions 
+	      <emphasis>completely unrelated</emphasis>. As we won't
+	      <quote>fix</quote> a problem which is not there,
+	      please stop bugging us with that <quote>problem</quote>.
+	    </para>
+	  </answer>
+	</qandaentry>
+
+	<qandaentry id="FAQ-USB-bulk-fail">
+	  <question>
+	    <para>
+	      I run Linux 2.4.x and I can't get USB to work at all. I keep getting
+	      this error message in the syslog:
+	    </para>
+	    <screen>
+	      kernel: usb_control/bulk_msg: timeout
+	      kernel: usbdevfs: USBDEVFS_BULK failed dev 3 ep 0x81 len 64 ret -110
+	    </screen>
+	    <para>How can I make USB work?</para>
+	  </question>
+	  <answer>
+	    <para>
+	      No idea. Sometimes it works and sometimes it doesn't. If you
+	      know a solution, please let us know.
+	    </para>
+	  </answer>
+	</qandaentry>
+
+      </qandadiv>
+
+      <qandadiv id="FAQ-camera-specific">
+
+	<title>Questions about specific cameras</title>
+
+	<qandaentry id="FAQ-camlib-readme">
+	  <question>
+	    <simpara>
+	      I have a special problem with CameraXYZ. Where can I find information
+	      about it?
+	    </simpara>
+	  </question>
+	  <answer>
+	    <para>
+	      You can look into the <filename>README</filename> file of your
+	      driver <replaceable>driver</replaceable>. It is located in 
+	      <filename class="directory">camlibs/<replaceable>driver</replaceable>/</filename>
+	      in your source tree. If you do not have a source tree, that is
+	      bad luck up to and including release 2.1.1 - we will install
+	      the <filename>README</filename> files in a future release, though.
+	    </para>
+	  </answer>
+	</qandaentry>
+
+	<qandaentry id="FAQ-easyshare-dock">
+	  <question>
+	    <simpara>I have a Kodak EasyShare&trade; camera, and gphoto2 can't detect it. What shall I do ?</simpara>
+	  </question>
+	  <answer>
+	    <para>
+	      Just press the button on the dock so that the <acronym>USB</acronym> device gets detected by the system 
+	      and that gphoto2 software can detect it.
+	    </para>
+	  </answer>
+	</qandaentry>
+
+	<qandaentry id="FAQ-Canon-AC">
+	  <question>
+	    <simpara>
+	      Why does my Canon PowerShot G1/G2/Pro 90 IS not work with gphoto2
+	      when using the AC adapter?
+	    </simpara>
+	  </question>
+	  <answer>
+	    <para>
+	      This is a longstanding bug with the G1 and Pro 90 IS, and a
+	      relatively new bug with the G2. With the G2, it was 
+	      introduced with a new camera firmware (G2 1.0.0.0 worked,
+	      1.1.0.0 does not). We
+	      haven't fixed this bug yet since none of the active gphoto2
+	      developers owned one of these cameras until recently (i.e.
+	      updated his G2's firmware). 
+	    </para>
+	    <para>
+	      Your options are as follows, in descending order of
+	      preference:
+	    </para>  
+	    <itemizedlist>
+	      <listitem>
+		<simpara>
+		  Fix it and send us a patch.
+		</simpara>
+	      </listitem>
+	      <listitem>
+		<simpara>Donate a camera (G3 anyone? :-) to one of the
+		  active Canon driver developers.
+		</simpara>
+	      </listitem>
+	      <listitem>
+		<simpara>Run the camera on battery instead of the AC adapter.</simpara>
+	      </listitem>
+	    </itemizedlist>
+	    <para>
+	      There is some more info regarding this at
+	      <ulink url="http://krixor.xy.org/fredrik/gp/canon-g1-ac-problem/">http://krixor.xy.org/fredrik/gp/canon-g1-ac-problem/</ulink>.
+	      Good luck.
+	    </para>
+	  </answer>
+	</qandaentry>
+
+	<qandaentry id="FAQ-ptp-linux-2.4.18">
+	  <question>
+	    <simpara>
+	      The PTP driver crashes on my Linux 2.4.18 system. What should I do?
+	    </simpara>
+	  </question>
+	  <answer>
+	    <para>
+	      There is a bug in the Linux 2.4.18 USB driver which 
+	      may result in random crashes of the libgphoto2 PTP driver. 
+	      Please upgrade to a more recent kernel.
+	    </para>
+	  </answer>
+	</qandaentry>
+
+	<qandaentry id="FAQ-SuSE-serial">
+	  <question>
+	    <simpara>I've got a serial camera, but gphoto2 doesn't work on SuSE 7.0
+	      (or greater). You told me that my camera is supported! Fix
+	      it!</simpara>
+	  </question>
+	  <answer>
+	    <para>
+	      Cool down, Joe, and listen to the wise words of Linda
+	      MacPhee-Cobb:
+	    </para>
+	    <para>
+	      <citation>
+		If you are not getting a response from a camera plugged into
+		the serial port, check your 
+		<filename>/var/log/boot.msg</filename> file for the
+		following entry near the end:
+	      </citation>
+	      <screen>
+		*This package use the ttyS0 device by default.
+		The installation of this package only makes sense
+		if you use a braille display.
+	      </screen>
+	      <citation>
+		This is from blinx, and you will need to turn it off,
+		or better, uninstall it.
+	      </citation>
+	    </para>
+	  </answer>
+	</qandaentry>
+
+      </qandadiv>
+
+      <qandadiv id="FAQ-administrativa">
+
+	<title>Questions about administrativa</title>
+
+	<qandaentry id="FAQ-CVS-get-access">
+	  <question>
+	    <simpara>I wanna have CVS/SVN write access. How do I get one?</simpara>
+	  </question>
+	  <answer>
+	    <para>
+	      We provide SVN write access to persons that show 
+	      <emphasis>continued</emphasis> interest in a 
+	      <emphasis>specific part</emphasis>
+	      of gphoto2. 
+	      If there is already a person maintaining this 
+	      specific part of gphoto2 (i.e. a camera driver), we prefer you
+	      submit patches to the maintainer who will then check them in
+	      or request modifications.
+	    </para>
+	    <para>
+	      Note that CVS has been discontinued. We are using
+	      Subversion (SVN) since 2006-03-14.
+	    </para>
+	  </answer>
+	</qandaentry>
+
+	<qandaentry id="FAQ-CVS-lost-access">
+	  <question>
+	    <simpara>You took away my SVN/CVS write access! What did I do
+	      wrong?</simpara>
+	  </question>
+
+	  <answer>
+	    <para>     
+	      If your name is not listed in 
+	      <filename>libgphoto2/MAINTAINERS</filename>, and if we
+	      haven't heard from you lately, we assume that you finished
+	      your work on gphoto2 and that you don't need write access any
+	      longer. If this is not the case, please contact one of the
+	      project admins.
+	    </para>
+	    <para>
+	      Note that CVS has been discontinued. We are using
+	      Subversion (SVN) since 2006-03-14.
+	    </para>
+	  </answer> 
+	</qandaentry>
+
+      </qandadiv>
+
+      <qandadiv id="FAQ-misc">
+
+	<title>Miscellanous Questions</title>
+
+	<qandaentry id="FAQ-rotate-jpeg">
+	  <question>
+	    <simpara>
+	      What's the best way to rotate downloaded JPEG images without 
+	      losses?
+	    </simpara>
+	  </question>
+	  <answer>
+	    <screen>
+	      <prompt>&prompt;</prompt># If you do not care about preserving EXIF information
+	      <prompt>&prompt;</prompt><userinput>jpegtran <parameter>-copy all</parameter> <parameter>-rotate 90</parameter></userinput>
+	      <prompt>&prompt;</prompt>
+	      <prompt>&prompt;</prompt># If you want to preserve EXIF information
+	      <prompt>&prompt;</prompt><userinput>jhead <parameter>-cmd</parameter> <parameter>'jpegtran -rotate 90 -outfile &amp;o &amp;i'</parameter> <parameter><filename>my-pic.jpg</filename></parameter></userinput>
+	    </screen>
+	    <para>
+	      You can get the jpegtran from the <ulink url="http://www.ijb.org/">libjpeg package</ulink> and jhead from 
+	      <ulink url="http://www.sentex.net/~mwandel/jhead/">http://www.sentex.net/~mwandel/jhead</ulink>.
+	    </para>
+	  </answer>
+	</qandaentry>
+
+	<qandaentry id="FAQ-Windows">
+	  <question>
+	    <simpara>Dudes, Windows is the way to go. How do I compile
+	      gphoto2 for that environment?</simpara>
+	  </question>
+	  <answer>
+	    <para>
+	      We don't have the money to buy Windows and something like Visual C.
+	      Therefore, we can't provide you a gphoto2 for Windows. You have two 
+	      choices (at least):
+	    </para>
+	    <itemizedlist>
+	      <listitem>
+		<simpara>
+		  Buy a fast computer, buy Windows and Visual C and some manuals on
+		  how to access USB or serial ports on Windows. Send all that
+		  including a blank cheque to us (ask for the address on
+		  <email>gphoto-devel@lists.sourceforge.net</email>).
+		</simpara>
+	      </listitem>
+	      <listitem>
+		<simpara>
+		  Try to figure out how to get gphoto2 working on Windows
+		  and send us the patches.
+		</simpara>
+	      </listitem>
+	    </itemizedlist>
+	  </answer>
+	</qandaentry>
+
+      </qandadiv>
+      <qandadiv id="FAQ-install">
+
+	<title>Installation FAQs</title>
+
+	<qandaentry id="FAQ-relocation-error">
+	  <question>
+	    <simpara>I've just compiled and installed a new version of gphoto2, libgphoto2, gtkam, etc. and now I just get a <quote>relocation error</quote> complaining about <quote>undefined symbol: gp_library_version</quote></simpara>
+	  </question>
+	  <answer>
+	    <para>
+	      You are running your libgphoto2 frontend (gphoto2,
+	      gtkam, digikam, etc.) with an old version of
+	      libgphoto2, even though you compiled it with a newer
+	      libgphoto2! Probably you have an old libgphoto2 in
+	      <filename class="directory">/usr/lib</filename>
+	      and the newer one in
+	      <filename class="directory">/usr/local/lib</filename>.
+	    </para>
+	    <para>
+	      To solve that problem, go through the following list.
+	      <orderedlist>
+		<listitem>
+		  <simpara>
+		    Make sure that you have compiled and installed
+		    libgphoto2 2.1.2 or later.
+		  </simpara>
+		</listitem>
+		<listitem>
+		  <simpara>
+		    Find out which library files you are using for
+		    the <command>gphoto2</command> command with the
+		    <command>ldd `which gphoto2`</command> command.
+		  </simpara>
+		</listitem>
+		<listitem>
+		  <simpara>
+		    Set the <varname>LD_LIBRARY_PATH</varname>
+		    to the <filename class="directory">lib</filename>
+		    directory into which you installed your new
+		    libgphoto2 (e.g. 
+		    <filename class="directory">/usr/local/lib</filename>).
+		  </simpara>
+		</listitem>
+		<listitem>
+		  <simpara>
+		    Make sure that 
+		    <command>ldd `which gphoto2`</command>
+		    now shows the correct library and that 
+		    <command>gphoto2 --version</command> displays the
+		    library version without any errors.
+		  </simpara>
+		</listitem>
+		<listitem>
+		  <para>
+		    If you want to, you may make the changed library
+		    search path permanent.
+		  </para>
+		  <para>
+		    Either set <varname>LD_LIBRARY_PATH</varname> 
+		    by default in your shell init scripts, or
+		    configure your dynamic loader ld.so permanently.
+		  </para>
+		  <important>
+		    <para>
+		      Messing up your ld.so configuration may
+		      make your system unusable!
+		    </para>
+		    <para>
+		      On BSD systems, <emphasis>do not run</emphasis>
+		      <command>ldconfig</command> without any
+		      parameters. This will make your system unusable!
+		    </para>
+		    <para>
+		      Also make sure you don't open a security hole
+		      by loading libraries from a location where anybody
+		      can write libraries to.
+		    </para>
+		  </important>
+		  <para>
+		    On GNU/Linux systems, ld.so is configured by
+		    adapting <filename>/etc/ld.so.conf</filename>
+		    and running <command>ldconfig</command>.
+		  </para>
+		</listitem>
+	      </orderedlist>
+	    </para>
+	  </answer>
+	</qandaentry>
+
+	<!--
+	<qandaentry>
+	<question>
+      </question>
+	<answer>
+      </answer>
+      </qandaentry>
+	-->
+
+	<qandaentry id="FAQ-installation-kaputt">
+	  <question>
+	    <simpara>
+	      gphoto2 does not work, the driver reports some error messages.
+	      What shall I do?
+	    </simpara>
+	  </question>
+	  <answer>
+	    <para>
+	      First of all make sure, that you have only one instance of gphoto2 
+	      and libgphoto2 installed on your system. 
+	      Unless you know what you're doing you should remove all gphoto2
+	      installation, then you may do (as root):
+	    </para>
+	    <screen>
+	      <prompt>&rprompt;</prompt><command>rm <parameter>-rf</parameter> <parameter><filename>/usr/local/lib/gphoto2*</filename></parameter> <parameter><filename>/usr/local/lib/libgphoto2*</filename></parameter></command>
+	      <prompt>&rprompt;</prompt><command>rm <parameter>-rf</parameter> <parameter><filename>/usr/lib/gphoto2*</filename></parameter> <parameter><filename>/usr/lib/libgphoto2*</filename></parameter></command>
+	    </screen>
+	    <para>
+	      Above applies especially if you use both pre-packaged
+	      and CVS/SVN versions.
+	    </para>
+	    <para>
+	      After that, install the newest version of 
+	      libgphoto2 and gphoto2 and test
+	      whether it works now. 
+	    </para>
+	  </answer>
+	</qandaentry>
+
+	<qandaentry id="FAQ-stow">
+	  <question>
+	    <simpara>I want to use GNU stow, but that fails.</simpara>
+	  </question>
+	  <answer>
+	    <simpara>I don't know what stow is, but have a look at 
+	      <!--ulink url="-->
+	      https://sourceforge.net/tracker/index.php?func=detail&amp;aid=553647&amp;group_id=8874&amp;atid=108874"
+	      Sourceforge bug #553647
+	      <!--/ulink-->.
+	    </simpara>
+	  </answer>
+	</qandaentry>
+
+	<qandaentry id="FAQ-pkg-config">
+	  <question>
+	    <para>
+	      I just sucessfully compiled and installed libgphoto2-2.2.1.
+	      But when configuring gphoto2-2.1.1 I get 
+	      <computeroutput>Library requirements (libgphoto2 >= 2.1.1) not met</computeroutput>
+	    </para>
+	  </question>
+	  <answer>
+	    <para>If you don't have pkg-config installed yet, then please install it.</para>
+	    <para>
+	      Otherwise, your PKG_CONFIG_PATH variable doesn't contain the 
+	      <filename class="directory">pkgconfig/</filename>
+	      directory in the 
+	      <filename class="directory">lib/</filename>
+	      directory of
+	      your libgphoto2 installation.
+	    </para>
+	    <para>For a default installation, run
+	      <screen>
+<prompt>&prompt;</prompt><userinput>PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/local/lib/pkgconfig</userinput>
+<prompt>&prompt;</prompt><userinput>export PKG_CONFIG_PATH</userinput>
+	      </screen>
+	      and now run the gphoto2
+	      <userinput>./configure</userinput> again.
+	    </para>
+	  </answer>
+	</qandaentry>
+
+      </qandadiv>
+    </qandaset>
+
+    <!--
+    FAQ-gphoto2 (CLI)
+    FAQ-gtkam
+    FAQ-devel
+    -->
+
+    <!--sect1 id="FAQ-unsorted">
+      <title>Unsorted FAQs</title>
+      <para>The following questions and answers still have to be worked
+	over:</para>
+      &libgphoto2FAQ;
+    </sect1-->
+  </chapter>
+ 
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+
+  <chapter id="permissions">
+    <title>Setting up your system for use with 
+      <systemitem class="library">libgphoto2</systemitem>
+      and <command>gphoto2</command>
+    </title>
+
+    <abstract>
+      <para>This chapter aims to help you set up your system such that
+        you can use 
+        <systemitem class="library">libgphoto2</systemitem>
+        with any frontend. However, we will have some examples using
+        the <xref linkend="ref-gphoto2-cli"/> command line frontend, as
+        this is the frontend which is always provided.
+      </para>
+    </abstract>
+
+    <sect1 id="system-overview">
+      <title>System Overview</title>
+      <para>
+        gPhoto2 consists of two libraries
+        <systemitem class="library">libgphoto2</systemitem> (
+        see <xref linkend="ref-libgphoto2"/>), and
+        <systemitem class="library">libgphoto2_port</systemitem>
+        (see <xref linkend="ref-libgphoto2_port"/>), which is used by the
+        former, 
+        and a command line frontend (<command>gphoto2</command>, 
+        see <xref linkend="ref-gphoto2-cli"/>). 
+        Other (GUI) frontends (like e.g. gtkam) are available as
+        separate packages.
+      </para>
+
+      <para>
+        In order to get access to the camera, your frontend process requires
+        write permissions to the respective device special file, e.g. to
+        <filename class="devicefile">/dev/ttyS3</filename> or 
+        <filename class="devicefile">/proc/bus/usb/1/012</filename>. 
+      </para>
+      <para>
+        For security reasons, we strongly recommend not to run any 
+        <xref linkend="ref-libgphoto2"/>
+        frontend as root. So you have to set up the permissions of your camera
+        device accordingly. This is described in the following two sections,
+	<xref linkend="permissions-serial"/> and <xref linkend="permissions-usb"/>.
+      </para>
+      <para>
+        Then you can run your frontend. For the command line 
+        <xref linkend="ref-libgphoto2"/> frontend 
+        <xref linkend="ref-gphoto2-cli"/>,
+        this is described in the <xref linkend="ref-gphoto2-cli"/> man
+        page.
+      </para>    
+    </sect1>
+
+    <sect1 id="permissions-serial">
+
+      <title>Setting up permissions for serial
+	(<acronym>RS232</acronym>) ports</title>
+
+      <para>
+	On Unix systems, serial ports usually are represented by device files.
+	The serial port device files are e.g.:
+      </para>
+
+      <variablelist>
+	<varlistentry>
+	  <term>for Linux</term>
+	  <listitem>
+	    <simpara><filename class="devicefile">/dev/ttyS<replaceable>?</replaceable></filename> starting with <filename class="devicefile">/dev/ttyS0</filename></simpara>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term>for FreeBSD</term>
+	  <listitem>
+	    <simpara><filename class="devicefile">/dev/cuaa<replaceable>?</replaceable></filename> starting with <filename class="devicefile">/dev/cuaa0</filename></simpara>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+
+      <para>
+        If you have a serial port reserved for the camera, you can
+	just use <command>chown</command>, <command>chgrp</command>,
+	<command>chmod</command> on its device file to provide a
+	certain user or group or everybody with access to it.
+      </para>
+
+      <para>
+	You can use the 
+	<userinput>gphoto2 <parameter>--list-ports</parameter></userinput>
+	command to check whether you have permissions to access a
+	certain device:
+      </para>
+
+      <screen>
+<prompt>&prompt;</prompt><userinput>gphoto2 --list-ports</userinput>
+<computeroutput>Devices found: 2
+Path                             Description
+--------------------------------------------------------------
+serial:/dev/ttyS0                Serial Port 0                   
+usb:                             Universal Serial Bus            
+</computeroutput>
+<prompt>&prompt;</prompt>
+      </screen>
+      
+      <para>
+	This shows that user &user; (who seems to be running the
+	command) has access to the serial device 
+	<filename class="devicefile">/dev/ttyS0</filename>.
+      </para>
+
+      <sect2 id="serial--a-few-examples">
+	<title>A few examples</title>
+
+	<para>
+	  Let's make a few examples with the first serial port 
+	  on a Linux system, called 
+	  <filename class="devicefile">/dev/ttyS0</filename>. 
+	  You start with having a look at the device file: 
+	</para>
+
+	<screen>
+<prompt>&rprompt;</prompt><userinput>ls -l <filename class="devicefile">/dev/ttyS0</filename></userinput>
+<computeroutput>crw-rw----    1 root     dialout    4,  64 Jul  5 12:05 /dev/ttyS0</computeroutput>
+<prompt>&rprompt;</prompt>
+	</screen>
+
+	<para>
+	  OK, so user root and all users of the group dialout can access
+	  the device /dev/ttyS0. You now have a few choices of what to
+	  do.
+	</para>
+
+	<example id="ex-serial-exclusive-access">
+	  <title>Exclusive access to a serial camera for <emphasis>one</emphasis> user</title>
+	  <para>
+	    You want to give user &user; exclusive access to the first
+	    serial port on your Linux machine:
+	  </para>
+	  <screen>
+<prompt>&rprompt;</prompt># give &user; exclusive access to the device file (you must be root)
+<prompt>&rprompt;</prompt><userinput>chown &user; /dev/ttyS0</userinput>
+<prompt>&rprompt;</prompt><userinput>chmod 0600 /dev/ttyS0</userinput>
+<prompt>&rprompt;</prompt><userinput>ls -l /dev/ttyS0</userinput>
+<computeroutput>crw-------    1 &user;    dialout    4,  64 Jul  5 12:05 /dev/ttyS0</computeroutput>
+<prompt>&rprompt;</prompt>
+	  </screen>
+	  <para>
+	    Test for access by running 
+	    <userinput>gphoto2 <parameter>--list-ports</parameter></userinput>
+	    as the respective user. Look for
+	    <filename class="devicefile">/dev/ttyS0</filename>
+	    in the output.
+	  </para>
+	</example>
+
+	<example id="ex-serial-group-access">
+	  <title>Access to serial camera for a group of users</title>
+	  
+	  <para>
+	    You could just add user &user; to the group dialout, but this
+	    will almost certainly cause confusion between dialing and
+	    using the camera. So you'd better create a group named
+	    "camera", add &user; to that group and give the group access
+	    to the camera:
+	  </para>
+	  
+	  <screen>
+<prompt>&rprompt;</prompt># give users in group "camera" access to this device (you must be root)
+<prompt>&rprompt;</prompt><userinput>groupadd camera</userinput>
+<prompt>&rprompt;</prompt><userinput>chgrp camera /dev/ttyS0</userinput>
+<prompt>&rprompt;</prompt><userinput>chmod 0060 /dev/ttyS0</userinput>
+<prompt>&rprompt;</prompt><userinput>ls -l /dev/ttyS0</userinput>
+<computeroutput>c---rw----    1 root     camera     4,  64 Jul  5 12:05 /dev/ttyS0</computeroutput>
+<prompt>&rprompt;</prompt>
+	  </screen>
+	
+	  <para>
+	    Test for access by running 
+	    <userinput>gphoto2 <parameter>--list-ports</parameter></userinput>
+	    as the respective user. Look for
+	    <filename class="devicefile">/dev/ttyS0</filename>
+	    in the output.
+	  </para>
+
+	  <para>
+	    BTW, it makes sense to also set the permissions for USB
+	    camera devices to allow the "camera" group access. Then any
+	    user in the "camera" group will have access to any camera.
+	  </para>
+	</example>
+
+	<example id="ex-serial-anybody-access">
+	  <title>Access to serial camera for <emphasis>anybody</emphasis></title>
+	  <para>
+	    Allowing <emphasis>anybody</emphasis> access to
+	    something is considered bad security. However, for quick
+	    testing or for non-networked single-user systems, this can
+	    also make sense:
+	  </para>
+	  <screen>
+<prompt>&rprompt;</prompt># give <emphasis>anybody</emphasis> access to this device (you must be root)
+<prompt>&rprompt;</prompt><userinput>chmod a+rw /dev/ttyS0</userinput>
+<prompt>&rprompt;</prompt><userinput>ls -l /dev/ttyS0</userinput>
+<computeroutput>crw-rw-rw-    1 root     dialout    4,  64 Jul  5 12:05 /dev/ttyS0</computeroutput>
+<prompt>&rprompt;</prompt>
+	  </screen>	  
+	  <para>
+	    Test for access by running 
+	    <userinput>gphoto2 <parameter>--list-ports</parameter></userinput>
+	    as the respective user. Look for
+	    <filename class="devicefile">/dev/ttyS0</filename>
+	    in the output.
+	  </para>
+	</example>
+
+      </sect2>
+
+    </sect1>
+
+    <sect1 id="permissions-usb">
+      <title>Setting up permissions for <acronym>USB</acronym> ports</title>
+      <para>
+        As <acronym>USB</acronym> is designed for hotplugging of
+	devices, the operating system also needs a mechanism that
+	dynamically creates devices (device files) for the devices
+	currently connected and switched on.
+      </para>
+      <para>
+        The operating system has to determine which users may access a device
+        dynamically. As the operating system cannot determine this by itself,
+        there have to be some helper applications.
+      </para>
+      <para>
+	If you are using pre-built packages for your distribution
+	(such as SuSE or Redhat <acronym>RPM</acronym>s or Debian
+	<acronym>DEB</acronym>s, Gentoo Ebuilds, FreeBSD pots, ...),
+	simply installing those packages should do this configuration
+	for you.  In reality, however, you often still have to do a
+	varying amount of work. Read the documentation for your
+	package (usually somewhere in
+	<filename>/usr/share/doc/*gphoto2*/</filename>) and this guide
+	section to find out if and what work there still is or may be
+	to do for you.
+      </para>
+      <para>
+        If you are installing and setting up libgphoto2 yourself, then
+	the following sections explain the configuration of these helpers.
+      </para>
+
+      <!-- ================================================== -->
+      <sect2 id="usb-on-linux">
+        <title><acronym>USB</acronym> ports on Linux</title>
+
+	<important>
+	  <para>
+	    This section is currently (2006-12) under review. However,
+	    with the old text being so outdated, we have decided to
+	    publish this work in progress as-is. Slightly disorganized
+	    but accurate information is more useful than horribly
+	    outdated one.
+	  </para>
+	</important>
+
+	<para>
+	  The Linux Kernel contains both generic USB interface drivers
+	  and higher level USB device drivers for some devices like
+	  USB mice or USB thumb drivers. The generic interface drivers
+	  can be used from user space applications to connect to USB
+	  devices not specifically supported by the kernel itself. Any
+	  application using libgphoto2 is an example of such a user
+	  space application.
+	</para>
+	<para>
+	  Unfortunately, for some devices there are drivers both in
+	  the kernel and in libgphoto2, creating a conflict situation.
+	  If that happens with your device and you want to use libgphoto2
+	  instead of the kernel driver, you may have a problem. In
+	  later kernels <!--XXX version?--> and current libusb versions
+	  <!--XXX which version?-->, 
+	  libgphoto2 will
+	  try to unload the kernel driver for the interface as soon
+	  as libgphoto2 wants to claim the device. On older kernels,
+	  you need to prevent the kernel from loading its kernel
+	  space driver in some fashion.
+	</para>
+	<para>
+	  Hotplugging of devices is a central feature of
+	  <acronym>USB</acronym>, and thus the Linux Kernel's
+	  <acronym>USB</acronym> system must also handle the addition
+	  of new devices at run-time. Over the course of time,
+	  multiple solutions for this have been invented:
+	  linux-hotplug (kernels 2.4), udev (kernel 2.6), and nowadays
+	  <acronym>HAL</acronym> (which provides complete desktop
+	  integration).  The basic mechanism is the same: When the
+	  Kernel notices that a new <acronym>USB</acronym> device has
+	  been plugged in (or switched on), it runs a program. That
+	  program can then walk through its configured set of rules
+	  and apply them to the new device.
+	</para>
+      </sect2>
+
+      <sect2 id="usb-on-linux-HAL">
+	<title><acronym>USB</acronym> ports on Linux using
+	<acronym>HAL</acronym></title>
+	<para>
+	  This section describes how to set up <acronym>USB</acronym>
+	  device permissions using <ulink
+	  url="http://freedesktop.org/wiki/Software_2fhal"><acronym>HAL</acronym></ulink>.
+	  Due to this article's author's cluelessness about
+	  <acronym>HAL</acronym>, it just describes the
+	  <acronym>HAL</acronym> setup provided by the <ulink
+	  url="http://fedoraproject.org">Fedora Core</ulink> 6
+	  (<acronym>FC6</acronym>) gphoto2 <acronym>RPM</acronym>
+	  package.
+	</para>
+	<para>
+	  The libgphoto2 specific part of the <acronym>HAL</acronym>
+	  configuration consists of two parts: The device list and a
+	  policy. Each is stored in its own file.
+	</para>
+	<para>
+	  The device list file contains a list of all devices
+	  supported by libgphoto2 in any fashion and giving HAL
+	  information as to the device's capabilities. You can
+	  generate this file using the print-camera-list utility
+	  shipped with libgphoto2:
+	</para>
+	<screen><prompt>&rprompt;</prompt><userinput>/usr/lib/libgphoto2/print-camera-list hal-fdi &gt; libgphoto2.fdi</userinput></screen>
+	<para>
+	  The <acronym>FC6</acronym> gphoto2 package stores this file
+	  as
+	  <filename>/usr/share/hal/fdi/information/20thirdparty/10-camera-libgphoto2.fdi</filename>.
+	  Its content looks like:
+	</para>
+	<programlisting><![CDATA[
+<?xml version="1.0" encoding="ISO-8859-1"?> <!-- -*- SGML -*- -->
+<!-- This file was generated by libgphoto2 print-camera-list - - fdi -->
+<deviceinfo version="0.2">
+ <device>
+  <match key="info.bus" string="usb">
+   <match key="usb.vendor_id" int="1363">
+    <match key="usb.product_id" int="514">
+     <merge key="info.category" type="string">camera</merge>
+     <append key="info.capabilities" type="strlist">camera</append>
+     <merge key="camera.access_method" type="string">proprietary</merge>
+     <merge key="camera.libgphoto2.name" type="string">AEG Snap 300</merge>
+     <merge key="camera.libgphoto2.support" type="bool">true</merge>
+    </match>
+   </match>
+     ...
+   <match key="usb.vendor_id" int="10096">
+    <match key="usb.product_id" int="36956">
+     <merge key="info.category" type="string">camera</merge>
+     <append key="info.capabilities" type="strlist">camera</append>
+     <merge key="camera.access_method" type="string">proprietary</merge>
+     <merge key="camera.libgphoto2.name" type="string">Vivitar Vivicam35</merge>
+     <merge key="camera.libgphoto2.support" type="bool">true</merge>
+    </match>
+   </match>
+  </match>
+ </device>
+</deviceinfo>
+]]></programlisting>
+	<para>
+	  Note that <acronym>FC6</acronym>'s hal
+	  <acronym>RPM</acronym> already ships the following
+	  <filename>/usr/share/hal/fdi/information/10freedesktop/10-camera-ptp.fdi</filename>
+	  file which matches all <acronym>PTP</acronym> class cameras,
+	  so their being missing in the device list file generated by
+	  <command>print-camera-list</command> does not matter:
+	</para>
+	<programlisting><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<deviceinfo version="0.2">
+  <device>
+    <match key="info.bus" string="usb">
+      <match key="usb.interface.class" int="0x06">
+        <match key="usb.interface.subclass" int="0x01">
+          <match key="usb.interface.protocol" int="0x01">
+            <merge key="info.category" type="string">camera</merge>
+	    <append key="info.capabilities" type="strlist">camera</append>
+            <merge key="camera.access_method" type="string">ptp</merge>
+          </match>
+        </match>
+      </match>
+    </match>
+  </device>
+</deviceinfo>
+]]></programlisting>
+	<para>
+	  The policy file defines what <acronym>HAL</acronym> is to do
+	  with devices which have a "camera" capability.  The
+	  <acronym>FC6</acronym> gphoto2 package stores the policy
+	  file as
+	  <filename>/usr/share/hal/fdi/policy/20thirdparty/90-gphoto-camera-policy.fdi</filename>.
+	  It just calls a script, as the content shows:
+	</para>
+	<programlisting><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?> <!-- -*- SGML -*- --> 
+<deviceinfo version="0.2">
+  <device>
+    <match key="info.capabilities" contains="camera">
+      <match key="camera.access_method" string="proprietary">
+        <append key="info.callouts.add" type="strlist">/usr/libexec/gphoto-set-procperm</append>
+      </match>
+      <match key="camera.access_method" string="ptp">
+        <append key="info.callouts.add" type="strlist">/usr/libexec/gphoto-set-procperm</append>
+      </match>
+    </match>
+  </device>
+</deviceinfo>
+]]></programlisting>
+	<para>
+	  The <acronym>FC6</acronym> gphoto2 package stores the
+	  permission setup script as
+	  <filename>/usr/libexec/gphoto-set-procperm</filename>.  It
+	  uses <command>printf(1)</command> <!-- man page ref? --> to
+	  construct the name of the device file from
+	  <acronym>USB</acronym> bus and device numbers given by
+	  <acronym>HAL</acronym>, waits a few seconds to make sure the
+	  device file actually exists, and then finally hands
+	  ownership of the device file to the pam_console user:
+	</para>
+	<programlisting><![CDATA[
+#!/bin/bash
+
+console_user=`cat /var/run/console/console.lock` 
+
+if [ -z "$console_user" ] ; then
+  exit 1 
+fi
+
+if [ -z "$HAL_PROP_USB_BUS_NUMBER" -o -z "$HAL_PROP_USB_LINUX_DEVICE_NUMBER" ] ; then
+  exit 2 
+fi
+
+if [ $HAL_PROP_USB_BUS_NUMBER -lt 0 -o  $HAL_PROP_USB_LINUX_DEVICE_NUMBER -lt 0 ] ; then
+  exit 3 
+fi
+
+bus_num=`printf %.3u $HAL_PROP_USB_BUS_NUMBER`
+dev_num=`printf %.3u $HAL_PROP_USB_LINUX_DEVICE_NUMBER`
+
+NUM_TRIES_LEFT=5
+while [ $NUM_TRIES_LEFT -ge 0 ] && [ ! -c /dev/bus/usb/$bus_num/$dev_num ]; do
+        sleep 1
+        NUM_TRIES_LEFT=$(($NUM_TRIES_LEFT - 1))
+done
+[ -c /dev/bus/usb/$bus_num/$dev_num ] || exit 4
+
+chown $console_user /dev/bus/usb/$bus_num/$dev_num 
+
+NUM_TRIES_LEFT=5
+while [ $NUM_TRIES_LEFT -ge 0 ] && [ ! -f /proc/bus/usb/$bus_num/$dev_num ]; do
+        sleep 1
+        NUM_TRIES_LEFT=$(($NUM_TRIES_LEFT - 1))
+done
+[ -f /proc/bus/usb/$bus_num/$dev_num ] || exit 5
+
+chown $console_user /proc/bus/usb/$bus_num/$dev_num
+]]></programlisting>
+      </sect2>
+
+      <sect2 id="usb-on-linux-udev">
+	<title><acronym>USB</acronym> ports on Linux using udev</title>
+	<para>
+	  <ulink
+	      url="http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html">udev</ulink>
+	  is the mechanism called by Linux Kernel 2.6 to add and
+	  remove device files in <filename>/dev</filename>. udev is an
+	  integral part of the system, and thus installed directly in
+	  <filename>/</filename>, not in
+	  <filename>/usr/</filename>. This means that helper programs
+	  and scripts are installed in <filename>/lib/udev/</filename>,
+	  and the udev rules are stored in
+	  <filename>/etc/udev/rules.d/</filename>.
+	</para>
+	<para>
+	  There are multiple versions of udev around with slightly
+	  different rule formats, so libgphoto2's
+	  <filename>/usr/lib/libgphoto2/print-camera</filename>
+	  supports a <option>version</option> argument.
+	</para>
+	<screen>
+# call script /lib/udev/foobar
+<prompt>&rprompt;</prompt><userinput>/usr/lib/libgphoto2/print-camera-list \
+    udev-rules version 0.98 script foobar \
+    > /etc/udev/rules.d/90-libgphoto2.rules</userinput>
+
+# call script /path/to/foobar
+<prompt>&rprompt;</prompt><userinput>/usr/lib/libgphoto2/print-camera-list \
+    udev-rules version 0.98 script /path/to/foobar \
+    > /etc/udev/rules.d/90-libgphoto2.rules</userinput>
+
+# set up permissions with "chmod 0660 $device; chgrp plugdev $device"
+<prompt>&rprompt;</prompt><userinput>/usr/lib/libgphoto2/print-camera-list \
+    udev-rules version 0.98 group plugdev mode 0660 \
+    > /etc/udev/rules.d/90-libgphoto2.rules</userinput>
+	</screen>
+	<para>
+	  These udev rule files contain two sorts of matches: Lots of
+	  listings by <acronym>USB</acronym> VendorID/ProductID, and
+	  one special case each for matching <acronym>PTP</acronym>
+	  and <acronym>MTP</acronym> devices. These two special cases
+	  run special scripts/programs, which should also be installed
+	  in <filename>/lib/udev/</filename>.
+	</para>
+	<programlisting><![CDATA[
+#!/bin/sh
+# UNTESTED SCRIPT (but you get the idea)
+
+test "x$ACTION" != "xadd" || exit 0
+test "x$SUBSYSTEM" != "xusb_device" || exit 0
+
+if test -e "$DEVNAME"
+then
+  user="photoripper"
+  chown "$user" "$DEVNAME"
+  chmod 0600 "$DEVNAME"
+
+  # SUBSYSTEM == "usb_device" implies that DEVNAME == "/dev/bus/usb/123/456"
+  # Determine device ID and bus ID.
+  dev="$(basename "$DEVNAME")"
+  bus="$(basename "$(dirname "$DEVNAME")")"
+
+  # Download all files from that camera to incoming directory with
+  # lowercase filenames
+  command="/usr/bin/gphoto2 --port usb:${bus},${dev} --get-all-files"
+  command="$command --filename /var/local/photodump/incoming/%:"
+  echo "Executing command: $command"
+  su "$photoripper" -c "$command"
+else
+  echo "photoripper: Given device named $DEVNAME not found."
+  exit 1
+fi
+]]></programlisting>
+      </sect2>
+
+      <sect2 id="usb-on-linux-hotplug">
+	<title><acronym>USB</acronym> ports on Linux using linux-hotplug</title>
+	<para>
+	  <ulink
+	  url="http://linux-hotplug.sourceforge.net/">linux-hotplug</ulink>
+	  was the first solution for hooks to run when hotplugging
+	  devices, introduced with the 2.4 kernel's
+	  <acronym>USB</acronym> code.
+	</para>
+	<para>
+	  linux-hotplug stores its files in pairs: One file
+	  <filename>/etc/hotplug/usb/<replaceable>&usbcam;</replaceable>.usermap</filename>
+	  is a list of device descriptions, and the other
+	  <filename>/etc/hotplug/usb/<replaceable>&usbcam;</replaceable></filename>
+	  is a script to call in
+	  case a newly added device matches that description.
+	</para>
+	<para>
+	  libgphoto2 supports linux-hotplug via a device list
+	  generated using <command>print-camera-list</command> and a
+	  few example scripts shipped in 
+	  <filename>packaging/linux-hotplug/</filename>.
+	</para>
+	<screen><prompt>&rprompt;</prompt><userinput>/usr/lib/libgphoto2/print-camera-list usb-usermap \
+    > <filename>/etc/hotplug/usb/<replaceable>&usbcam;</replaceable>.usermap</filename></userinput></screen>
+	<!--programlisting>
+	</programlisting-->
+      </sect2>
+
+      <sect2 id="usb-on-linux-dirty">
+	<title><acronym>USB</acronym> ports on Linux (obsoleted by
+	udev, dirty world-writable hack)</title>
+	<para>
+	  In ancient times, before the arrival of udev, one usually
+	  needed to mount the "usbdevfs" or later "usbfs" to
+	  <filename>/proc/bus/usb</filename>. One particular mount
+	  option allowed the whole usb filesystem (i.e. all mice, card
+	  readers, and all other <acronym>USB</acronym> devices) to be
+	  made group or world writeable.
+	</para>
+	<para>
+	  Obviously, this kind of <quote>security</quote> is no
+	  security and should thus be avoided. Additionally, since
+	  udev exists now, just use udev. You can look up how to shoot
+	  yourself in the foot with usbdevfs... where? Well, just
+	  use udev. After all, this is almost the year 2007, not
+	  1997.
+	</para>
+      </sect2>
+
+      <!-- ================================================== -->
+      <sect2 id="usb-on-linux-old">
+
+        <title><acronym>USB</acronym> ports on Linux (OLD)</title>
+
+        <para>
+	  libgphoto2 provides a user space driver for cameras, which
+	  conflicts with having a kernel driver for the camera.
+
+	  So in order to use libgphoto2, you have to disable all kernel drivers which want
+          to handle the camera themselves (e.g. the Linux
+          <systemitem class="resource">dc2xx</systemitem> or
+          <systemitem class="resource">stv680</systemitem>
+          drivers). You can check whether these modules are loaded by
+          executing <command>lsmod</command>.
+        </para>
+
+	<para>We will not cover basic <acronym>USB</acronym> setup
+	  in detail here. For more information on how to get 
+	  <acronym>USB</acronym> working on your
+	  hardware and your system at all, we'd like to refer you to
+	  <ulink url="http://www.linux-usb.org/USB-guide/">http://www.linux-usb.org/USB-guide/</ulink>
+	  and especially
+	  <ulink url="http://www.linux-usb.org/USB-guide/c122.html">http://www.linux-usb.org/USB-guide/c122.html</ulink>
+	  .
+	  These pages explains the USB basics in a better way than we
+	  could do.
+	</para>
+
+        <para>
+          Now that you've got your basic <acronym>USB</acronym> system
+	  working, you have basically two options to allow user access
+	  to <acronym>USB</acronym> devices on your Linux system:
+        </para>
+
+        <orderedlist numeration="loweralpha">
+
+          <listitem id="usbfs">
+            <simpara>
+              allow a certain user and/or group or the whole world
+	      access to <emphasis>all</emphasis> <acronym>USB</acronym> devices
+              by mounting 
+              <filename class="directory">/proc/bus/usb</filename><footnote id="usbdevfs">
+		<simpara>The filesystem is called <systemitem class="filesystem">usbdevfs</systemitem> in 2.2 and older 2.4 kernels.</simpara>
+	      </footnote>
+              with adequate user and/or group permissions (default
+              is world-readable and root-only-writable, which is good)
+            </simpara>
+          </listitem>
+
+          <listitem id="hotplug">
+            <simpara>
+              use hotplug (<ulink
+                url="http://linux-hotplug.sourceforge.net/">http://linux-hotplug.sourceforge.net/</ulink>)
+              and allow access only to the <acronym>USB</acronym>
+	      devices you want to be accessible (you need 
+              <filename class="directory">/proc/bus/usb</filename>
+              mounted here as well, but not mounted writable by
+              anybody else than root) 
+            </simpara>
+          </listitem> 
+
+        </orderedlist>
+
+        <para>    
+          Solution <xref linkend="hotplug"/> has a huge advantage over 
+          solution <xref linkend="usbfs"/>: It doesn't allow the
+          user/group to interfere with or eavesdrop on any other
+	  <acronym>USB</acronym> devices which might be attached, such
+	  as <acronym>USB</acronym> keyboards, fingerprint reader or
+	  similar. The following section thus describe setting up 
+          <xref linkend="hotplug"/>.
+        </para>
+
+      </sect2>
+
+      <sect2 id="setting-up-linux-hotplug">
+
+	<title>Setting up linux-hotplug (OLD)</title>
+
+        <para>
+          On Linux systems, from the 2.4 kernel series on, the kernel supports
+          hotplugging. You may have to compile a kernel with hotplug support if
+          you're not already running one. You may have to install the hotplug
+          package
+	  (<ulink url="http://linux-hotplug.sourceforge.net/">http://linux-hotplug.sourceforge.net/</ulink>) 
+	  if you don't have it installed already.
+        </para>
+
+	<formalpara>
+	  <title>Note (TODO)</title>
+	  <para>
+	    print-usb-usermap is deprecated as of 2.1.99.1. Use print-camera-list instead.
+	    Description of udev rules and HAL setup missing here.
+	  </para>
+	</formalpara>
+
+        <para>
+          To find out whether your kernel has hotplug support,
+	  look for the file
+	  <filename>/proc/sys/kernel/hotplug</filename>.
+          If it exists, your kernel is hotplug enabled. If 
+          <screen>
+
+<prompt>&prompt;</prompt><userinput>cat <parameter>/proc/sys/kernel/hotplug</parameter></userinput>
+          </screen>
+	  prints the path to  your hotplug binary (usually 
+          <command>/sbin/hotplug</command>) and this binary exists,
+          you are ready to rock.
+        </para>      
+
+        <para>
+          Also note that the following solution does
+          <emphasis>not</emphasis> 
+          provide absolute security and that you should definitely
+	  know the security implications of the respective
+	  <command><replaceable>&usbcam;</replaceable></command> script you are going to use.
+        </para>
+
+        <orderedlist>
+
+          <listitem>
+            <para>
+              You must have the files 
+              <filename>devices</filename> and 
+              <filename>drivers</filename> in your
+              <filename class="directory">/proc/bus/usb</filename>
+              directory. Please check this.
+	    </para>
+
+	    <para>
+	      If everything is OK, proceed with step
+	      <xref linkend="step-create-usermap"/>.
+	      If not, check the following paragraph for
+              hints.
+            </para>
+
+            <para>
+              Load your <acronym>USB</acronym> driver (e.g. OHCI or UHCI) and 
+	      mount the <acronym>USB</acronym> device filesystem<footnoteref linkend="usbdevfs"/>, i.e. e.g.
+              <screen>
+
+<prompt>&rprompt;</prompt><userinput>modprobe</userinput> <parameter>usb-uhci</parameter>
+<prompt>&rprompt;</prompt><userinput>modprobe</userinput> <parameter>usb-ohci</parameter>
+<prompt>&rprompt;</prompt><userinput>mount <parameter>-t usbfs</parameter> <parameter>usb</parameter> <parameter>/proc/bus/usb</parameter></userinput>
+              </screen>
+              Modern distributions like Redhat 7.2 handle this
+              automatically if you have your <acronym>USB</acronym> hardware enabled.
+              Check your <acronym>BIOS</acronym> settings if <command>lspci</command>
+              doesn't list any <acronym>USB</acronym> hardware.
+            </para>
+          </listitem>
+
+          <listitem id="step-create-usermap">
+            <para>
+              Make hotplug recognise all
+              <acronym>USB</acronym> cameras which your version
+              of <xref linkend="ref-libgphoto2"/> supports.
+            </para>
+
+	    <para>
+	      Many of the modern<footnote id="FN-how-to-find-out-about-usb.usermap">
+		<simpara>FIXME: how can you determine whether a
+		specific system is "modern" in this sense? If you know
+		how, please tell us.</simpara>
+	      </footnote>
+	      (as of mid-2003) distributions,
+              you don't have to do much. 
+              Just write the output of
+	      <command>/usr/lib/libgphoto2/print-usb-usermap</command><footnote
+		id="FOOTNOTE-gphoto2-print-usb-usermap">
+		<para>
+		  In older versions of gphoto2 (gphoto2 2.0, gphoto2
+		  2.1.0, and the unreleased developer versions in between and shortly
+		  after 2.1.0), the functionality of
+		  <command>print-usb-usermap</command>
+		  was contained in the command 
+		  <userinput>gphoto2 <parameter>--print-usb-usermap</parameter></userinput>.
+		</para>
+	      </footnote>
+              to the <filename>/etc/hotplug/usb/<replaceable>&usbcam;</replaceable>.usermap</filename> file:
+              <screen>
+
+<prompt>&rprompt;</prompt><userinput>/usr/lib/libgphoto2/print-usb-usermap</userinput> > <filename>/etc/hotplug/usb/<replaceable>&usbcam;</replaceable>.usermap</filename>
+              </screen>
+	      That's it. Proceed with step
+	      <xref linkend="chooseusbcamscript"/>.
+            </para>
+	      
+	    <para>
+	      However, if your distribution is an older one which
+	      still wants you to modify 
+	      <filename>/etc/hotplug/usb.usermap</filename>, or if modifying
+	      <filename>/etc/hotplug/usb/<replaceable>&usbcam;</replaceable>.usermap</filename>
+	      hasn't been enough, read on.
+	    </para>	      
+
+            <para>
+	      In the file <filename>/etc/hotplug/usb.usermap</filename> 
+	      remove all lines beginning with 
+	      <quote><replaceable>&usbcam;</replaceable></quote>.
+	      We are going to add new lines there and don't want to
+	      have the old ones get in the way.
+            </para>
+	   
+	    <para>
+	      Add the output of
+	      <command>/usr/lib/libgphoto2/print-usb-usermap</command><footnoteref 
+		linkend="FOOTNOTE-gphoto2-print-usb-usermap"/>
+              to the <filename>/etc/hotplug/usb.usermap</filename> file:
+              <screen>
+
+<prompt>&rprompt;</prompt><userinput>/usr/lib/libgphoto2/print-usb-usermap</userinput> >> <filename>/etc/hotplug/usb.usermap</filename>
+              </screen>
+            </para>
+          </listitem>
+
+          <listitem id="chooseusbcamscript">
+
+            <para>
+              Choose the right 
+              <filename>/etc/hotplug/usb/<replaceable>&usbcam;</replaceable></filename>
+              script for you.
+	    </para>
+
+	    <para>
+              Example scripts are found in 
+              <filename class="directory">packaging/linux-hotplug/</filename> 
+              in the source tree and in the doc dir (usually
+	      <filename class="directory">/usr/share/doc/gphoto2/</filename>
+	      or something similar) under 
+              <filename class="directory">linux-hotplug/</filename>
+              after installation.
+	    </para>
+
+	    <para>
+	      Choose a script which fits your requirements best,
+	      adapt it for your needs, and copy it to the file
+	      <filename>/etc/hotplug/usb/<replaceable>&usbcam;</replaceable></filename>.
+	      The script <emphasis>must</emphasis> be called
+	      <filename>/etc/hotplug/usb/<replaceable>&usbcam;</replaceable></filename>, not
+	      <filename>/etc/hotplug/usb/usbcam.user</filename> or
+	      something similar.
+            </para>
+
+            <para>
+              All the scripts shipped with gPhoto2 also have extensive
+              commentary explaining their usage in more detail.
+            </para>
+
+            <variablelist>
+
+              <varlistentry>
+                <term><filename>usbcam.group</filename></term>
+                <listitem>
+                  <simpara>
+                    If you want multiple users to have access to the
+                    camera, add all of these users to one group -
+                    either a special group 
+                    <systemitem class="groupname">camera</systemitem>
+                    or a generic group 
+                    <systemitem class="groupname">users</systemitem>
+                    will do - and use that group in 
+                    <filename>usbcam.group</filename>. 
+                    There is a specially marked line in
+                    the script you have to change accordingly.
+		  </simpara>
+                </listitem>
+              </varlistentry>
+
+              <varlistentry>
+                <term><filename>usbcam.console</filename></term>
+                <listitem>
+                  <simpara>
+		    The most simple solution for single user
+		    workstations is using
+                    <filename>usbcam.console</filename>. This
+                    changes the permissions so that the user owning
+                    the console according to the 
+                    <systemitem
+		    class="library">pam_console</systemitem>
+		    module to access the camera. This works only if
+		    you're logging in with 
+		    <systemitem class="library">pam_console</systemitem>, 
+                    i.e. e.g. using <command>gdm</command> on Redhat
+		    Linux, and then only for the user logged in
+		    last. It won't work on Debian GNU/Linux at all 
+		    (they claim security reasons, but I didn't
+		    investigate further into that matter).
+                  </simpara>
+                </listitem>
+              </varlistentry>
+
+              <varlistentry>
+                <term><filename>usbcam.user</filename></term>
+                <listitem>
+                  <simpara>
+                    If you want only one user to have access to the camera, use
+                    <filename>usbcam.user</filename> and change it
+                    accordingly. There is a specially marked line in
+                    the script you have to change.
+                  </simpara> 
+                </listitem>
+              </varlistentry>
+
+              <varlistentry>
+                <term><filename>usbcam.x11-app</filename></term>
+                <listitem>
+                  <simpara>
+                    If you want only one user to have access to the
+		    camera and your favourite X11 libgphoto2 frontend
+		    launched automatically, use
+		    <filename>usbcam.x11-app</filename> and change it 
+                    accordingly. There are a few specially marked
+		    lines in the script you have to change.
+                  </simpara> 
+                </listitem>
+              </varlistentry>
+            </variablelist>
+
+          </listitem>
+
+          <listitem>
+            <para>
+              Make the script file executable:
+	      <screen>
+
+<prompt>&rprompt;</prompt><userinput>chmod <parameter>+x</parameter> <filename>/etc/hotplug/usb/<replaceable>&usbcam;</replaceable></filename></userinput>
+	      </screen>
+	    </para>
+
+	    <important>
+	      <para>
+		Please do not forget that the script name is
+		<filename>/etc/hotplug/usb/<replaceable>&usbcam;</replaceable></filename>,
+		<emphasis>not</emphasis>
+		<filename>/etc/hotplug/usb/usbcam.whatever</filename>!
+	      </para>
+	    </important>
+
+          </listitem>
+
+          <listitem>
+
+	    <para>
+	      Test your setup.
+	    </para>
+
+            <para>
+              Plug in the camera and switch it on. If you already did so, please
+              unplug and/or switch off first. The kernel will now notice that
+              your camera has been connected and, hopefully find no kernel
+              driver for the device, and will then ask hotplug to do
+              something about the new device file.
+            </para>
+
+            <para>
+              Hotplug will then look into 
+              <filename>/etc/hotplug/usb/*.usermap</filename> and find that
+              the
+              <command><replaceable>&usbcam;</replaceable></command>
+	      script is to be called for
+              the newly attached device. Thus
+              <command>/etc/hotplug/usb/<replaceable>&usbcam;</replaceable></command> is executed,
+              hopefully setting the device permissions correctly.
+            </para>
+
+            <para>
+	      Your <filename>/var/log/messages</filename> syslog
+              file will contain some messages to that effect.
+            </para>
+
+	    <para>
+	      You will probably want to check whether the
+	      respective device file has its permissions set up
+	      correctly. Have a look at 
+	      <filename class="directory">/proc/bus/usb</filename>
+	      with <userinput>ls <parameter>-lR</parameter> <parameter><filename class="directory">/proc/bus/usb</filename></parameter></userinput>. There
+	      should be at least one device file (named something like
+	      <filename class="devicefile">015</filename>) with the
+	      permissions set according to your wishes. 
+	    </para>
+
+	    <para>
+	      Run the <userinput>id</userinput> command to find out
+	      whether your process belongs to the proper groups. If
+	      you have just added a user to a new group, only
+	      processes started after a new login will actually belong
+	      to the newly added group.
+	    </para>	    
+
+          </listitem>
+
+          <listitem>
+
+            <para>
+              Run <xref linkend="ref-gphoto2-cli"/> or any other 
+              <xref linkend="ref-libgphoto2"/> frontend and enjoy:
+            </para>
+
+            <screen>
+
+<prompt>&prompt;</prompt><userinput>gphoto2 <parameter>--list-ports</parameter></userinput>
+<prompt>&prompt;</prompt><userinput>gphoto2 <parameter>--auto-detect</parameter></userinput>
+<prompt>&prompt;</prompt><userinput>gphoto2 <parameter>--summary</parameter></userinput>
+<prompt>&prompt;</prompt><userinput>gphoto2 <parameter>--storage-info</parameter></userinput>
+<prompt>&prompt;</prompt><userinput>gphoto2 <parameter>--list-files</parameter></userinput>
+<prompt>&prompt;</prompt><userinput>gphoto2 <parameter>--get-all-files</parameter></userinput>
+	    </screen>
+          </listitem>
+
+        </orderedlist>
+
+	<note>
+	  <para>The fact that we are using the name 
+	    <quote><replaceable>&usbcam;</replaceable></quote> for
+	    setting up permissions for gphoto2 has a reason. In fact,
+	    the permission setup you're doing here has nothing to do
+	    with gphoto2 specifically - any user space software
+	    wanting to access your USB camera will be able to make use
+	    of your camera only if the permissions are correctly set
+	    up. So I (hun) chose the identifier and script name
+	    <quote><replaceable>&usbcam;</replaceable></quote> and 
+	    not <quote>gphoto2cam</quote> something similar. 
+	  </para>
+	</note>
+
+      </sect2>
+
+      <!-- ================================================== -->
+      <!-- -->
+      <sect2 id="usb-on-FreeBSD">
+
+        <title><acronym>USB</acronym> ports on FreeBSD</title>
+
+	<note>
+	  <para>
+	    This section only deals with FreeBSD 5 and over because older
+	    versions of FreeBSD do not have devfs, and thus do not
+	    handle dynamic devices at all (create static devices using
+	    <command>MAKEDEV(8)</command> there).
+	  </para>
+	  <para>
+	    The editors would like to thank these FreeBSD users for
+	    their help (in no particular order):
+	    Tomasz Gucio, 
+	    Georg Wagner, 
+	    Michael Lyngbøl,
+	    Conan Webb,
+	    Bram Abbekerk, 
+	    <ulink url="http://www.xs4all.nl/~rsmith/">Roland Smith</ulink>, and
+	    Guillermo A. Amaral (gamaral).
+	  </para>
+	</note>
+
+	<para>
+	  FreeBSD uses a dynamically created devices filesystem
+	  (devfs).
+	  In order to use the camera as non-root user, you need
+	  to tell the <systemitem>devfs</systemitem> framework what
+	  permissions it is to use when it dynamically creates
+	  these USB devices.
+	</para>
+	
+	<para>
+	  Follow the following steps as the
+	  <systemitem>root</systemitem> user to grant
+	  write access for the group <systemitem>usb</systemitem>
+	  to USB devices.
+	</para>
+
+	<orderedlist>
+	  <listitem>
+	    <para>
+	      Create a group (using <command>pw(8)</command>
+	      called something like 
+	      <systemitem>usb</systemitem>. Add all
+	      users as group members which are supposed to have
+	      read/write access to attached USB devices. This
+	      includes not only cameras, but also possibly scanners
+	      and other devices.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      For FreeBSD 7 and under add these lines to <filename>/etc/devfs.rules</filename>:
+	    </para>
+	    <programlisting>
+[usb_devices=10]
+add path 'ugen*' mode 0660 group usb
+add path 'da*s*' mode 0660 group usb
+	    </programlisting>
+	    <para>
+	      The <quote>ugen*</quote> line will set the permissions
+	      for cameras using special camera protocols. 
+	      The <quote>da*s*</quote> line will set up the same
+	      permissions for the slices of USB Mass Storage devices,
+	      such as a number of USB digicams.
+	    </para>
+	    <para>
+	      For FreeBSD 8 and over add these lines to <filename>/etc/devfs.rules</filename>:
+	    </para>
+	    <programlisting>
+[usb_devices=10]
+add path 'usb/*' mode 0660 group usb
+add path 'da*s*' mode 0660 group usb
+	    </programlisting>
+	    <para>
+	      The <quote>usb/*</quote> line will set the permissions
+	      for cameras using special camera protocols. 
+	      The <quote>da*s*</quote> line will set up the same
+	      permissions for the slices of USB Mass Storage devices,
+	      such as a number of USB digicams.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Add a line to <filename>/etc/rc.conf</filename>:
+	    </para>
+	    <programlisting>
+# Set the default devfs ruleset.
+devfs_system_ruleset="usb_devices"
+	    </programlisting>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Tomasz Gucio and Conan Webb report that user processes 
+	      need write access to the <filename>usb*</filename> 
+	      devices when they are supposed to write to
+	      <filename>ugen*</filename>. If you really need that, 
+	      add lines like the following to
+	      <filename>/etc/devfs.conf</filename>.
+	      (FIXME: Can this be verified or invalidated?)
+
+	      This is *not* required for FreeBSD 8.
+	    </para>
+	    <programlisting>
+perm    usb0    0660
+own     usb0    root:usb
+perm    usb1    0660
+own     usb1    root:usb
+	    </programlisting>
+	  </listitem>
+	  <listitem>
+	    <para>Activate your changes by running the following
+	    command (no reboot required):</para>
+	    <screen>
+
+<prompt>&rprompt;</prompt><userinput>/etc/rc.d/devfs start</userinput>
+	    </screen>
+	  </listitem>
+	</orderedlist>
+
+	<para>
+	  Your system should be all set up now. Now you can test it as
+	  your normal non-root user:
+	</para>
+
+	<orderedlist>
+	  <listitem>
+	    <para>
+	      Make sure that you're actually member of the
+	      <systemitem>usb</systemitem> group. Check this by
+	      running the <command>id</command> and, if the group
+	      membership is not show, login anew.
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <para>
+	      Now connect your camera, and you'll get a line like
+	    </para>
+	    <screen>
+ugen1: Canon Inc. Canon Digital Camera, rev 1.10/0.01, addr 2
+	    </screen>
+	    <para>
+	      and the permissions to the device files 
+	      should look something like this on FreeBSD 7 and under:
+	    </para>
+	    <screen>
+<prompt>&prompt;</prompt><userinput>ls -l /dev/ugen*</userinput>
+crw-rw----  1 root  usb       242,  16 Apr  8 15:55 /dev/ugen1
+crw-rw----  1 root  usb       242,  17 Apr  8 15:55 /dev/ugen1.1
+crw-rw----  1 root  usb       242,  18 Apr  8 15:55 /dev/ugen1.2
+crw-rw----  1 root  usb       242,  19 Apr  8 15:55 /dev/ugen1.3
+<prompt>&prompt;</prompt>
+	    </screen>
+	    <para>
+	      on FreeBSD 8 and over they should look something like this:
+	    </para>
+	    <screen>
+<prompt>&prompt;</prompt><userinput>ls -l /dev/usb/</userinput>
+crw-rw----  1 root  usb       242,  16 Apr  8 15:55 /dev/usb/0.1.0
+crw-rw----  1 root  usb       242,  17 Apr  8 15:55 /dev/usb/0.1.1
+crw-rw----  1 root  usb       242,  18 Apr  8 15:55 /dev/usb/1.1.0
+crw-rw----  1 root  usb       242,  19 Apr  8 15:55 /dev/usb/1.1.1
+<prompt>&prompt;</prompt>
+	    </screen>
+	  </listitem>
+	</orderedlist>
+	
+	<para>
+	  FIXME for the FreeBSD instructions:
+	</para>
+	
+	<orderedlist>
+	  <listitem>
+	    <simpara>
+	      How to write rules which only affect a certain
+	      set of devices, defined e.g. by USB Vendor/Product ID or
+	      USB device class?
+	    </simpara>
+	  </listitem>
+	</orderedlist>
+      </sect2>
+
+      <sect2 id="usb-on-others">
+	<title>USB ports on other systems (non-FreeBSD BSDs, MacOS X,
+	OS/2)</title>
+	<para>
+	  FIXME: This chapter still is to be written. If you know
+	  about USB on these systems and/or are willing to contribute
+	  text or hints, please contact the developers at
+	  <email>&devellist;</email>.
+	</para>
+      </sect2>
+
+    </sect1>
+
+    <sect1 id="port-and-camera">
+
+      <title>Specifying the port and camera you use</title>
+
+      <abstract>
+	<simpara>
+	  <systemitem class="library">libgphoto2</systemitem> 
+	  identifies a camera by two values: the 
+	  <link linkend="port-names">port</link> it is connected to
+	  and the <link linkend="camera-names">name</link> of the
+	  camera.
+          How these may be specified is discussed in this chapter.
+        </simpara>
+      </abstract>
+
+      <sect2 id="port-names">
+
+        <title>Port names</title>
+
+        <variablelist>
+          <varlistentry>
+            <term>Serial ports</term>
+            <listitem>
+              <para>
+                are named like 
+                <systemitem class="resource">serial:/dev/ttyS2</systemitem>
+                if you want to use the serial device
+                <filename class="devicefile">/dev/ttyS2</filename>.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><acronym>USB</acronym> ports</term>
+            <listitem>
+              <para>
+                As <acronym>USB</acronym> works with auto detection, you do not have to specify a device
+                file. Therefore you just use the gphoto2 port 
+		<systemitem class="resource">usb:</systemitem>.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+	<para>
+	  The port used is stored in
+	  <filename>~/.gphoto/settings</filename>, so you won't have
+	  to specify it the second time you run your frontend, if
+	  you're still using the same port.
+	</para>
+	
+      </sect2>
+
+      <sect2 id="camera-names">
+
+        <title>Camera name</title>
+
+        <para>
+          The model name of the camera does not have to be specified when using
+          the <systemitem class="resource">usb:</systemitem> port. 
+          Otherwise you can specify a camera model like 
+          <systemitem class="resource">Canon PowerShot G2</systemitem>. 
+          You will be better off choosing the model from
+          the list of supported models rather than just trying to type
+          your camera model. 
+        </para>
+
+        <screen>
+
+<prompt>&prompt;</prompt><userinput>gphoto2 <parameter>--camera</parameter> <parameter>"<replaceable>Canon PowerShot G2</replaceable>"</parameter> <parameter>--list-files</parameter></userinput>
+        </screen>
+
+	<para>
+	  The camera used is stored in
+	  <filename>~/.gphoto/settings</filename>, so you won't have
+	  to specify it the second time you run your frontend, if
+	  you're still using the same camera.
+	</para>	
+
+      </sect2>
+
+    </sect1>
+
+  </chapter>
+
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+  
+  <chapter id="compilation">
+    <title>Compiling and installing</title>
+
+    <sect1 id="compilation-overview">
+      <title>Overview, requirements and dependencies</title>
+      <abstract>
+	<simpara>
+	  This section wants to give you an overview about software
+	  packages, software requirements and the dependencies between
+	  them. It should prepare you for the decision what packages
+	  you want to install and what sequence.
+	</simpara>
+      </abstract>
+      <para>
+	As you can see in 
+	<xref linkend="software-dependencies"/>,
+	multiple software packages are required for using digital
+	cameras. If you find this picture a little complicated, then
+	you may want to consider using pre-compiled binary packages.
+      </para>
+      <figure id="software-dependencies">
+	<title>Software dependencies</title>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="figures/software-dependencies.ps"
+	      format="PS"/>	    
+	  </imageobject>
+	  <imageobject>
+	    <imagedata fileref="figures/software-dependencies.png"
+	      format="PNG"/>
+	  </imageobject>
+	  <imageobject>
+	    <imagedata fileref="figures/software-dependencies.jpg"
+	      format="JPG"/>
+	  </imageobject>
+	  <imageobject>
+	    <imagedata fileref="figures/software-dependencies.svg"
+	      format="SVG"/>
+	  </imageobject>
+	</mediaobject>
+	<synopsis>
+	  Arrows mean <quote>required for</quote>, dashed lines mean
+	  <quote>should be used with, even though being
+	  optional</quote>.
+	</synopsis>
+      </figure>
+      <para>
+	Nowadays, most people will want to use gphoto2 on the command
+	line and the gtkam GUI with contemporary USB cameras
+	delivering EXIF images. So you'll have to get and compile
+	libexif, libusb, libgphoto2, gphoto2, and gtkam.
+      </para>
+      <para>
+	You can see that this quite some work to do. This is why we
+	created gphoto-suite, which lets you build everything in just
+	one step.
+      </para>
+    </sect1>
+
+    <sect1 id="compilation-from-svn">
+      <title>Starting from SVN (SubVersioN)</title>
+      <para>
+	First find out what software packages you want. Fetch all
+	the software packages you require with the packages they
+	depend on, according to <xref
+	linkend="software-dependencies"/>.
+      </para>
+      <para>
+	You can get these programs via SVN or CVS (detailed instructions
+	are available from the project pages for
+	<ulink url="http://sf.net/projects/libusb">libusb</ulink>,
+	<ulink url="http://sf.net/projects/libexif">libexif</ulink>,
+	<ulink url="http://sf.net/projects/gphoto">gphoto</ulink>):
+      </para>
+      <screen>
+
+<prompt>&prompt;</prompt><userinput>svn <parameter>checkout</parameter> <parameter>https://gphoto.svn.sourceforge.net/svnroot/gphoto/trunk/gphoto-suite</parameter></userinput>
+<prompt>&prompt;</prompt><userinput>vi <parameter>checkout-config.txt</parameter></userinput> # comment out unwanted software
+<prompt>&prompt;</prompt><userinput>./checkout-config.sh</userinput> # only if you want/need software described in checkout-config.txt
+<prompt>&prompt;</prompt><userinput>rm -rf src/{what,you,do,not,want}</userinput> # optional
+
+or select your desired software from these:
+
+<prompt>&prompt;</prompt><userinput>svn <parameter>checkout</parameter> <parameter>https://libusb.svn.sourceforge.net/svnroot/libusb/trunk/libusb</parameter></userinput>
+<prompt>&prompt;</prompt><userinput>cvs <parameter>-z3</parameter> <parameter>-d:pserver:anonymous@libexif.cvs.sourceforge.net:/cvsroot/libexif</parameter> <parameter>checkout</parameter> <parameter>-P</parameter> <parameter>libexif</parameter></userinput>
+<prompt>&prompt;</prompt><userinput>cvs <parameter>-z3</parameter> <parameter>-d:pserver:anonymous@libexif.cvs.sourceforge.net:/cvsroot/libexif</parameter> <parameter>checkout</parameter> <parameter>-P</parameter> <parameter>exif</parameter></userinput>
+<prompt>&prompt;</prompt><userinput>cvs <parameter>-z3</parameter> <parameter>-d:pserver:anonymous@libexif.cvs.sourceforge.net:/cvsroot/libexif</parameter> <parameter>checkout</parameter> <parameter>-P</parameter> <parameter>libexif-gtk</parameter></userinput>
+<prompt>&prompt;</prompt><userinput>svn <parameter>checkout</parameter> <parameter>https://gphoto.svn.sourceforge.net/svnroot/gphoto/trunk/libgphoto2</parameter></userinput>
+<prompt>&prompt;</prompt><userinput>svn <parameter>checkout</parameter> <parameter>https://gphoto.svn.sourceforge.net/svnroot/gphoto/trunk/gphoto2</parameter></userinput>
+<prompt>&prompt;</prompt><userinput>svn <parameter>checkout</parameter> <parameter>https://gphoto.svn.sourceforge.net/svnroot/gphoto/trunk/gphotofs</parameter></userinput>
+<prompt>&prompt;</prompt><userinput>svn <parameter>checkout</parameter> <parameter>https://gphoto.svn.sourceforge.net/svnroot/gphoto/trunk/gtkam</parameter></userinput>
+      </screen>
+      <para>
+	All the software modules libusb, libexif, libexif-gtk, exif,
+	gexif, libgphoto2, gphoto2, and gtkam use an automake-based
+	build system. This build system has to be initialized before
+	you can use it in the well known
+	<command>./configure &amp;&amp; make &amp;&amp; make install</command>
+	manner:
+      </para>
+      <screen>
+
+<prompt>&prompt;</prompt><userinput>(cd gphoto-suite &amp;&amp; autoreconf --install --symlink</userinput>
+
+or
+
+<prompt>&prompt;</prompt><userinput>(cd libusb &amp;&amp; autoreconf --install --symlink)</userinput>
+<prompt>&prompt;</prompt><userinput>(cd libexif &amp;&amp; autoreconf --install --symlink)</userinput>
+<prompt>&prompt;</prompt><userinput>(cd exif &amp;&amp; autoreconf --install --symlink)</userinput>
+<prompt>&prompt;</prompt><userinput>(cd libexif-gtk &amp;&amp; autoreconf --install --symlink)</userinput>
+<prompt>&prompt;</prompt><userinput>(cd libgphoto2 &amp;&amp; autoreconf --install --symlink)</userinput>
+<prompt>&prompt;</prompt><userinput>(cd gphoto2 &amp;&amp; autoreconf --install --symlink)</userinput>
+<prompt>&prompt;</prompt><userinput>(cd gphotofs &amp;&amp; autoreconf --install --symlink)</userinput>
+<prompt>&prompt;</prompt><userinput>(cd gtkam &amp;&amp; autoreconf --install --symlink)</userinput>
+      </screen>
+      <note>
+	<simpara>
+	  Before the libgphoto2 2.4.0 release, we shipped our own
+	  <command>autogen.sh</command> script which had to do a
+	  little more than <command>autoreconf</command> can. It was
+	  just called as <command>autogen.sh</command> instead of
+	  <command>autoreconf --install --symlink</command>.
+	</simpara>
+      </note>
+      <para>
+	This initialization requires a few specialized build tools
+	like <command>automake</command>, 
+	<command>autoreconf</command> (from autoconf), 
+	<command>libtoolize</command> (from libtool),
+	<command>autopoint</command> (from gettext) and 
+	<command>pkg-config</command> (pkg-config).
+	Make sure you have these installed. Then run the
+	<command>autoreconf --install --symlink</command> command in each of
+	the modules which does the build system initialization for
+	you.
+      </para>
+      <para>
+	When the build system of all modules is initialized, you can
+	start configuring and building the source, as described in
+	<xref linkend="configure-make-install"/>
+      </para>
+    </sect1>
+
+    <sect1 id="configure-make-install">
+      <title>Configuring, building, and installing</title>
+      <para>
+	WRITEME :-P (PKG_CONFIG_PATH, ./configure, make, make
+	install, /etc/ld.so.conf, LD_LIBRARY_PATH, PATH, yadda yadda)
+      </para>
+    </sect1>
+
+  </chapter>
+
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+
+  <chapter id="developer-docs">
+    <title>Developer Documentation: The Inner Workings</title>
+
+    <abstract>
+      <para>
+        How it works internally, how you can work on it and how
+        you can use it in your own software.
+      </para>
+    </abstract>
+
+    <para>The <acronym>API</acronym>s defined here are described in more detail by the
+      autogenerated documentation at FIXME. Eventually, they should be
+      included here, but as they currently are in Docbook SGML and
+      this was written in Docbook XML, this isn't trivial.</para>
+
+    <para>Anyway, we provide you with the architecture context here
+      and will let you read up on the <acronym>API</acronym> details in the respective
+      external documentation.</para>
+
+
+    <sect1 id="software-architecture">
+      <title>The gPhoto2 software architecture</title>
+      <figure id="architecture-overview">
+        <title>The gPhoto2 system architecture</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/architecture.png" format="PNG"/>
+          </imageobject>
+          <imageobject>
+            <imagedata fileref="figures/architecture.eps" format="EPS"/>
+          </imageobject>
+          <imageobject>
+            <imagedata fileref="figures/architecture.jpg" format="JPG"/>
+          </imageobject>
+          <textobject>
+            <phrase>Diagram describing the gPhoto2 software architecture</phrase>
+          </textobject>
+          <caption>
+            <para>Diagram describing how frontends, libgphoto2,
+              camlibs, libgphoto2_port and your Operating System work
+              together.</para>
+          </caption>
+        </mediaobject>
+      </figure>
+    </sect1>
+
+
+    <sect1 id="api-libgphoto2">
+      <title>The <systemitem class="library">libgphoto2</systemitem>
+        <acronym>API</acronym></title>
+
+      <figure id="architecture-libgphoto2">
+        <title>The libgphoto2 <acronym>API</acronym> within the gPhoto2 system architecture</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/libgphoto2-api.png" format="PNG"/>
+          </imageobject>
+          <imageobject>
+            <imagedata fileref="figures/libgphoto2-api.eps" format="EPS"/>
+          </imageobject>
+          <imageobject>
+            <imagedata fileref="figures/libgphoto2-api.jpg" format="JPG"/>
+          </imageobject>
+          <textobject>
+            <phrase>The libgphoto2 <acronym>API</acronym> within the context of gPhoto2 software architecture</phrase>
+          </textobject>
+          <caption>
+            <para>Diagram describing where the libgphoto2 <acronym>API</acronym> is
+              located within the gPhoto2 software architecture</para>
+          </caption>
+        </mediaobject>
+      </figure>
+
+    </sect1>
+
+
+    <sect1 id="api-camlib">
+      <title>The <systemitem class="library">camlib</systemitem>
+        <acronym>API</acronym></title>
+
+      <figure id="architecture-camlib">
+        <title>The camlib <acronym>API</acronym> within the gPhoto2 system architecture</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/libgphoto2-camlib.png" format="PNG"/>
+          </imageobject>
+          <imageobject>
+            <imagedata fileref="figures/libgphoto2-camlib.eps" format="EPS"/>
+          </imageobject>
+          <imageobject>
+            <imagedata fileref="figures/libgphoto2-camlib.jpg" format="JPG"/>
+          </imageobject>
+          <textobject>
+            <phrase>The camlib <acronym>API</acronym> within the context of gPhoto2 software architecture</phrase>
+          </textobject>
+          <caption>
+            <para>Diagram describing where the camlib <acronym>API</acronym> is
+              located within the gPhoto2 software architecture</para>
+          </caption>
+        </mediaobject>
+      </figure>
+
+    </sect1>
+
+
+    <sect1 id="api-libgphoto2_port">
+      <title>The <systemitem class="library">libgphoto2_port</systemitem>
+        <acronym>API</acronym></title>
+
+      <figure id="architecture-libgphoto2_port">
+        <title>The libgphoto2_port <acronym>API</acronym> within the gPhoto2 system architecture</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/libgphoto2_port.png" format="PNG"/>
+          </imageobject>
+          <imageobject>
+            <imagedata fileref="figures/libgphoto2_port.eps" format="EPS"/>
+          </imageobject>
+          <imageobject>
+            <imagedata fileref="figures/libgphoto2_port.jpg" format="JPG"/>
+          </imageobject>
+          <textobject>
+            <phrase>The libgphoto2_port <acronym>API</acronym> within the context of gPhoto2 software architecture</phrase>
+          </textobject>
+          <caption>
+            <para>Diagram describing where the libgphoto2_port <acronym>API</acronym> is
+              located within the gPhoto2 software architecture</para>
+          </caption>
+        </mediaobject>
+      </figure>
+
+    </sect1>
+
+  </chapter>
+
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+
+  <chapter id="future">
+    <title>Utopia: A look into the possible future</title>
+    
+    <abstract>
+      <para>
+        Things that may or may not be implemented in the
+        future. Usefulness and feasability of these things may vary
+        considerably.
+      </para>
+    </abstract>
+
+    <sect1 id="language-bindings">
+      <title>Language Bindings</title>
+      <para>If somebody is interested in writing a
+        <systemitem class="library">libgphoto2</systemitem>
+        frontend in another programming language, it would be nice to
+        have language bindings for that language. Perl, Python and
+        Java (JNI) come to mind...
+      </para>
+    </sect1>
+
+    <sect1 id="gphoto2fs">
+      <title>The gPhoto2 file system</title>
+
+      <figure id="figgphoto2fs">
+        <title>The gPhoto2 file system architecture</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/gphotofs.png" format="PNG"/>
+          </imageobject>
+          <imageobject>
+            <imagedata fileref="figures/gphotofs.eps" format="EPS"/>
+          </imageobject>
+          <imageobject>
+            <imagedata fileref="figures/gphotofs.jpg" format="JPG"/>
+          </imageobject>
+          <textobject>
+            <phrase>The gPhoto2 file system software architecture</phrase>
+          </textobject>
+          <caption>
+            <para>Diagram describing where the gPhoto2 file system is
+              located within the gPhoto2 and system software architecture</para>
+          </caption>
+        </mediaobject>
+      </figure>
+    </sect1>
+
+  </chapter>
+
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+
+<reference id="reference">
+  <title>The gPhoto2 Reference (the man pages)</title>
+
+  <refentry id="ref-gphoto2-cli">
+    <refentryinfo>
+      <authorgroup>
+      <author>
+	<firstname>The gPhoto2</firstname>
+	<surname>Team</surname>	
+      </author>
+
+      <editor>
+	<firstname>Tim</firstname>
+	<surname>Waugh</surname>
+	<affiliation>
+	  <address><email>twaugh@redhat.com</email></address>
+	</affiliation>
+	<authorblurb>
+	  <para>Original man page author.</para>
+	</authorblurb>
+      </editor>
+
+      <editor>
+	<firstname>Hans Ulrich</firstname>
+	<surname>Niedermann</surname>
+	<affiliation>
+	  <address><email>gp@n-dimensional.de</email></address>
+	</affiliation>
+	<authorblurb>
+	  <para>Current man page editor.</para>
+	</authorblurb>
+      </editor>
+      </authorgroup>
+      <date>August 2006</date>
+    </refentryinfo>
+
+    <refmeta>
+      <refentrytitle>gphoto2</refentrytitle>
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>gphoto2</refname>
+      <refpurpose>command-line <systemitem class="library">gphoto2</systemitem> client</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+	<command>gphoto2</command>
+	<arg choice="opt">--debug</arg>
+	<arg choice="opt">--debug-logfile <replaceable>FILENAME</replaceable></arg>
+	<group choice="opt">
+	  <arg>-q</arg>
+	  <arg>--quiet</arg>
+	</group>
+	<group choice="opt">
+	  <arg>-v</arg>
+	  <arg>--verbose</arg>
+	</group>
+	<group choice="opt">
+	  <arg>-h</arg>
+	  <arg>--help</arg>
+	</group>
+	<sbr/>
+	<arg choice="opt">--hook-script <replaceable>FILENAME</replaceable></arg>
+	<sbr/>
+	<arg choice="opt">--list-cameras</arg>
+	<arg choice="opt">--list-ports</arg>
+	<arg choice="opt">--stdout</arg>
+	<arg choice="opt">--stdout-size</arg>
+	<sbr/>
+	<arg choice="opt">--auto-detect</arg>
+	<arg choice="opt">--port <replaceable>PATH</replaceable></arg>
+	<arg choice="opt">--speed <replaceable>SPEED</replaceable></arg>
+	<arg choice="opt">--camera <replaceable>MODEL</replaceable></arg>
+	<sbr/>
+	<arg choice="opt">--filename <replaceable>FILENAME</replaceable></arg>
+	<sbr/>
+	<arg choice="opt">--usbid <replaceable>USBIDS</replaceable></arg>
+	<sbr/>
+	<group choice="opt">
+	  <arg>-a</arg>
+	  <arg>--abilities</arg>
+	</group>
+	<sbr/>
+	<group choice="opt">
+	  <arg>--folder <replaceable>FOLDER</replaceable></arg>
+	  <arg>-f <replaceable>FOLDER</replaceable></arg>
+	</group>
+	<group>
+	  <group choice="opt">
+	    <arg>-R</arg>
+	    <arg>--recurse</arg>
+	  </group>
+	  <arg choice="opt">--no-recurse</arg>
+	</group>
+	<sbr/>
+	<group choice="opt">
+	  <arg>-l</arg>
+	  <arg>--list-folders</arg>
+	</group>
+	<sbr/>
+	<group choice="opt">
+	  <arg>-L</arg>
+	  <arg>--list-files</arg>
+	</group>
+	<group choice="opt">
+	  <arg>-m <replaceable>NAME</replaceable></arg>
+	  <arg>--mkdir <replaceable>NAME</replaceable></arg>
+	</group>
+	<sbr/>
+	<group choice="opt">
+	  <arg>-r <replaceable>NAME</replaceable></arg>
+	  <arg>--rmdir <replaceable>NAME</replaceable></arg>
+	</group>
+	<group choice="opt">
+	  <arg>-n</arg>
+	  <arg>--num-files</arg>
+	</group>
+	<sbr/>
+	<group choice="opt">
+	  <arg>-p <replaceable>RANGE</replaceable></arg>
+	  <arg>--get-file <replaceable>RANGE</replaceable></arg>
+	</group>
+	<group choice="opt">
+	  <arg>-P</arg>
+	  <arg>--get-all-files</arg>
+	</group>
+	<sbr/>
+	<group choice="opt">
+	  <arg>-t <replaceable>RANGE</replaceable></arg>
+	  <arg>--get-thumbnail <replaceable>RANGE</replaceable></arg>
+	</group>
+	<sbr/>
+	<group choice="opt">
+	  <arg>-T</arg>
+	  <arg>--get-all-thumbnails</arg>
+	</group>
+	<sbr/>
+	<arg choice="opt">--get-raw-data <replaceable>RANGE</replaceable></arg>
+	<arg choice="opt">--get-all-raw-data</arg>
+	<sbr/>
+	<arg choice="opt">--get-audio-data <replaceable>RANGE</replaceable></arg>
+	<arg choice="opt">--get-all-audio-data</arg>
+	<sbr/>
+	<arg choice="opt">--force-overwrite</arg>
+	<sbr/>
+	<arg choice="opt">--new</arg>
+	<sbr/>
+	<group choice="opt">
+	  <arg>-d <replaceable>RANGE</replaceable></arg>
+	  <arg>--delete-file <replaceable>RANGE</replaceable></arg>
+	</group>
+	<group choice="opt">
+	  <arg>-D</arg>
+	  <arg>--delete-all-files</arg>
+	</group>
+	<sbr/>
+	<group choice="opt">
+	  <arg>-u <replaceable>FILENAME</replaceable></arg>
+	  <arg>--upload-file <replaceable>FILENAME</replaceable></arg>
+	</group>
+	<arg choice="opt">--config</arg>
+	<sbr/>
+	<arg choice="opt">--list-config</arg>
+	<sbr/>
+	<arg choice="opt">--get-config <replaceable>CONFIGENTRY</replaceable></arg>
+	<arg choice="opt">--set-config <replaceable>CONFIGENTRY=CONFIGVALUE</replaceable></arg>
+	<arg choice="opt">--set-config-index <replaceable>CONFIGENTRY=CONFIGINDEX</replaceable></arg>
+	<arg choice="opt">--set-config-value <replaceable>CONFIGENTRY=CONFIGVALUE</replaceable></arg>
+	<sbr/>
+	<arg choice="opt">--capture-preview</arg>
+	<sbr/>
+	<group choice="opt">
+	  <arg>-F <replaceable>COUNT</replaceable></arg> 
+	  <arg>--frames <replaceable>COUNT</replaceable></arg> 
+	</group>
+	<group choice="opt">
+	  <arg>-I <replaceable>SECONDS</replaceable></arg> 
+	  <arg>--interval <replaceable>SECONDS</replaceable></arg> 
+	</group>
+	<sbr/>
+	<arg>--reset-interval</arg>
+	<sbr/>
+	<arg choice="opt">--capture-image</arg>
+	<arg choice="opt">--capture-movie</arg>
+	<arg choice="opt">--capture-sound</arg>
+	<sbr/>
+	<arg choice="opt">--capture-tethered <replaceable>SECONDS or COUNT</replaceable></arg>
+	<sbr/>
+	<arg choice="opt">--wait-event <replaceable>SECONDS or COUNT</replaceable></arg>
+	<arg choice="opt">--wait-event-and-download <replaceable>SECONDS or COUNT</replaceable></arg>
+	<sbr/>
+	<arg choice="opt">--show-info <replaceable>RANGE</replaceable></arg>
+	<sbr/>
+	<arg choice="opt">--show-exif <replaceable>RANGE</replaceable></arg>
+	<sbr/>
+	<arg choice="opt">--storage-info</arg>
+	<arg choice="opt">--summary</arg>
+	<arg choice="opt">--manual</arg>
+	<arg choice="opt">--about</arg>
+	<arg choice="opt">--shell</arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsect1>
+      <title>Description</title>
+
+      <para><xref linkend="ref-libgphoto2"/> is a 
+        cross-platform digital camera library, and
+        <xref linkend="ref-gphoto2-cli"/> is a command-line client for
+        it.</para>
+
+      <para>Where an option takes a <replaceable>RANGE</replaceable> of files, thumbnails, or
+       other data, they are numbered beginning at 1.  A range is a
+       comma-separated list of numbers or spans
+       (<quote><replaceable>first</replaceable>-<replaceable>last</replaceable></quote>).
+       Ranges are XOR (exclusive or), so that <quote>1-5,3,7</quote>
+       is equivalent to <quote>1,2,4,5,7</quote>.</para>
+
+      <variablelist>
+	<varlistentry>
+	  <term><option>--debug</option></term>
+	  <listitem>
+	    <para>Turn on debugging output. Debugging output is written to stderr by default, or to the filename given to the <option>--debug-logfile</option> option.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--debug-logfile</option>
+	  <replaceable>FILENAME</replaceable> (since 2.3.0)</term>
+	  <listitem>
+	    <para>
+	      The logfile to write the debugging info to, if
+	      <option>--debug</option> is given.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--hook-script</option> <replaceable>FILENAME</replaceable>
+	  (new after 2.3.0)</term>
+	  <listitem>
+	    <para>
+	      Execute the hook script
+	      <replaceable>FILENAME</replaceable> every time a certain
+	      event happens within <command>gphoto2</command>.  The
+	      hook script reads the environment variable
+	      <envar>ACTION</envar>. It must ignore
+	      <envar>ACTION</envar> values unknown to it.
+	    </para>
+	    <variablelist>
+	      <varlistentry>
+		<term><envar>ACTION</envar>=init</term>
+		<listitem>
+		  <para>
+		    <command>gphoto2</command> has just been
+		    initialized. If the hook script returns with a
+		    non-zero exit code now, <command>gphoto2</command>
+		    will abort.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><envar>ACTION</envar>=start</term>
+		<listitem>
+		  <para>
+		    <command>gphoto2</command> has just finished
+		    parsing the command line and is about to start
+		    executing the commands given on the command line.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><envar>ACTION</envar>=download</term>
+		<listitem>
+		  <para>
+		    <command>gphoto2</command> has just downloaded a
+		    file to the computer, storing it in the file
+		    indicated by the environment variable
+		    <envar>ARGUMENT</envar>.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term><envar>ACTION</envar>=stop</term>
+		<listitem>
+		  <para>
+		    <command>gphoto2</command> is about to finish. Do
+		    your final cleanups here.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	    </variablelist>
+	    <para>
+	      All other environment variables are passed to the hook
+	      script unchanged. You can make use of that to pass data
+	      to the hook script.
+	    </para>
+	    <para>
+	      Hook script may be specified in the <filename>~/.gphoto/settings</filename> file as
+<envar>gphoto2=hook-script=</envar><replaceable>filename</replaceable>.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-q</option>, <option>--quiet</option></term>
+	  <listitem>
+	    <para>Quiet output (default=verbose).</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-v</option>, <option>--version</option></term>
+	  <listitem>
+	    <para>Display version and exit.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-h</option>, <option>--help</option></term>
+	  <listitem>
+	    <para>Display a short usage message.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry id="gphoto2-cli--list-cameras">
+	  <term><option>--list-cameras</option></term>
+	  <listitem>
+	    <para>List supported camera models.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry id="gphoto2-cli--list-ports">
+	  <term><option>--list-ports</option></term>
+	  <listitem>
+	    <para>List supported port devices.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--stdout</option></term>
+	  <listitem>
+	    <para>Send file to stdout.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--stdout-size</option></term>
+	  <listitem>
+	    <para>Print filesize before data.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry id="gphoto2-cli--auto-detect">
+	  <term><option>--auto-detect</option></term>
+	  <listitem>
+	    <para>List auto-detected cameras and the ports to which they are connected.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--port</option> <replaceable>PATH</replaceable></term>
+	  <listitem>
+	      <para>Specify port device. The <link linkend="gphoto2-cli--list-ports">
+		<option>--list-ports</option></link> prints a list of valid, usable ports.
+		In case of multiple USB cameras, the <link linkend="gphoto2-cli--auto-detect">
+		<option>--auto-detect</option></link> shows you the specific port each camera is connected to.
+	      </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--speed</option> <replaceable>SPEED</replaceable></term>
+	  <listitem>
+	    <para>Specify serial transfer speed.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--camera</option> <replaceable>MODEL</replaceable></term>
+	  <listitem>
+	    <para>
+		Specify camera model. The <link linkend="gphoto2-cli--list-cameras">
+		<option>--list-cameras</option></link> option prints a list of all explicitly
+		supported cameras.
+	    </para>
+	    <para>
+	     Most model names contain
+	     spaces: remember to enclose the name in quotes so that
+	     the shell knows it is one parameter.  For example:
+	     <userinput><option>--camera</option> "Kodak DC240"</userinput>.</para>
+	      <para>Note that if you specify <userinput><option>--camera</option></userinput>,
+		you must also specify <userinput><option>--port</option></userinput>.
+		Otherwise the <userinput><option>--camera</option></userinput> option will
+		be silently ignored.
+	      </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--filename</option> <replaceable>FILENAME</replaceable></term>
+	  <listitem>
+	      <para>
+	        When downloading files from the camera, specify the
+	  file name or file name pattern to use when storing the
+	  downloaded file on the local disk. When uploading a file to
+	  the camera, specify the filename to store the uploaded file
+	  as on the camera.
+	      </para>
+	      <para>
+		The <option>--filename</option> option accepts
+		%a, %A, %b, %B, %d, %H, %k, %I, %l, %j, %m, %M, %S,
+		%y, %%, (see date(1)) and, 
+		in addition, %n for the number, %C for the filename
+		suffix, %f for the filename without suffix, %: for the
+		complete filename in lowercase.
+	      </para>
+	      <para>
+	        Note that %: is still in alpha stage, and the actual
+	  character or syntax may still be changed. E.g. it might be
+	  possible to use %#f and %#C for lower case versions, and %^f
+	  and %^C for upper case versions.
+	      </para>
+	      <para>
+		%n is the only conversion specifier to accept a
+		padding character and width: %03n will pad with zeros
+		to width 3 (e.g. print the number 7 as
+		<quote>007</quote>).
+		Leaving out the padding character (e.g. %3n) will use
+		an implementation specific default padding character
+		which may or may not be suitable for use in file
+	        names.
+	      </para>
+              <para>
+		Default value for this option can be specified in the
+		<filename>~/.gphoto/settings</filename> file as
+<envar>gphoto2=filename=value</envar>.
+              </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--usbid</option> <parameter><replaceable>USBIDS</replaceable></parameter></term>
+	  <listitem>
+	    <para>
+		(Expert only) Override <acronym>USB</acronym> IDs. <parameter>
+		<replaceable>USBIDS</replaceable></parameter>must be of the form <parameter>
+		<replaceable>DetectedVendorID</replaceable>:<replaceable>DetectedProductID</replaceable>=<replaceable>TreatAsVendorID</replaceable>:<replaceable>TreatAsProductID</replaceable></parameter>
+		to treat any USB device detected as <parameter><replaceable>DetectedVendorID</replaceable>:<replaceable>DetectedProductID</replaceable></parameter>
+		as 
+		<parameter><replaceable>TreatAsVendorID</replaceable>:<replaceable>TreatAsProductID</replaceable></parameter>
+		instead.
+		All the VendorIDs and ProductIDs should be hexadecimal
+		numbers beginning in C notation, i.e. beginning with
+		'0x'.
+	      </para>
+	      <para>
+		Example: <option>--usbid <replaceable>0x4a9:0x306b=0x4a9:0x306c</replaceable></option>
+	      </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-a</option>, <option>--abilities</option></term>
+	  <listitem>
+	    <para>Display camera abilities.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-f</option>, <option>--folder</option>
+           <replaceable>FOLDER</replaceable></term>
+	  <listitem>
+	    <para>Specify camera folder (default="/").</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-R</option>, <option>--recurse</option></term>
+	  <listitem>
+	    <para>Recursion (default for download).</para>
+	  </listitem>
+	</varlistentry>	
+
+	<varlistentry>
+	  <term><option>--no-recurse</option></term>
+	  <listitem>
+	    <para>No recursion (default for deletion).</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-l</option>, <option>--list-folders</option></term>
+	  <listitem>
+	    <para>List folders in folder.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-L</option>, <option>--list-files</option></term>
+	  <listitem>
+	    <para>List files in folder.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-m</option>, <option>--mkdir</option>
+	   <replaceable>NAME</replaceable></term>
+	  <listitem>
+	    <para>Create a directory.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-r</option>, <option>--rmdir</option>
+	   <replaceable>NAME</replaceable></term>
+	  <listitem>
+	    <para>Remove a directory.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-n</option>, <option>--num-files</option></term>
+	  <listitem>
+	    <para>Display number of files.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-p</option>, <option>--get-file</option>
+	   <replaceable>RANGE</replaceable></term>
+	  <listitem>
+	    <para>Get files given in range.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-P</option>, <option>--get-all-files</option></term>
+	  <listitem>
+	    <para>Get all files from folder.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-t</option>, <option>--get-thumbnail</option>
+	   <replaceable>RANGE</replaceable></term>
+	  <listitem>
+	    <para>Get thumbnails given in range.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-T</option>, <option>--get-all-thumbnails</option></term>
+	  <listitem>
+	    <para>Get all thumbnails from folder.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--get-raw-data</option>
+	   <replaceable>RANGE</replaceable></term>
+	  <listitem>
+	    <para>Get raw data given in range.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--get-all-raw-data</option></term>
+	  <listitem>
+	    <para>Get all raw data from folder.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--get-audio-data</option>
+	   <replaceable>RANGE</replaceable></term>
+	  <listitem>
+	    <para>Get audio data given in range.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--get-all-audio-data</option></term>
+	  <listitem>
+	    <para>Get all audio data from folder.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--force-overwrite</option></term>
+	  <listitem>
+	    <para>Overwrite files without asking.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--new</option></term>
+	  <listitem>
+	    <para>Only get not already downloaded files. This option depends on camera support of flagging already downloaded images and is not available for all drivers.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-d</option>, <option>--delete-file</option>
+	   <replaceable>RANGE</replaceable></term>
+	  <listitem>
+	    <para>Delete files given in range.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-D</option>, <option>--delete-all-files</option></term>
+	  <listitem>
+	    <para>Delete all files in folder (defaults to <option>--no-recurse</option>).</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-u</option>, <option>--upload-file</option>
+	   <replaceable>FILENAME</replaceable></term>
+	  <listitem>
+	    <para>Upload a file to camera.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--capture-preview</option></term>
+	  <listitem>
+	    <para>Capture a quick preview.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>-F <replaceable>COUNT</replaceable></option>, <option>--frames <replaceable>COUNT</replaceable></option></term>
+	  <listitem>
+	    <para>Number of frames to capture in one run. Default is infinite number of frames.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry id="ref-gphoto2-interval">
+	  <term><option>-I <replaceable>SECONDS</replaceable></option>, <option>--interval <replaceable>SECONDS</replaceable></option></term>
+	  <listitem>
+	    <para>Time between capture of multiple frames.</para>
+	    <para>
+	      (Since 2.4) If <link
+	      linkend="ref-gphoto2-SIGUSR1">SIGUSR1 signal</link> is
+	      received, a picture is taken immediately without waiting
+	      for the end of the current interval period (see <xref
+	      linkend="ref-gphoto2-signals"/>). A value of -1 will let
+	      gphoto2 wait forever, i.e. until a signal arrives. See
+	      also <xref linkend="ref-gphoto2-reset-interval"/>.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry id="ref-gphoto2-reset-interval">
+	  <term><option>--reset-interval</option>
+	  (since 2.4)</term>
+	  <listitem>
+	    <para>
+	      Setting this option will reset the time interval to the
+	      value given by the <link
+	      linkend="ref-gphoto2-interval"><option>-I|--interval</option>
+	      option</link> when a <link
+	      linkend="ref-gphoto2-SIGUSR1">SIGUSR1 signal</link> is received
+	      in time-lapse mode.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--capture-image</option></term>
+	  <listitem>
+	    <para>Capture an image and keep it on the camera.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--capture-image-and-download</option></term>
+	  <listitem>
+	    <para>Capture an image and download it immediately to the computer.</para>
+	  </listitem>
+	</varlistentry>
+
+
+	<varlistentry>
+	  <term><option>--capture-movie</option></term>
+	  <listitem>
+	    <para>Capture a movie. (No driver supports this at this time.)</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--capture-sound</option></term>
+	  <listitem>
+	    <para>Capture an audio clip.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--capture-tethered</option> </term>
+	  <listitem>
+	    <para>
+		Lets gphoto2 wait for notifications from the camera that an object was added.
+		This is useful for tethered capture, where pressing the shutter on the camera
+		immediately transfer the image to the machine for processing.
+	    </para>
+	    <para>
+		Together with the <option>--hook-script</option> to immediately postprocess or
+		display the images this can help a studio workflow.
+	    </para>
+	    <para>
+		This option requires support in the driver and by the camera, currently
+		newer Canon EOS and Nikon DSC are known to work.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--wait-event <replaceable>SECONDS or COUNT</replaceable></option></term>
+	  <term><option>--wait-event-and-download <replaceable>SECONDS or COUNT</replaceable></option></term>
+	  <listitem>
+	    <para>
+		Lets gphoto2 wait for notifications from the camera for various things.
+		This is useful for seeing what the camera does and waiting for 
+		objects to be added. The objects are kept on camera in the <quote>--wait-event</quote>
+		version, with <quote>--wait-event-and-download</quote> they are downloaded.
+	    </para>
+            <para>
+		--wait-event-and-download is equivalent to --capture-tethered.
+	    </para>
+            <para>
+		The time to wait can be either specified as full seconds with a "s" suffix,
+		or as a number of events (just a number).
+		If nothing happens, a timeout is generated after 1 second, so a <quote>wait-event=5</quote>
+		will take at most 5 seconds. A <quote>--wait-event=5s</quote> will take exactly 5 second.
+	    </para>
+            <para>
+		If no argument is given, the wait time is 1 million events (basically forever).
+	    </para>
+	    <para>
+		In the download variant this can be used together with the
+		<option>--hook-script</option> to immediately postprocess
+		or display the images this can help a studio workflow.
+	    </para>
+	    <para>
+		This option requires support in the driver and by the camera, currently
+		newer Canon EOS and Nikon DSC are known to work.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--show-info</option> <replaceable>RANGE</replaceable></term>
+	  <listitem>
+	    <para>Show info.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--list-config</option></term>
+	  <listitem>
+	    <para>List all configuration entries.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--get-config</option> <replaceable>CONFIGENTRY</replaceable></term>
+	  <listitem>
+	    <para>Get the specified configuration entry.</para>
+	    <para>
+		This command will list the type, the current value and also the available options 
+		of this configuration value.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--set-config</option> <replaceable>CONFIGENTRY=CONFIGVALUE</replaceable></term>
+	  <listitem>
+	    <para>
+		Set the specified configuration entry. For lists of choices of values this setting
+                first looks up CONFIGVALUE as value and then as index into the choice list. Since this
+                is not fully clear, you can use <option>--set-config-index</option> or <option>--set-config-value</option>
+                to be more clear what is searched for.
+	    </para>
+	    <para>
+		Look at the output of <option>--get-config</option> to see what values are possible to set here.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--set-config-index</option> <replaceable>CONFIGENTRY=CONFIGINDEX</replaceable></term>
+	  <listitem>
+	    <para>
+		Set the specified configuration entry by specifying the index into the list of choices for
+	        the configuration value. This of course only works for configuration settings that offer
+                list of choices.
+	    </para>
+	    <para>
+		Look at the output of <option>--get-config</option> to see what indices are possible to set here.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--set-config-value</option> <replaceable>CONFIGENTRY=CONFIGVALUE</replaceable></term>
+	  <listitem>
+	    <para>
+		Set the specified configuration entry by specifying its new value. For lists of choices
+                the value is looked up and set.
+	    </para>
+	    <para>
+		Look at the output of <option>--get-config</option> to see what indices are possible to set here.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--storage-info</option></term>
+	  <listitem>
+	    <para>
+	      Display information about the camera's storage media.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--summary</option></term>
+	  <listitem>
+	    <para>Summary of camera status.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--manual</option></term>
+	  <listitem>
+	    <para>Camera driver manual.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--about</option></term>
+	  <listitem>
+	    <para>About the camera driver.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--shell</option></term>
+	  <listitem>
+	    <para>Start the gphoto2 shell, an interactive environment.
+              See <link linkend="shell-mode">SHELL MODE</link><!--xref linkend="shell-mode"/--> for a detailed description.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect1>
+
+    <refsect1 id="shell-mode">
+      <title>Shell Mode</title>
+      <para>The following commands are available:</para>
+      
+      <variablelist>
+        <varlistentry>
+          <term>cd</term>
+          <listitem>
+            <para>Change to a directory on the camera.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>ls</term>
+          <listitem>
+            <para>List the contents of the current directory on
+              the camera.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>lcd</term>
+          <listitem>
+            <para>Change to a directory on the local machine.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>get</term>
+          <listitem>
+            <para>Download the file to the current directory.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>get-thumbnail</term>
+          <listitem>
+            <para>Download the thumbnail to the current directory.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>get-raw</term>
+          <listitem>
+            <para>Download raw data to the current directory.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>show-info</term>
+          <listitem>
+            <para>Show information.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>delete</term>
+          <listitem>
+            <para>Delete a file or directory.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>mkdir <replaceable>DIRECTORY</replaceable></term>
+          <listitem>
+            <para>Creates a directory named <quote>DIRECTORY</quote>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>rmdir <replaceable>DIRECTORY</replaceable></term>
+          <listitem>
+            <para>Removes a directory named <quote>DIRECTORY</quote>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>show-exif</term>
+          <listitem>
+            <para>Show EXIF information (only if compiled with EXIF support).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>capture-image</term>
+          <listitem>
+            <para>Captures a single image and keeps it on the camera.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>capture-image-and-download</term>
+          <listitem>
+            <para>Captures a single image and downloads it from the camera.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>list-config</term>
+          <listitem>
+            <para>Lists all configuration values.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>get-config <replaceable>NAME</replaceable></term>
+          <listitem>
+            <para>Gets the configuration specified by <quote>NAME</quote>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>set-config <replaceable>NAME=VALUE</replaceable></term>
+          <listitem>
+            <para>Sets the configuration specified by <quote>NAME</quote> to <quote>VALUE</quote>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>set-config-value <replaceable>NAME=VALUE</replaceable></term>
+          <listitem>
+            <para>Sets the configuration specified by <quote>NAME</quote> to <quote>VALUE</quote>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>set-config-index <replaceable>NAME=VALUE</replaceable></term>
+          <listitem>
+            <para>Sets the configuration specified by <quote>NAME</quote> to the <quote>INDEX</quote> into the list of choices. Works only for Menu or Radio button entries.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>wait-event <replaceable>COUNT or SECONDS</replaceable></term>
+          <listitem>
+            <para>Waits for events from the camera for the specified time in SECONDS (if suffixed with s) or the COUNT of events from the camera, where every seconds a timeout event happens. Newly added images are kept on the camera.</para>
+	    <para>Default is 1 event.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>wait-event-and-download <replaceable>COUNT or SECONDS</replaceable></term>
+          <term>capture-tethered <replaceable>COUNT or SECONDS</replaceable></term>
+          <listitem>
+            <para>Waits for events from the camera for the specified time in SECONDS (if suffixed with s) or the COUNT of events from the camera, where every seconds a timeout event happens. Newly added images are downloaded from the camera.</para>
+	    <para>Default is 1 event.</para>
+          </listitem>
+        </varlistentry>
+
+
+        <varlistentry>
+          <term>help, ?</term>
+          <listitem>
+            <para>Displays command usage.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>exit, quit, q</term>
+          <listitem>
+            <para>Exit the gphoto2 shell.</para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </refsect1>
+
+    <refsect1>
+      <title>Environment variables</title>
+      <variablelist>
+        <varlistentry>
+	  <term><envar>CAMLIBS</envar></term>
+	  <listitem>
+	    <para>
+	      If set, defines the directory where the
+	      <systemitem class="library">libgphoto2</systemitem>
+	      library looks for its camera drivers (camlibs). You only
+	      need to set this on OS/2 systems and broken/test
+	      installations.
+	    </para>
+	  </listitem>
+	</varlistentry>
+        <varlistentry>
+	  <term><envar>IOLIBS</envar></term>
+	  <listitem>
+	    <para>
+	      If set, defines the directory where the
+	      <systemitem class="library">libgphoto2_port</systemitem>
+	      library looks for its I/O drivers (iolibs). You only
+	      need to set this on OS/2 systems and broken/test
+	      installations.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><envar>LD_DEBUG</envar></term>
+	  <listitem>
+	    <para>
+	      Set this to <replaceable>all</replaceable> to receive
+	      lots of debug information regarding library loading on
+	      <command>ld</command> based systems.
+	    </para>
+	  </listitem>
+	</varlistentry>
+        <varlistentry>
+	  <term><envar>USB_DEBUG</envar></term>
+	  <listitem>
+	    <para>
+	      If set, defines the numeric debug level with which the
+	      <systemitem class="library">libusb</systemitem> library 
+	      will print messages. In order to get some
+	      debug output, set it to <replaceable>1</replaceable>.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </refsect1>
+
+    <refsect1 id="ref-gphoto2-signals">
+      <title>Signals</title>
+      <variablelist>
+	<varlistentry id="ref-gphoto2-SIGUSR1">
+	  <term>SIGUSR1 (since 2.4)</term>
+	  <listitem>
+	    <para>
+	      In time-lapse capture mode, receiving a SIGUSR1 signal
+	      makes gphoto2 take a picture immediately.
+	    </para>
+	    <para>
+	      If the <link
+	      linkend="ref-gphoto2-reset-interval"><option>--reset-interval</option>
+	      option</link> is given, the time counter is reset to the
+	      value given by the <link
+	      linkend="ref-gphoto2-interval"><option>-I|--interval</option>
+	      option</link>. Note that the camera will need some time
+	      (from 50ms to a few seconds) to actually capture the
+	      image.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </refsect1>
+
+    <refsect1>
+      <title>See also</title>
+      <para>
+	  <xref linkend="ref-libgphoto2"/>,
+	  <ulink url="http://www.gphoto.org/doc/manual/">&themanual;</ulink>,
+	  <!--xref linkend="using-gphoto2"/-->
+	  <ulink url="http://www.gphoto.org/">The gphoto.org
+	  website</ulink>,
+	  <ulink url="http://www.teaser.fr/~hfiguiere/linux/digicam.html">Digital Camera Support for UNIX, Linux and BSD</ulink>
+      </para>
+    </refsect1>
+
+    <refsect1 id="cli-examples">
+      <title>Examples</title>
+      <variablelist>
+        <varlistentry>
+          <term><userinput>gphoto2 <option>--list-ports</option></userinput></term>
+          <listitem>
+            <para>Shows what kinds of ports (<acronym>USB</acronym> and serial) you have.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><userinput>gphoto2 <option>--auto-detect</option></userinput></term>
+          <listitem>
+            <para>Shows what camera(s) you have connected.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><userinput>gphoto2 <option>--list-files</option></userinput></term>
+          <listitem>
+            <para>List files on camera.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><userinput>gphoto2 <option>--get-file</option> <parameter>7-13</parameter></userinput></term>
+          <listitem>
+            <para>Get files number 7 through 13 from the list output by <userinput><command>gphoto2</command> <option>--list-files</option></userinput>.</para>
+          </listitem>
+        </varlistentry>
+
+	<varlistentry>
+	  <term><userinput>gphoto2 <option>--capture-image</option> <option>--interval</option> <parameter>60</parameter> <option>--hook-script</option> <parameter>/usr/share/doc/gphoto2/test-hook.sh</parameter></userinput></term>
+	  <listitem>
+	    <para>
+	      Capture one image every 60 seconds from now to
+	      eternity. The example hook script will be called after
+	      each captured image has been stored on the computer.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+      <para>
+	To track down errors, you can add the
+	<option>--debug</option> parameter to the
+	<command>gphoto2</command> command line and, if dealing with
+	USB problems, setting the environment variable
+	<envar>USB_DEBUG</envar><replaceable>=1</replaceable>.
+      </para>
+    </refsect1>
+
+  </refentry>
+
+  <refentry id="ref-libgphoto2">
+    <refentryinfo>
+      <author><firstname>The gPhoto2</firstname><surname>Team</surname></author>
+      <editor>
+	<firstname>Hans Ulrich</firstname>
+	<surname>Niedermann</surname>
+	<affiliation>
+	  <address><email>gp@n-dimensional.de</email></address>
+	</affiliation>
+      </editor>
+    </refentryinfo>
+
+    <refmeta>
+      <refentrytitle>libgphoto2</refentrytitle>
+      <manvolnum>3</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>libgphoto2</refname>
+      <refpurpose>cross-platform digital camera library</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <synopsis>#include &lt;gphoto2/gphoto2.h&gt;</synopsis>
+    </refsynopsisdiv>
+
+    <refsect1>
+      <title>Description</title>
+      <para>The <systemitem class="library">gphoto2</systemitem>
+        library provides applications with access to a variety of
+        cameras.</para>
+      <para>This man page will be extended with autogenerated
+        documentation of the interface types and methods used for
+        communication between the 
+        <systemitem class="library">gphoto2</systemitem> 
+        library and a frontend.</para> 
+    </refsect1>
+
+    <refsect1>
+      <title>Files</title>
+      <variablelist>
+        <varlistentry>
+          <term><filename>~/.gphoto/settings</filename></term>
+          <listitem>
+            <para>Here
+              <systemitem class="library">gphoto2</systemitem>
+              applications may store their configuration used to
+              access
+              <systemitem class="library">gphoto2</systemitem>.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      <para>
+	To track down errors, you can add the
+	<option>--debug</option> parameter to the
+	<command>gphoto2</command> command line and, if dealing with
+	USB problems, setting the environment variable
+	<envar>USB_DEBUG</envar><replaceable>=1</replaceable>.
+      </para>
+    </refsect1>
+
+    <refsect1>
+      <title>Environment variables</title>
+      <variablelist>
+        <varlistentry>
+	  <term><envar>CAMLIBS</envar></term>
+	  <listitem>
+	    <para>
+	      If set, defines the directory where the
+	      <systemitem class="library">libgphoto2</systemitem>
+	      library looks for its camera drivers (camlibs). You only
+	      need to set this on OS/2 systems and broken/test
+	      installations.
+	    </para>
+	  </listitem>
+	</varlistentry>
+        <varlistentry>
+	  <term><envar>IOLIBS</envar></term>
+	  <listitem>
+	    <para>
+	      If set, defines the directory where the
+	      <systemitem class="library">libgphoto2_port</systemitem>
+	      library looks for its I/O drivers (iolibs). You only
+	      need to set this on OS/2 systems and broken/test
+	      installations.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><envar>LD_DEBUG</envar></term>
+	  <listitem>
+	    <para>
+	      Set this to <replaceable>all</replaceable> to receive
+	      lots of debug information regarding library loading on
+	      <command>ld</command> based systems.
+	    </para>
+	  </listitem>
+	</varlistentry>
+        <varlistentry>
+	  <term><envar>USB_DEBUG</envar></term>
+	  <listitem>
+	    <para>
+	      If set, defines the numeric debug level with which the
+	      <systemitem class="library">libusb</systemitem> library 
+	      will print messages. In order to get some
+	      debug output, set it to <replaceable>1</replaceable>.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </refsect1>
+
+    <refsect1>
+      <title>See also</title>
+        <para><xref linkend="ref-gphoto2-cli"/>,
+          <xref linkend="ref-libgphoto2_port"/>,
+	  &themanual;,
+	  automatically generated <acronym>API</acronym> docs,
+          <ulink url="http://www.gphoto.org/">gphoto website</ulink>
+	  .
+      </para>
+    </refsect1>
+
+  </refentry>
+
+    <refentry id="ref-libgphoto2_port">
+      <refentryinfo>
+        <author><firstname>The gPhoto2</firstname><surname>Team</surname></author>
+        <editor>
+          <firstname>Hans Ulrich</firstname>
+          <surname>Niedermann</surname>
+          <affiliation>
+            <address><email>gp@n-dimensional.de</email></address>
+          </affiliation>
+        </editor>
+      </refentryinfo>
+
+      <refmeta>
+        <refentrytitle>libgphoto2_port</refentrytitle>
+        <manvolnum>3</manvolnum>
+      </refmeta>
+
+      <refnamediv>
+        <refname>libgphoto2_port</refname>
+        <refpurpose>cross-platform port access library</refpurpose>
+      </refnamediv>
+
+      <refsynopsisdiv>
+        <synopsis>#include &lt;gphoto2/gphoto2_port.h&gt;</synopsis>
+      </refsynopsisdiv>
+
+      <refsect1>
+        <title>Description</title>
+        <para>The 
+          <systemitem class="library">libgphoto2_port</systemitem> 
+          library was written to provide <xref linkend="ref-libgphoto2"/>
+          with a generic way of accessing ports. In this function, 
+          <systemitem class="library">libgphoto2_port</systemitem> is the
+          successor of the 
+          <systemitem class="library">libgpio</systemitem> library.
+        </para>
+        <para>
+          Currently, 
+          <systemitem class="library">libgphoto2_port</systemitem> 
+          supports serial (<acronym>RS-232</acronym>) and <acronym>USB</acronym> connections, the latter
+          requiring 
+          <systemitem class="library">libusb</systemitem>
+          to be installed.
+        </para>
+        <para>
+          The autogenerated <acronym>API</acronym> docs will be added here in the future.
+        </para>
+      </refsect1>
+
+    <refsect1>
+      <title>Environment variables</title>
+      <variablelist>
+        <varlistentry>
+	  <term><envar>IOLIBS</envar></term>
+	  <listitem>
+	    <para>
+	      If set, defines the directory where the
+	      <systemitem class="library">libgphoto2_port</systemitem>
+	      library looks for its I/O drivers (iolibs). You only
+	      need to set this on OS/2 systems and broken/test
+	      installations.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><envar>LD_DEBUG</envar></term>
+	  <listitem>
+	    <para>
+	      Set this to <replaceable>all</replaceable> to receive
+	      lots of debug information regarding library loading on
+	      <command>ld</command> based systems.
+	    </para>
+	  </listitem>
+	</varlistentry>
+        <varlistentry>
+	  <term><envar>USB_DEBUG</envar></term>
+	  <listitem>
+	    <para>
+	      If set, defines the numeric debug level with which the
+	      <systemitem class="library">libusb</systemitem> library 
+	      will print messages. In order to get some
+	      debug output, set it to <replaceable>1</replaceable>.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </refsect1>
+    
+      <refsect1>
+        <title>See also</title>
+        <para><xref linkend="ref-libgphoto2"/>,
+          &themanual;,
+          <ulink url="http://www.gphoto.org/">gphoto website</ulink>,
+	  automatically generated <acronym>API</acronym> docs,
+          <ulink url="http://libusb.sourceforge.net/">libusb website</ulink>
+	  .
+        </para>
+      </refsect1>
+    </refentry>
+
+  <!-- &camera; -->
+  <!-- =========================================================== --> 
+
+    <refentry id="ref-gtkam">
+      <refentryinfo>
+	<author>
+	  <firstname>The gPhoto2</firstname><surname>Team</surname>
+	</author>
+	<editor>
+	  <firstname>Michael J.</firstname>
+	  <!-- FIXME: workaround for bug in xmlto man 
+	    <othername>J.</othername>
+	  -->
+	  <surname>Rensing</surname>
+	  <affiliation>
+	    <address><email>michael.rensing@shaw.ca</email></address>
+	  </affiliation>
+	</editor>
+	<date>August 2002</date>
+      </refentryinfo>
+      <refmeta>
+	<refentrytitle>gtkam</refentrytitle>
+	<manvolnum>1</manvolnum>
+      </refmeta>
+      <refnamediv>
+	<refname>gtkam</refname>
+	<refpurpose>Graphical front end for gphoto2</refpurpose>
+      </refnamediv>
+      <refsect1>
+	<title>Commands</title>
+	<screenshot>
+	  <mediaobject>
+	    <imageobject>
+	      <imagedata fileref="screenshots/gtkam/exp.png" format="PNG"/>
+	    </imageobject>
+	  </mediaobject>
+	</screenshot>
+
+  <!-- =========================================================== --> 
+	
+	<refsect2>
+	  <title><guimenu>File Menu</guimenu></title>
+	  <screenshot>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="screenshots/gtkam/file.png" format="PNG"/>
+	      </imageobject>
+	    </mediaobject>
+	  </screenshot>
+	  
+	  <variablelist>
+	    <varlistentry>
+	      <term><menuchoice>
+		  <guimenu>File</guimenu>
+		  <guisubmenu>Save Photos</guisubmenu></menuchoice></term>
+	      <listitem>
+		<para>Gives options to save photos to the computer.</para>
+		<screenshot>
+		  <mediaobject>
+		    <imageobject>
+		      <imagedata fileref="screenshots/gtkam/file_save.png" format="PNG"/>
+		    </imageobject>
+		  </mediaobject>
+		</screenshot>
+		<variablelist>
+		  <varlistentry>
+		    <term>
+		      <menuchoice>
+			<guimenu>File</guimenu>
+			<guisubmenu>Save Photos</guisubmenu>
+			<guimenuitem>Selected</guimenuitem>
+		      </menuchoice>
+		    </term>
+		    <listitem>
+		      <para>Saves the selected photos from the camera to the computer.</para>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term>
+		      <menuchoice>
+			<guimenu>File</guimenu>
+			<guisubmenu>Save Photos</guisubmenu>
+			<guimenuitem>All</guimenuitem>
+		      </menuchoice>
+		    </term>
+		    <listitem>
+		      <para>Saves all photos in the camera to the computer.</para>
+		    </listitem>
+		  </varlistentry>
+		</variablelist>
+		<para>Both menu items open a "Save photos..." dialog box which allows the user to select the folder to save the images in, as well as a number of other options.</para>
+		<!--screenshot>
+		  <mediaobject>
+		    <imageobject>
+			XXX corrupt file in SVN XXX
+		      <imagedata fileref="screenshots/gtkam/file_save_dia.png" format="PNG"/>
+		    </imageobject>
+		  </mediaobject>
+		</screenshot-->
+		<variablelist>
+		  <varlistentry>
+		    <term>What to save:</term>
+		    <listitem>
+			    <para>This is a set of checkboxes which allows the user 
+			      to select the forms in which data for the selected 
+			      image(s) will be saved. Any or all of these options 
+			      may be selected at once.</para>
+		      <variablelist>
+			<varlistentry>
+			  <term>Save photos</term>
+			  <listitem>
+			    <para>This is the default. It causes the photos 
+			      being saved to be downloaded from the camera and 
+			      saved to the identified folder.</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term>Save raw data</term>
+			  <listitem>
+			    <para>FIXME: What to say?</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term>Save audio data</term>
+			  <listitem>
+			    <para>Causes any audio data associated with the image to be saved to the selected folder.</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term>Save thumbnails</term>
+			  <listitem>
+			    <para>Saves a small version of the selected images to the identified folder.</para>
+			  </listitem>
+			</varlistentry>
+			<varlistentry>
+			  <term>Save EXIF data</term>
+			  <listitem>
+			    <para>Saves the EXIF data associated with the images. </para>
+			    <para>FIXME: should we say more about the EXIF format?</para>
+			  </listitem>
+			</varlistentry>
+		      </variablelist>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term>Open image(s) with:</term>
+		    <listitem>
+		      <para>This allows the user to specify FIXME ??</para>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term>Use filename(s) provided by the camera.</term>
+		    <listitem>
+		      <para>Causes the saved files to have the names provided by the camera.</para>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term>Filename prefix:</term>
+		    <listitem>
+		      <para>Defines a prefix to be used when creating filenames. This prefix is combined with the number starting with the number defined in:</para>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term>Start numbering with:</term>
+		    <listitem>
+		      <para>Defines the first number of the sequence of photos to be stored.</para>
+		    </listitem>
+		  </varlistentry>
+		</variablelist>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term><menuchoice>
+		  <guimenu>File</guimenu>
+		  <guisubmenu>Delete Photos</guisubmenu></menuchoice></term>
+	      <listitem>
+		<para>Gives options to delete photos from the camera.</para>
+		<screenshot>
+		  <mediaobject>
+		    <imageobject>
+		      <imagedata fileref="screenshots/gtkam/file_del.png" format="PNG"/>
+		    </imageobject>
+		  </mediaobject>
+		</screenshot>
+		<variablelist>
+		  <varlistentry>
+		    <term>
+		      <menuchoice>
+			<guimenu>File</guimenu>
+			<guisubmenu>Delete Photos</guisubmenu>
+			<guimenuitem>Selected</guimenuitem>
+		      </menuchoice>
+		    </term>
+		    <listitem>
+		      <para>Deletes selected photos from the camera.</para>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term>
+		      <menuchoice>
+			<guimenu>File</guimenu>
+			<guisubmenu>Delete Photos</guisubmenu>
+			<guimenuitem>All</guimenuitem>
+		      </menuchoice>
+		    </term>
+		    <listitem>
+		      <para>Deletes all photos in the camera.</para>  
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term></term>
+		    <listitem>
+		      <para>Both of these menu items open a dialog to confirm the 
+			deletion of the photos. A list of photos is presented with 
+			a checkbox beside each photo name. Uncheck the box to 
+			prevent a specific file from being deleted.</para>
+		    </listitem>
+		  </varlistentry>
+		</variablelist>
+
+		<!--screenshot>
+		  <mediaobject>
+		    <imageobject>
+			XXX CORRUPT FILE IN SVN XXX
+		      <imagedata fileref="screenshots/gtkam/file_del_dia.png" format="PNG"/>
+		    </imageobject>
+		  </mediaobject>
+		</screenshot-->
+	      </listitem>
+	    </varlistentry>
+
+	    <varlistentry>
+	      <term><menuchoice>
+		  <guimenu>File</guimenu>
+		  <guimenuitem>Quit</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Quits gtkam.</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</refsect2>
+
+  <!-- =========================================================== --> 
+
+	<refsect2>
+	  <title>View Menu</title>
+	  <para>Gives options for previewing photos before downloading them 
+	    from the camera.</para>
+	  <screenshot>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="screenshots/gtkam/view.png" format="PNG"/>
+	      </imageobject>
+	    </mediaobject>
+	  </screenshot>
+	  <variablelist>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>View</guimenu>
+		  <guimenuitem>View Thumbnails</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>This is the same command as the checkbox on the main 
+		  gtkam window. It allows the user to select whether thumbnails
+		  of the photos are displayed, or just the file names.</para>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>View</guimenu>
+		  <guimenuitem>Zoom In</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Enlarges the thumbnails.</para>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>View</guimenu>
+		  <guimenuitem>Zoom 100</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Returns the thumbnails to default size.</para>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>View</guimenu>
+		  <guimenuitem>Zoom Out</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Reduces the thumbnails.</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</refsect2>
+
+  <!-- =========================================================== --> 
+
+	<refsect2>
+	  <title>Select Menu</title>
+	  <screenshot>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="screenshots/gtkam/sel.png" format="PNG"/>
+	      </imageobject>
+	    </mediaobject>
+	  </screenshot>
+	  <variablelist>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Select</guimenu>
+		  <guimenuitem>All</guimenuitem>
+		</menuchoice>
+	      </term>
+	    <listitem>
+	      <para>Selects all pictures in the camera.</para>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Select</guimenu>
+		  <guimenuitem>Inverse</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Inverts the selections already made so that previously 
+		  unselected images are now selected, and previously selected images
+		  are now unselected.</para>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Select</guimenu>
+		  <guimenuitem>None</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Undoes all selections so that no images are selected.</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</refsect2>
+
+  <!-- =========================================================== --> 
+
+	<refsect2>
+	  <title>Camera Menu</title>
+	  <screenshot>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="screenshots/gtkam/cam.png" format="PNG"/>
+	      </imageobject>
+	    </mediaobject>
+	  </screenshot>
+
+	  <variablelist>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Camera</guimenu>
+		  <guimenuitem>Add Camera...</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Opens a window to allow the user to define the camera and interface being used.</para>
+		<screenshot>
+		  <mediaobject>
+		    <imageobject>
+		      <imagedata fileref="screenshots/gtkam/cam_sel.png" format="PNG"/>
+		    </imageobject>
+		    <caption>
+		      <para>"Simple" Select Camera Dialog.</para>
+		    </caption>
+		  </mediaobject>
+		</screenshot>
+		<screenshot>
+		  <mediaobject>
+		    <imageobject>
+		      <imagedata fileref="screenshots/gtkam/cam_sel_enh.png" format="PNG"/>
+		    </imageobject>
+		    <caption>
+		      <para>"Enhanced" Select Camera Dialog.</para>
+		    </caption>
+		  </mediaobject>
+		</screenshot>
+		<screenshot>
+		  <mediaobject>
+		    <imageobject>
+		      <imagedata fileref="screenshots/gtkam/cam_sel_portadd.png" format="PNG"/>
+		    </imageobject>
+		    <caption>
+		      <para>Dialog for explicitly adding a path to the port to which the camera is attached.</para>
+		    </caption>
+		  </mediaobject>
+		</screenshot>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</refsect2>
+
+  <!-- =========================================================== --> 
+
+	<refsect2>
+	  <title>Help Menu</title>
+	  <screenshot>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="screenshots/gtkam/help.png" format="PNG"/>
+	      </imageobject>
+	    </mediaobject>
+	  </screenshot>
+	  <variablelist>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Help</guimenu>
+		  <guimenuitem>Debug...</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>
+		  Opens the logging window which allows the user to select the
+		  type of messages to log.</para>
+		<screenshot>
+		  <mediaobject>
+		    <imageobject>
+		      <imagedata fileref="screenshots/gtkam/help_debug.png" format="PNG"/>
+		    </imageobject>
+		  </mediaobject>
+		</screenshot>
+		<variablelist>
+		  
+		  <varlistentry>
+		    <term>Error</term>
+		    <listitem>
+		      <para>causes the logging of any error messages.</para></listitem></varlistentry>
+		  <varlistentry>
+		    <term>Verbose</term>
+		    <listitem>
+		      <para>Increases the amount of information being logged. (I can't see what effect this has. - mjr)</para></listitem></varlistentry>
+		  <varlistentry>
+		    <term>Debug</term>
+		    <listitem>
+		      <para>Causes the logging of progress reports as the software communicates with the camers.</para></listitem></varlistentry>
+		  <varlistentry>
+		    <term>Data</term>
+		    <listitem>
+		      <para>Causes the logging of all data being transferred from the camera. This will generate huge quantities of hexadecimal information.</para></listitem></varlistentry>
+		  <varlistentry>
+		    <term>Save As...</term>
+		    <listitem>
+		      <para>opens a dialog to allow the user to save the
+			information logged in the debug window.</para></listitem></varlistentry>
+		  <varlistentry>
+		    <term>Close</term>
+		    <listitem>
+		      <para>Closes the debug window</para></listitem></varlistentry></variablelist>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Help</guimenu>
+		  <guimenuitem>About...</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>
+		  Opens the about gtKam window. This gives the current version, author credits, and contact information.</para>
+		<screenshot>
+		  <mediaobject>
+		    <imageobject>
+		      <imagedata fileref="screenshots/gtkam/help_about.png" format="PNG"/>
+		    </imageobject>
+		  </mediaobject>
+		</screenshot>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</refsect2>
+
+  <!-- =========================================================== --> 
+
+	<refsect2>
+	  <title>Right Click (over directory pane) Menu</title>
+	  <screenshot>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="screenshots/gtkam/rt_click_dir.png" format="PNG"/>
+	      </imageobject>
+	    </mediaobject>
+	  </screenshot>
+	  <variablelist>
+	    <varlistentry>
+	    <term>
+		<menuchoice>
+		  <guimenu>Right Click</guimenu>
+		  <guimenuitem>Upload File</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Opens a dialog to identify an image file for uploading to the camera.</para>
+		<screenshot>
+		  <mediaobject>
+		    <imageobject>
+		      <imagedata fileref="screenshots/gtkam/fol_uploadfile.png" format="PNG"/>
+		    </imageobject>
+		  </mediaobject>
+		</screenshot>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Right Click</guimenu>
+		  <guimenuitem>Make directory</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Opens dialog to create new directory.</para>
+		<screenshot>
+		  <mediaobject>
+		    <imageobject>
+		      <imagedata fileref="screenshots/gtkam/fol_create.png" format="PNG"/>
+		    </imageobject>
+		  </mediaobject>
+		</screenshot>
+	      </listitem>
+	    </varlistentry> 
+	    
+	    <varlistentry>
+	    <term>
+		<menuchoice>
+		  <guimenu>Right Click</guimenu>
+		  <guimenuitem>Remove directory</guimenuitem>
+		</menuchoice>
+	      </term>
+	    <listitem>
+		<para>Opens a dialog to remove (delete) an existing folder (directory).</para>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Right Click</guimenu>
+		  <guimenuitem>Capture</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Opens a window to allow the user to trigger the camera to acquire an image 
+		  if the camera and its gphoto2 driver supports this feature.. (This feature is 
+		  not available on my camera, so I would appreciate some input on this item. -mjr)</para></listitem></varlistentry>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Right Click</guimenu>
+		  <guimenuitem>Preferences</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<screenshot>
+		  <mediaobject>
+		    <imageobject>
+		      <imagedata fileref="screenshots/gtkam/cam_conf_cam.png" format="PNG"/>
+		    </imageobject>
+		    <caption>
+		      <para>Camera configuration tab.</para>
+		    </caption>
+		  </mediaobject>
+		</screenshot>
+		<screenshot>
+		  <mediaobject>
+		    <imageobject>
+		      <imagedata fileref="screenshots/gtkam/cam_conf_driver.png" format="PNG"/>
+		    </imageobject>
+		    <caption>
+		      <para>Driver configuration tab.</para>
+		    </caption>
+		  </mediaobject>
+		</screenshot>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Right Click</guimenu>
+		  <guimenuitem>Summary</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Displays a window with information about the camera and its memory.</para>
+		<screenshot>
+		  <mediaobject>
+		    <imageobject>
+		      <imagedata fileref="screenshots/gtkam/cam_info.png" format="PNG"/>
+		    </imageobject>
+		  </mediaobject>
+		</screenshot>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Right Click</guimenu>
+		  <guimenuitem>Manual</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>I'm not sure what this should contain. Anyone? - mjr</para>
+		<!--
+		Image doesn't exist
+		<screenshot>
+		  <mediaobject>
+		    <imageobject>
+		      <imagedata fileref="screenshots/gtkam/rt_click_list_man.png" format="PNG"/>
+		    </imageobject>
+		  </mediaobject>
+		</screenshot>
+		-->
+		<sidebar>
+		  <para>FIXME: need useful image</para>
+		</sidebar>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Right Click</guimenu>
+		  <guimenuitem>About</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Displays a window with information about the camera driver and its authors.</para>
+		<para>This should include contact information for the maintainers of the drivers for your camera.</para>
+		<screenshot>
+		  <mediaobject>
+		    <imageobject>
+		      <imagedata fileref="screenshots/gtkam/cam_driver.png" format="PNG"/>
+		    </imageobject>
+		  </mediaobject>
+		</screenshot>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Right Click</guimenu>
+		  <guimenuitem>Select Camera</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Opens the Add Camera dialog.</para>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Right Click</guimenu>
+		  <guimenuitem>Remove Camera</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Removes the camera from the directory pane.</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</refsect2>
+
+  <!-- =========================================================== --> 
+
+	<refsect2>
+	  <title>Right Click (over list pane) Menu</title>
+	  <screenshot>
+	    <mediaobject>
+	      <imageobject>
+		<imagedata fileref="screenshots/gtkam/rt_click_list.png" format="PNG"/>
+	      </imageobject>
+	    </mediaobject>
+	  </screenshot>
+	  <variablelist>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Right Click</guimenu>
+		  <guisubmenu>View with...</guisubmenu>
+		  <guimenuitem>Built-in viewer</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Downloads the image under the cursor and displays it in a new window. The window automatically resizes the image to fill the window.</para>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>
+		<menuchoice>
+		  <guimenu>Right Click</guimenu>
+		  <guimenuitem>Info</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Presents file name, type, size, date and permissions information about the image under the cursor.</para>
+		<!--screenshot>
+		  <mediaobject>
+		    <imageobject>
+			XXX CORRUPT FILE IN SVN XXx
+		      <imagedata fileref="screenshots/gtkam/rt_click_list_info.png" format="PNG"/>
+		    </imageobject>
+		  </mediaobject>
+		</screenshot-->
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>		
+		<menuchoice>
+		  <guimenu>Right Click</guimenu>
+		  <guimenuitem>Save</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Downloads the image under the cursor and opens a dialog to allow it to be saved to the computer.</para>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>		
+		<menuchoice>
+		  <guimenu>Right Click</guimenu>
+		  <guimenuitem>Delete</guimenuitem>
+		</menuchoice>
+	      </term>
+	      <listitem>
+		<para>Opens a dialog to allow the user to delete the image under the cursor.</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</refsect2>
+
+  <!-- =========================================================== --> 
+
+      </refsect1>
+    </refentry>
+  </reference>
+
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+  <!-- =========================================================== -->
+  
+  <appendix id="related-info">
+    <title>Resources: Where to find related information</title>
+    <variablelist>
+      <varlistentry>
+        <term><ulink url="http://www.gphoto.org/">http://www.gphoto.org/</ulink></term>
+        <listitem>
+          <simpara>The home page of the gPhoto project.</simpara>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><ulink url="http://sourceforge.net/projects/gphoto/">http://sourceforge.net/projects/gphoto/</ulink></term>
+        <listitem>
+          <simpara>The gPhoto project page.</simpara>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><ulink url="http://libusb.sourceforge.net/">http://libusb.sourceforge.net/</ulink></term>
+        <listitem>
+          <simpara>The <systemitem class="library">libusb</systemitem>
+	    home page. <systemitem class="library">libusb</systemitem>
+	    allows C programs to access the <acronym>USB</acronym> interface of all
+	    supported operating systems in an OS independent manner.
+	  </simpara>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><ulink url="http://sourceforge.net/projects/libexif/">http://sourceforge.net/projects/libexif/</ulink></term>
+        <listitem>
+          <simpara>The
+            <systemitem class="library">libexif</systemitem> project
+            page. <systemitem class="library">libexif</systemitem>
+	    allows programs written in C to access the metainformation
+	    from the <acronym>EXIF</acronym> tags in the <acronym>JPEG</acronym> files most modern cameras
+	    produce.
+	  </simpara>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><ulink url="http://www.teaser.fr/~hfiguiere/linux/digicam.html">http://www.teaser.fr/~hfiguiere/linux/digicam.html</ulink></term>
+	<listitem>
+	  <simpara>Hubert Figuiere's digicam support list</simpara>
+	</listitem>
+      </varlistentry>
+      <!--varlistentry>
+	<term><ulink url="http://n-dimensional.de/projects/digicam/">http://n-dimensional.de/projects/digicam/</ulink></term>
+	<listitem>
+	  <simpara>Hans Ulrich Niedermann's home page (one of the
+	    developers), 
+	    non-daily CVS snapshot 
+	    <ulink url="http://n-dimensional.de/projects/digicam/software/snapshots/">tarballs</ulink> 
+	    and 
+	    <ulink url="http://n-dimensional.de/projects/digicam/software/snapshots/patches/">patches</ulink>, 
+	    and 
+	    <ulink url="http://n-dimensional.de/projects/digicam/software/">packages</ulink>
+	    which are updated from time to time.
+	  </simpara>
+	</listitem>
+      </varlistentry-->
+      <varlistentry>
+	<term><ulink url="http://aamot.org/ole/photography.html">http://aamot.org/ole/photography.html</ulink></term>
+	<listitem>
+	  <simpara>Ole Aamot's page about "Using Digital Still Photography Devices with GNU/Linux". The next two links were stolen from there.</simpara>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><ulink url="http://www.deater.net/weave/vmwprod/agfa/">http://www.deater.net/weave/vmwprod/agfa/</ulink></term>
+	<listitem>
+	  <simpara>Vince's page about support of Agfa cameras</simpara>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><ulink url="http://www.jedi.com/obiwan/linux-digicam.html">http://www.jedi.com/obiwan/linux-digicam.html</ulink></term>
+	<listitem>
+	  <simpara>Obi-Wan's page about "Supporting a Canon S110 Elph Digital Camera under Debian Linux
+(with a review of the camera and sample photos)"</simpara>
+	</listitem>
+      </varlistentry>
+      <varlistentry>
+	<term><ulink url="http://www.reynoldsnet.org/s10sh/">http://www.reynoldsnet.org/s10sh/</ulink></term>
+	<listitem>
+	  <simpara>
+	    s10sh is a standalone application allowing access
+	    to Canon cameras. Some features work only
+	    with s10sh, and some features work only with libgphoto2.
+	    See also
+	    <ulink
+	      url="http://www.kyuzz.org/antirez/s10sh.html">http://www.kyuzz.org/antirez/s10sh.html</ulink>
+	    .
+	  </simpara>
+	</listitem>
+      </varlistentry>
+    </variablelist>
+  </appendix>
+
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+
+  <glossary id="glossary">
+    <!-- FIXME: Where in the book should the glossary be? -->
+    <title>Glossary</title>
+    <para>
+      This is not a real glossary (yet), it's just an example.
+    </para>
+    <!-- FIXME: text stolen from
+         http://www.pima.net/standards/it10/PIMA15740/exif.htm 
+         somebody please write a non-copyrighted text with similar
+         content. -->
+    <glossentry id="gloss-EXIF">
+      <glossterm><acronym>EXIF</acronym>: Exchangeable Image File</glossterm>
+
+      <glossdef>
+	<para>
+	  Most current digital camera store images using Exif
+	  compressed files.  Exif compressed files use the baseline
+	  JPEG DCT format specified in ISO/IEC 10918-1. This means the
+	  image data can be read by any application supporting "JPEG",
+	  including essentially all web browsers and image editing,
+	  desktop presentation, and document creation applications. In
+	  addition, Exif/JPEG stores metadata within application
+	  segments at the beginning of the file, and uses sRGB as the
+	  default color space.
+	</para>
+      </glossdef>
+    </glossentry>
+
+    <glossentry id="gloss-gphoto">
+      <!-- FIXME: this is just an example entry :-) -->
+      <glossterm>gphoto</glossterm>
+      <glossdef>
+	<para>
+	  The glorious application by Scott Fritzinger 
+	  which started everything.
+	</para>
+      </glossdef>
+    </glossentry>
+    <glossentry id="gloss-gphoto2">
+      <!-- FIXME: this is just an example entry :-) -->
+      <glossterm>gphoto2</glossterm>
+      <glossdef>
+	<para>
+	  Glorious successor of 
+	  <link linkend="gloss-gphoto">gphoto</link>.
+	  Can make use of 
+	  <link linkend="gloss-EXIF">EXIF</link>.
+	</para>
+      </glossdef>
+    </glossentry>
+  </glossary>
+
+  <!-- =========================================================== --> 
+  <!-- =========================================================== --> 
+  <!-- =========================================================== -->
+
+</book>
+
+<!--
+Local Variables:
+mode: nxml
+sgml-indent-data: t
+End:
+-->

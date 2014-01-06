@@ -1,0 +1,12 @@
+mandir=@top_builddir@/src/man
+htmldir=@top_builddir@/src/html
+xhtmldir=@top_builddir@/src/xhtml
+htmlnochunksdir=@top_builddir@/src/html-nochunks
+xhtmlnochunksdir=@top_builddir@/src/xhtml-nochunks
+pdfdir=@top_builddir@/src/pdf
+psdir=@top_builddir@/src/ps
+txtdir=@top_builddir@/src/txt
+
+Name: gphoto2-manual
+Description: The gPhoto2 Manual (covers libgphoto2, gphoto2, gtkam)
+Version: @VERSION@

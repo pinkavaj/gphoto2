@@ -1,0 +1,7 @@
+gphoto2_gtk
+.deps
+Makefile
+Makefile.in
+gtkam
+gtkam-gimp
+libgtkam.a

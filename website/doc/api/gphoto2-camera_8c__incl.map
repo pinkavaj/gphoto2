@@ -1,0 +1,5 @@
+base referer
+rect $gphoto2-camera_8h.html 485,108 667,135
+rect $gphoto2-result_8h.html 716,184 887,211
+rect $gphoto2-library_8h.html 257,108 431,135
+rect $gphoto2-port-log_8h.html 253,412 435,439

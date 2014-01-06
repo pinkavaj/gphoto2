@@ -1,0 +1,13 @@
+Makefile.in
+Makefile
+.libs
+.deps
+device.lo
+rs232.lo
+usb.lo
+io.lo
+image.lo
+config.lo
+core.lo
+mdc800.lo
+libgphoto_mustek_mdc800.la

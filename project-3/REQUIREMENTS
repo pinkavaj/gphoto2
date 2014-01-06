@@ -1,0 +1,467 @@
+========================================================================
+         Requirements for the next generation of gphoto code
+========================================================================
+
+
+
+========================================================================
+Introduction
+============
+
+This document lists (possible) formal requirements for an upcoming
+next generation of libgphoto. These requirements result from
+deficiencies of the existing codebase noted in the last few years.
+
+This document just lists unordered requirements. It does not make any
+decision or give any preferences on which requirements can be
+reasonably addressed and which will need to be dropped. "Wishlist" may
+have been a better title. :-)
+
+The "Rn" numbers of the requirements are intended to be unique and
+permanent. If it is necessary to remove a requirement from this list,
+mark it with "(deleted)" like "R4. (deleted) All use must be reported
+to the authorities". Add new requirements using unused numbers.
+
+
+Consider this file a Wiki
+-------------------------
+
+Anybody with SVN write access is codially invited to add their own
+ideas to this list.
+
+If we get a wiki some time soon, we can still migrate this document to
+the wiki, but we need a place to note ideas *now*.
+
+
+
+========================================================================
+List of Requirements
+====================
+
+
+R1. "Native" APIs for common languages such as C, C++, Python, C#, Java
+-----------------------------------------------------------------------
+
+There must be APIs conforming to the "native" conventions, i.e.
+  * for C++, the API should follow STL patterns (STL lists, C++ classes)
+  * for Python, the native list and class mechanism should be used
+  * etc.
+
+The design of the core library should keep those bindings in mind.
+
+
+R2. C ABI must allow changes in data structure size
+---------------------------------------------------
+
+Changing the size of internal data structures must not cause C ABI
+breakage.
+
+Consequently, bindings building on the ABI also cannot break.
+
+Cf. [4]
+
+
+R3. Device database
+-------------------
+
+The list of devices must be changeable without recompiling the code.
+
+This requires the device database to be external from the code, and
+for the device database to contain all information regarding device
+capabilities and settings specific to certain driver-device
+combinations.
+
+Over time, there have been multiple ideas: [1] [2] [3]
+
+Possible solutions: HAL (XML based), other XML-based, gphoto
+proprietary format, ...
+
+Issues: Resources for parser and database (RAM, storage, CPU cycles).
+        hal + dbus + expat + gphoto will become a little much for an
+        OpenWRT box.
+
+Idea: Store everything in HAL, create lightweight format for
+lightweight parser for low-memory systems, and on desktops directly
+use HAL. Cf. libipoddevice (can only be given device by HAL and then
+operates on it). banshee stores audio player formats in HAL. Other
+people store lists of exploding batteries or known-broken
+laptops/drivers in HAL to warn users... so our data should be storable
+as well. We could put the device selection someplace around
+libgphoto_highlevel in R9a, and create a heavy HAL+DBUS+everything
+version for desktops and a light version for light systems.
+
+
+R4. Memory Management semantics
+-------------------------------
+
+All C functions must have a well-defined, clearly document, and
+consistent policy regarding which part of the code is responsible for
+free()ing which piece of memory.
+
+
+R5. C data types
+----------------
+
+Data buffers must be handed over using "void *" pointers. Otherwise,
+some code will rely on the char being unsigned, some signed, and
+alltogether it creates a mess and myriads of unclear cases, as we have
+seen in libgphoto2.
+
+
+R6. Compiler Warnings, language standards
+-----------------------------------------
+
+A certain language standard must be defined as required, and strictly
+adhered to.
+
+The code must compile without warnings with the strictest compiler
+settings possible. E.g. for gcc, it should be something like
+
+   CFLAGS="-Wall -Wextra -Werror --std=c99 -pedantic"
+   CXXFLAGS="-Wall -Wextra -Weffc++ -Werror --std=c++98 -pedantic"
+
+
+R7. Library architecture
+------------------------
+
+Compatibility across systems with different degrees of linker
+sophisitication. This implies a clear linking graph without cycles,
+similar to this (library names are symbolic):
+
+        application
+        |    |    |
+        |    |    V
+        ?    |  libgphoto_highlevel
+        |    |    |
+        ?    V    V
+        |  libgphoto_drivers
+        ?    |    |
+        |    |    V
+        ?    |  device_driver
+        |    |    |
+        V    V    V
+      libgphoto_basic
+
+[ libgphoto2's camlibs are linked against libgphoto2.so, which is the
+  library loading and thus linking to the camlib. ]
+
+This may also allow to statically link all required drivers into
+libgphoto_drivers for special applications.
+
+
+R7a. Event-/Stream-based driver API
+-----------------------------------
+
+R7a is a more detailed variant of R7. It has not been checked against
+reality, especially in the forms of:
+
+  * linking feasibility on non-ELF systems
+  * how (possible) camera/DAP capabilites compare to API restraints
+
+        application
+        |    |    |
+        |    |    V
+        ?    |  libgphoto_highlevel
+        |    |    |
+        ?    V    V
+        |  libgphoto_drivers
+        ?    |    |
+        |    |    V
+        ?    |  device_driver
+        |    |    |
+        V    V    V
+      libgphoto_basic
+
+In this architecture, the libraries' jobs would be something like
+
+   libgphoto_basic: common infrastructure
+     * logging, error reporting
+     * serial, USB, Firewire, IP, ... port access
+     * everything gphoto specific a device driver may need to use
+
+   device_driver: device driver
+     * Reads data from device, immediately passing the data on to a
+       callback function
+     * Writes data to device
+     * Executes special functions on device
+     * Does not need any knowledge of a "filesystem" or the like.
+     * Event driven, events being
+        - function calls coming in via libgphoto_drivers
+        - data packets coming in from the device port
+
+   libgphoto_drivers: device detection and abstraction
+     * autodetects devices
+     * provides access to devices identified specifically
+     * loads the appropriate driver
+     * provides device abstracted access to the device using the
+       driver (using the exact API the device_driver exposes)
+     * No higher level functions building on the other functions.
+
+   libgphoto_highlevel: higher level functions
+     * higher level functions building on the lower libraries,
+       e.g. callback functions writing to files on disk or to sockets
+     * This may be the part to be replaced in "fat" bindings to
+       languages other than C.
+
+If implemented properly, this architecture should allow handling
+asynchronous arrival of data packages from multiple cameras.
+
+Interesting points:
+
+   * async/event based USB interface requires non-existing libusb 1.0
+   * async/event based architecture should integrate with other event
+     based architectures, e.g. daemons running select() in the main
+     loop, or GUI software with a UI event loop.
+
+
+R8. Device Functionality
+------------------------
+
+If at all possible, support all functions of all devices on the
+market.
+
+  * File access:
+     - list files/folders
+     - get single files
+     - get all files (there are cameras which do not support getting
+       single files)
+     - put single files
+     - remove file
+     - create folder
+     - remove folder
+     - mark files as downloaded (if supported)
+  * Camera remote control:
+     - change camera settings (exposure mode, whether/how to trigger
+       the flash, lens zoom, image file format, image size, ...)
+     - switch remote viewfinder on/off, transmit its images
+     - initiate image capture (to camera storage, or to host computer)
+  * Digital Audio Player:
+     - remotely control playback, perhaps?
+
+
+R9. C ABI versioning
+--------------------
+
+Make proper use of library versioning (soname) and possibly symbol
+versioning (highly system specific, no system generic tool support).
+
+A real issue here is cross platform compatibility and the (perceived
+or real) lack of tools to solve those cross platform problems. It
+looks like GNU (Linux, Hurd) supports symbol versioning including
+incompatible changes, Solaris supports symbol versioning without
+incompatible changes, some BSDs have taken to support versioned
+symbols as well, and other systems rely on a changed
+SONAME. Supporting all these systems with a single codebase is not
+going to be trivial.
+
+Use corresponding mechanisms for other languages.
+
+Cf. [4], [5].
+
+
+R10. C API versioning
+---------------------
+
+Make proper use of C API versioning. Header file location possibly
+
+    ${includedir}/gphoto3/gphoto/{highlevel,drivers,basic}.h
+
+and header use like
+
+    #define GPHOTO_API 2
+    #include <gphoto/highlevel.h>
+
+Use corresponding mechanisms for other languages.
+
+Cf. [4].
+
+
+R11. Parallel build system
+--------------------------
+
+Parallel builds (make -jn) would be nice in the age of more-than-one
+core CPUs.
+
+For automake, this requires a single top-level Makefile.am and then
+include foo/bar/Makefile-files for every directory. And properly
+defined dependencies, of course.
+
+
+R12. Network addresses
+----------------------
+
+If some piece of code works with network sockets via IP, it must
+support both IPv4 and IPv6.
+
+
+R13. Code quality
+-----------------
+
+Check these papers: [6], [7], [8], [9], [10]
+
+
+R14. Supported platforms
+----------------------
+
+Define a list of explicitly supported platforms:
+
+  * operating system
+  * compiler
+  * C runtime
+  * build tools
+  * other things
+
+including the respective versions.
+
+New releases will at least have to be test built for these supported
+systems.
+
+There may be another set of platforms which is supported on an
+if-someone-sends-a-patch basis, and a set of platforms we are by
+design incompatible with.
+
+
+R15. API Documentation
+----------------------
+
+Every API function and data type must be documented. There must be API
+docs must be generated from some source, probably via doxygen or a
+similar tool. API docs will be published with each release.
+
+The documentation of a function or data type must contain the version
+it was added in.
+
+
+R16. Transition strategy
+------------------------
+
+The way for libgphoto2 users to adapt to the revised API must be
+well-considered and documented well.
+
+
+R17. Code rewrite plan
+----------------------
+
+All rewriting of our code must be actually feasible within the
+constraints we face, the most confining constraint probably being
+manpower.
+
+It should be possible to actually use the code for tests from quite
+early in the process - otherwise no one will use it, and it will
+possibly die before it has a chance to catch on.
+
+
+R18. Ask our users for input
+----------------------------
+
+For this purpose, users are:
+
+  * authors of software using libgphoto2
+  * packages shipping gphoto2 in distributions
+  * end users
+
+
+R19. Driver/device capabilities, testcase driver
+------------------------------------------------
+
+All drivers have different capabilites as their devices also have
+different capabilities. Therefore both these capabilities must be 
+exposed to the application, and applications must be able to handle
+widely different sets of capabilities.
+
+It may be useful to write a testcase driver for testing applications.
+That testcase driver would simulate a device, or multiple devices
+supporting subsets of its total capabilities.
+
+
+R20. Storage API
+----------------
+
+In many respects, camera protocols are just file storage over
+RS232 or USB. That part of the API must cover
+
+  * directory/folder handling
+  * reading/writing files
+  * handling metainformation, e.g.
+     - audio track author, performer, song name, etc.
+     - associated thumbnail image, audio annotation, ...
+  * pure file level access
+  * filesystem properties, such as total FS size, used, and free
+
+
+R21. Remote control and capturing API
+-------------------------------------
+
+TBD: Camera remote control, capturing images, tethered shooting,
+     audio player control, other device control, ...
+
+
+R22. Device settings
+--------------------
+
+Some kind of device settings are available on more than one kind of
+device. These deserve more than driver specific support. Examples:
+
+  * name of device owner
+  * device date/time (including timezone nightmare)
+  * battery level
+
+
+R23. int/long sizes in the ABI and bindings
+-------------------------------------------
+
+C#/mono has issues with "int" types in C definitions, as the size of an
+"int" or "long" may differ between 32bit and 64bit libraries.
+
+Writing bindings in a way it adapts to either a 32bit or a 64bit library
+at compile-time is non-trivial according to Alan.
+
+OTOH, using a single ABI on both 32bit and 64bit systems may cause issues
+on the C side.
+
+So one could say that C# should solve its own problems like this:
+  * dlls that import native libs -> biarch compatible directory
+  * dlls that do not use native libs -> global assembly cahce
+
+People involved here: Alan McGovern, Marcus Meissner, H. U. Niedermann
+
+
+========================================================================
+References
+==========
+
+Mailing list postings, articles, etc. addressing problems with the
+libgphoto2 API/ABI or proposing features for a rewritten API.
+
+[1] http://article.gmane.org/gmane.comp.multimedia.gphoto.devel/2262
+    Hubert Figuière - RFC: extending camera support for OEM vendors?
+[2] http://marc.theaimsgroup.com/?l=gphoto-devel&r=1&b=200303&w=2
+       (look for mails with subject "Camera Support Information")
+    Misc. Authors - Camera Support Information
+[3] https://sourceforge.net/mailarchive/message.php?msg_id=36866239 
+    Hans Ulrich Niedermann - RFC: extending camera support for OEM vendors?
+[4] http://plan99.net/~mike/writing-shared-libraries.html
+    Mike Hearn -  Writing shared libraries
+[5] http://people.redhat.com/drepper/symbol-versioning
+    Ulrich Drepper - ELF Symbol Versioning
+[6] http://people.redhat.com/drepper/
+    Ulrich Drepper - (many relevant papers)
+[7] https://ols2006.108.redhat.com/reprints/jones-reprint.pdf
+    David Jones - Why Userspace Sucks, Or 101 Really Dumb Things Your App Shouldn't Do
+[8] http://people.redhat.com/drepper/defprogramming.pdf
+    Ulrich Drepper - Defensive Programming for Red Hat Enterprise Linux
+    (and What To Do If Something Goes Wrong)
+[9] http://people.redhat.com/drepper/dsohowto.pdf
+    Ulrich Drepper - How To Write Shared Libraries
+[10] http://people.redhat.com/drepper/goodpractice.pdf
+     Ulrich Drepper - Good Practices in Library Design, Implementation, and Maintenance
+
+
+
+========================================================================
+End of requirements
+========================================================================
+Local Variables:
+mode: indented-text
+End:
+========================================================================

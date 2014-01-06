@@ -1,0 +1,29 @@
+<oaf_info>
+
+<oaf_server iid="OAFIID:GNOME_GnocamApplet_Factory" type="exe"
+	    location="@LIBEXECDIR@/gnocam-applet">
+	<oaf_attribute name="repo_ids" type="stringv">
+		<item value="IDL:Bonobo/GenericFactory:2.0"/>
+		<item value="IDL:Bonobo/Unknown:1.0"/>
+	</oaf_attribute>
+	<oaf_attribute name="name" type="string" _value="Gnocam Applet Factory"/>
+	<oaf_attribute name="description" type="string" _value="Gnocam Applet Factory"/>
+</oaf_server>
+
+<oaf_server iid="OAFIID:GNOME_GnocamApplet" type="factory"
+            location="OAFIID:GNOME_GnocamApplet_Factory">
+	<oaf_attribute name="repo_ids" type="stringv">
+		<item value="IDL:GNOME/Vertigo/PanelAppletShell:1.0"/>
+		<item value="IDL:Bonobo/Control:1.0"/>
+		<item value="IDL:Bonobo/Unknown:1.0"/>
+	</oaf_attribute>
+	<oaf_attribute name="name" type="string" _value="Camera List"/>
+	<oaf_attribute name="description" type="string"
+			_value="Quick access to digital cameras"/>
+	<oaf_attribute name="panel:category" type="string" _value="Multimedia"/>
+	<oaf_attribute name="panel:icon" type="string"
+		value="@DATADIR@/pixmaps/@PACKAGE@/gnocam-camera1.png"/>
+
+</oaf_server>
+
+</oaf_info>

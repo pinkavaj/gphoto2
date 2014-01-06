@@ -1,0 +1,23 @@
+2003-08-20  Lutz Mueller <lutz@users.sourceforge.net>
+
+	Various changes.
+
+2003-01-20  Lutz Mueller <lutz@users.sourceforge.net>
+
+	* libgknc/*: Make threaded.
+
+2003-01-11  Lutz Müller <lutz@users.sourceforge.net>
+
+	* corba: CORBA-server.
+
+2003-01-01  Lutz Müller <lutz@users.sourceforge.net>
+
+	* libgphoto2: Driver for libgphoto2.
+
+2003-01-01  Lutz Müller <lutz@users.sourceforge.net>
+
+	* libknc: Various clean-ups.
+
+2003-01-01  Lutz Müller <lutz@users.sourceforge.net>
+
+	* First checkin

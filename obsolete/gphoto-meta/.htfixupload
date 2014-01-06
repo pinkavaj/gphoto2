@@ -1,0 +1,53 @@
+#!/bin/sh
+
+chmod 0700 "$0"
+
+base=$(dirname "$0")
+cd "$HOME/$base" || exit 1
+
+if [ -d "bz2" ]
+then
+    mkdir -p gz
+    chmod 0705 gz
+    chmod 0705 bz2
+fi
+
+for d in bz2 gz
+do
+    if cd "$HOME/$base/$d"
+    then
+	ln -s ../SUPPORTED-CAMERAS
+    fi
+done
+
+cd "$HOME/$base"
+
+chmod a+r SUPPORTED-CAMERAS
+
+for file in bz2/*.tar.bz2
+do
+    chmod a+r "$file"
+    new="$(echo "$file" | sed -e 's/bz2/gz/g')"
+    if [ -s "$file" ] && [ ! -s "$new" ]
+    then
+	echo "Converting \"$file\" to \"$new\"..."
+	bunzip2 -c "$file" | gzip -c --best > "$new"
+	chmod a+r "$new"
+    fi
+done
+chmod 0644 bz2/*.tar.*
+
+chmod 0705 .
+
+cd .. || exit 2
+
+rm -f SUPPORTED-CAMERAS latest-bz2 latest-gz
+ln -s "$(basename "$base")"/bz2 latest-bz2
+ln -s "$(basename "$base")"/gz latest-gz
+ln -s "$(basename "$base")"/SUPPORTED-CAMERAS SUPPORTED-CAMERAS
+
+chmod 0604 .htaccess
+chmod 0705 .
+
+[ -f 00README ] && touch 00README
+

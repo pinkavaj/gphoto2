@@ -1,0 +1,65 @@
+#!/bin/bash
+# Check for common errors in source files and disallow commit if one is detected
+
+repository="$1"
+shift
+
+check_Makefile.am() {
+	[ "$basename" == "Makefile.am" ] || return 0
+	errors=0
+	if grep -q -E '^SUBDIRS[[:space:]]*=.*\<intl\>' "$file"; then
+		echo "ERROR in file $file:"
+		echo "A CVS Makefile.am SUBDIRS line may not contain the \"intl\" subdirectory"
+		echo "The \"intl\" subdirectory is already added by autogen.sh/gettextize."
+		errors=$(( $errors + 1 ))
+	fi
+	return "$errors"
+}
+
+check_configure.in() {
+	[ "$basename" == "configure.in" ] || return 0
+	errors=0
+	output="$(awk 'BEGIN { n=0; } /^AC_OUTPUT\(/ { n=1; } (n) { print; } (n) && /\)/ { n=0; }' "$file")"
+	for forbidden in po/Makefile.in intl/Makefile.in; do
+		if echo "$output" | grep -q "$forbidden"; then
+			echo "ERROR in file $file:"
+			echo "A CVS configure.in AC_OUTPUT statement may not contain \"$forbidden\""
+			echo "The \"$forbidden\" entry is added automatically be autogen.sh/gettextize"
+			errors=$(( $errors + 1 ))
+		fi
+	done
+	return "$errors"
+}
+
+error_files=""
+error_count=0
+while [ "$1" != "" ]
+do
+	file="$1"
+	basename="$(basename "$file")"
+	for check in \
+		check_Makefile.am \
+		check_configure.in
+	do
+		"$check" "$file"
+		status="$?"
+		if [ "$status" -gt 0 ]; then
+			error_files="$error_files $file"
+			error_count=$(( $error_count + $status ))
+		fi
+	done
+
+	shift
+done
+
+if [ "$error_count" -gt "0" ]; then
+	echo "CVS commit denied because of $error_count errors in your files:"
+	for file in ${error_files}; do
+		echo "    $file"
+	done
+	echo "View above error messages for details."
+	exit 1
+fi
+
+exit 0
+

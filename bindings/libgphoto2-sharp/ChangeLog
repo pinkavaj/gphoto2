@@ -1,0 +1,669 @@
+2007-12-03  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/FileSystem.cs: Put in check to make sure directories aren't created if
+	  the device doesn't support directory creating. Updated the logic to
+	  detect folders.
+
+2007-12-03  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Camera.cs: Added logic for detecting the correct music, photo and
+	  playlist folders. Exposed these as properties
+
+2007-12-03  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Files/PlaylistFile.cs: Made public constructor
+
+2007-11-14  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/libgphoto2-sharp.dll.config: Adjusted to use the newer version of
+	  libgphoto2_port
+	* src/Base/PortInfo.cs: Adjusted to the new API
+	* src/Base/CameraList.cs: Cosmetic
+
+2007-11-14  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/FileSystem.cs, src/Base/CameraFilesystem.cs: That should be ulong, not
+	  'long'
+
+2007-11-14  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/libgphoto2-sharp.dll.config: make the -sharp binding require
+	  libgphoto2.so.6
+
+2007-11-14  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs, src/FileSystem.cs, src/Base/CameraFilesystem.cs: Conforming
+	  with the new libgphoto2 API
+
+2007-10-30  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	
+
+2007-10-26  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs, src/Files/GenericFile.cs, src/Files/MusicFile.cs,
+	  src/Files/ImageFile.cs: Added support code to allow the loading of Files
+	  from streams. This needs to be thought out better though. Disabled for
+	  the moment.
+
+2007-10-22  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Killed the Download() overload that returned a byte[].
+	  Replaced it by an overload which returns a Stream, this way large files
+	  can be handled without having to store it entirely in memory
+
+2007-10-22  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs, src/Files/GenericFile.cs, src/Files/MusicFile.cs,
+	  src/Files/PlaylistFile.cs, src/Files/ImageFile.cs: More XML comments
+
+2007-10-22  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Utilities.cs, src/GphotoException.cs, src/File.cs, src/FileSystem.cs,
+	  src/ErrorCode.cs, src/Camera.cs, src/Abilities.cs: Added XML
+	  documentation for all public methods/classes
+
+2007-10-21  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/GphotoException.cs, src/ErrorCode.cs, src/FileSystem.cs,
+	  src/Base/CameraWidget.cs, src/Base/PortInfoList.cs,
+	  src/Base/CameraFilesystem.cs, src/Base/PortInfo.cs,
+	  src/Base/CameraList.cs, src/Base/Context.cs, src/Base/Port.cs,
+	  src/Base/Object.cs, src/Base/ErrorCodes.cs, src/Base/Camera.cs,
+	  src/Base/CameraFile.cs, src/Base/CameraAbilitiesList.cs: Since the old
+	  API has to be broken to support 64bit linux, i might as well go the
+	  whole hog and hide all the old API from public view to force dev's to
+	  switch to the newer API. This way when it changes again, the users won't
+	  be affected.
+
+2007-10-20  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Camera.cs: If .Connect() fails, clean up and rethrow the exception
+
+2007-10-18  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Added the last-ditch parser to handle invalid XML in a sane
+	  way. It should work on 99% of the 'invalid' xml.
+
+2007-10-18  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Camera.cs: Compile fix
+
+2007-10-18  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	
+
+2007-10-17  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Utilities.cs, src/Camera.cs, src/Makefile.am,
+	  src/Base/CameraFilesystem.cs, src/Base/Camera.cs, libgphoto2-sharp.mdp:
+	  Added detection for 64bit systems and return an empty camera list for
+	  those systems as they are not supported.
+
+2007-10-14  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/Camera.cs: Added debug out
+
+2007-10-14  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/CameraFilesystem.cs, src/Base/Camera.cs: First attempt at working
+	  around the 64bit long issue.
+
+2007-10-14  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: made methods alphabetical
+	* src/FileSystem.cs: Removed old debug line. Renamed 'path' to 'directory'
+	  to keep API consistant. Removed old FIXMEs that have been fixed.
+	* src/Files/ImageFile.cs: Cosmetic changes
+
+2007-10-14  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Files/ImageFile.cs: Added some useful helper properties
+
+2007-10-14  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* Sample/Main.cs, src/TestGphoto2Sharp.cs, src/Abilities.cs,
+	  src/Base/CameraWidget.cs, src/Base/PortInfoList.cs,
+	  src/Base/CameraFilesystem.cs, src/Base/PortInfo.cs,
+	  src/Base/CameraList.cs, src/Base/Context.cs, src/Base/Port.cs,
+	  src/Base/Object.cs, src/Base/ErrorCodes.cs, src/Base/Camera.cs,
+	  src/Base/CameraFile.cs, src/Base/CameraAbilitiesList.cs: made the
+	  library API-compatible with the previous release
+	* src/File.cs, src/FileSystem.cs, src/Camera.cs, src/Files/GenericFile.cs,
+	  src/Files/MusicFile.cs, src/Files/PlaylistFile.cs,
+	  src/Files/ImageFile.cs: Added license header and made the library
+	  API-compatible with the previous release
+
+2007-10-13  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Bugfix for updating the metadata, hack/workaround for
+	  libgphoto error: made Size settable. Correctly saving the filesystem
+	* src/FileSystem.cs: Hack/Workaround for libgphoto bug. Copying metadata
+	  over manually from old file -> new file
+
+2007-10-13  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Push the stacktrace too
+
+2007-10-13  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Added some proper handling for metadata parsing errors
+
+2007-10-13  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	
+
+2007-10-07  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Added the FileSystem to the constructor and implemented the
+	  'Size' property.
+	* src/FileSystem.cs: Some path fixes for BaseDirectory usage. Removed
+	  needless null check in DeleteFile(string, string)
+	* src/Files/GenericFile.cs, src/Files/MusicFile.cs,
+	  src/Files/PlaylistFile.cs, src/Files/ImageFile.cs: Added the FileSystem
+	  to the constructor
+	* src/Base/CameraFilesystem.cs: Fixed the p/invoke declaration.
+
+2007-10-07  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Since i'm getting the 'metadata' in every case, pull it up to
+	  the top. Did some fixing up for the handling of the basedirectory
+	* src/FileSystem.cs, src/Files/PlaylistFile.cs: Did some fixing up for the
+	  handling of the basedirectory
+	* src/Camera.cs: Added a 'reconnect' method.
+
+2007-10-06  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Files/MusicFile.cs: Overrode equals and gethashcode
+
+2007-10-06  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Files/PlaylistFile.cs: Added some brackets to fix bug.
+
+2007-10-06  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Loading metadata on all filetypes now as opposed to selective
+	  metadata/normal
+	* src/FileSystem.cs: Added check for null aswel.
+	* src/Files/PlaylistFile.cs: Playlist is loading metadata and contents fully
+	  now.
+
+2007-10-06  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Files/PlaylistFile.cs: Fixed bug
+
+2007-10-06  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/FileSystem.cs: Added a helper method to split paths
+	* src/Files/PlaylistFile.cs: Playlists are now being populated with a list
+	  of the files in them
+
+2007-10-06  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: when storing values, if the value is null store an empty
+	  string instead
+
+2007-10-06  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	
+
+2007-10-05  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/FileSystem.cs: Made BaseDirectory internal 
+
+2007-10-02  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Camera.cs: Exposing the usb device and bus numbers to make it easier
+	  to identify the device explicitly.
+
+2007-10-01  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Added a setter for Rating
+
+2007-10-01  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Camera.cs: Always return a non-null list even if no cameras are found
+
+2007-09-30  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Camera.cs: bugfix: I need to set disposed = true *after* i disconnect
+	  from the device.
+
+2007-09-30  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Cosmetic fixes (spaces VS tabs)
+
+2007-09-30  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Added in helper properties to reveal more information
+
+2007-09-30  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Updated the mimetype usage a bit
+	* src/FileSystem.cs: Added in methods which count how many files there are
+	  in a folder
+	* src/Camera.cs: Expose a List<FileSystem> rather than FileSystem[]. Same
+	  for the Camera[]
+	* src/Files/PlaylistFile.cs, src/Makefile.am, libgphoto2-sharp.mdp: Added
+	  PlaylistFile class
+
+2007-09-29  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/FileSystem.cs: Stripping out the 'BaseDirectory' correctly when
+	  reading files from the camera.
+
+2007-09-29  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/FileSystem.cs: Fixed bug in DeleteFile(string, string). Also minor
+	  cosmetic changes for other methods
+
+2007-09-29  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/FileSystem.cs: Fixed bug in DeleteFile(string, string). Also minor
+	  cosmetic changes for other methods
+
+2007-09-29  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Put in a check to make sure metadata isn't updated on a local
+	  file (as it'll fail)
+	* src/FileSystem.cs: Added a parameterless overload for GetFolders which
+	  returns all the folders in the root directory.
+
+2007-09-29  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/FileSystem.cs: An empty directory is allowable, it'll just work off
+	  the root directory then.
+
+2007-09-29  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/CameraFile.cs: GetDataAndSize handles the scenario when a null
+	  pointer is returned.
+
+2007-09-28  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs, src/FileSystem.cs, src/Camera.cs: Renamed the CameraDevice
+	  property to just 'Device'
+
+2007-09-27  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Added method to help guess the mimetype
+	* src/FileSystem.cs: Added methods to check if a directory already exists,
+	  to create a new directory and remove an existing one. Setting mimetype
+	  on new files correctly.
+	* src/Files/MusicFile.cs: Added public constructor
+	* src/Base/CameraFile.cs: SetDataAndLength :Copy the data into the unmanaged
+	  array.  GetDataAndLength: If we are returned a null pointer, don't try
+	  to copy out data.
+
+2007-09-27  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/CameraFile.cs: Forgot to change the method declaration
+
+2007-09-27  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/CameraFile.cs: Passing the data the correct way to
+	  gp_file_set_data_and_size
+
+2007-09-25  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/FileSystem.cs: The internal code correctly prefixes the path to a
+	  directory with the filesystems name
+
+2007-09-25  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/FileSystem.cs: Added in some checks to fix path combining.
+
+2007-09-25  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/CameraFile.cs: Removing the call to free the pointer as i
+	  shouldn't be doing that.
+
+2007-09-25  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Fixed the XML parsing. It still borks when libgphoto2 returns
+	  invalid XML. I need a proper workaround for mimetype detection when i
+	  only have the metadata.
+	* src/FileSystem.cs: GetFiles returns a list of files rather than strings
+	* src/Files/MusicFile.cs: Identifier is 'AlbumName' not 'Album'
+
+2007-09-23  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/CameraFilesystem.cs, src/Base/Port.cs: Cosmetic changes to clean
+	  up the four (unimportant) compile time warnings.
+
+2007-09-23  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Camera.cs: Cosmetic
+
+2007-09-23  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/FileSystem.cs: Should be converting the string to byte[]
+	* src/Abilities.cs: Simplified the code
+
+2007-09-23  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Files/MusicFile.cs: Metadata is parsed in the base class
+
+2007-09-23  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Added a fixme
+	* src/FileSystem.cs: Fixed infinite recursion ;)
+
+2007-09-23  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Implemented metadata uploading/syncing and file downloading.
+	* src/FileSystem.cs: Implemented file uploading
+	* src/Files/GenericFile.cs, src/Files/MusicFile.cs, src/Files/ImageFile.cs:
+	  Misc cosmetic changes
+
+2007-09-18  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Files/ImageFile.cs: Added the supporting property code for the
+	  ImageFile class
+
+2007-09-18  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs, src/Files/GenericFile.cs, src/Files/MusicFile.cs,
+	  src/Files/ImageFile.cs: Implemented metadata parsing/handling. The lib
+	  can handle anything that is thrown at it
+	* src/FileSystem.cs: Implemented nearly all the stubs.
+	* src/Camera.cs: Added a fixme comment
+	* libgphoto2-sharp.mdp: Added ref to System.XML
+
+2007-09-16  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Added a FileName property.
+	* src/FileSystem.cs: Began implementing the stubs
+	* src/Camera.cs: Implemented the FileSystem section
+
+2007-09-16  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Abilities.cs: Removed old CWL.
+
+2007-09-16  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	
+
+2007-09-15  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	
+
+2007-09-15  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Stubbed out the Download methods to get a file from an MTP
+	  device
+	* src/FileSystem.cs: Stubbed out the Upload method to send a file to an MTP
+	  device
+
+2007-09-15  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Added some properties and methods which are common to all
+	  files
+	* src/Files/GenericFile.cs, src/Makefile.am, libgphoto2-sharp.mdp: Added
+	  GenericFile class
+
+2007-09-15  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/Camera.cs: Removed old warning
+
+2007-09-15  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Files/MusicFile.cs: Added two more properties
+
+2007-09-13  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Implemented initial support for parsing the correct filetype.
+	  Added a list of all the possible fields that MTP can return. Important
+	  ones which haven't been implemented will be implemented.
+	* src/Files/MusicFile.cs, src/Files/ImageFile.cs: Partially implemented two
+	  initial subclasses of File
+	* src/Makefile.am: Added two new files to the makefile
+	* src/Base/CameraFile.cs: Removed the wrapper for DetectMimetype. Made the
+	  MimeType strings const rather than static.
+
+2007-09-13  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/CameraFile.cs: Freeing the unmanaged array after it has been
+	  marshaled to managed code. This was a huge memory leak.
+
+2007-09-13  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/FileSystem.cs: Implemented the new API for the Filesystem
+	* libgphoto2-sharp.mdp: Readded the TestGphoto2Sharp.cs file to the solution
+
+2007-09-10  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* Sample/Main.cs: Removed accidently committed testcase for a bug.
+	* src/Camera.cs: Also checking to make sure the object hasn't been disposed.
+
+2007-09-10  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	
+
+2007-09-10  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/File.cs: Cosmetic changes to the existing file class.
+	* src/TestGphoto2Sharp.cs: Removed old file
+	* src/FileSystem.cs: Created a wrapper class for the FileSystem/StorageInfo
+	  structs. No methods implemented.
+	* src/Camera.cs: Created a wrapper class for 'Camera' with a handful of
+	  basic methods/properties
+	* src/Abilities.cs: Created a wrapper class for CameraAbilities. All camera
+	  abilities, file operations and folder operations are exposed as boolean
+	  properties.
+	* libgphoto2-sharp.mds, Sample, Sample/AssemblyInfo.cs, Sample/Main.cs,
+	  Sample/Sample.mdp: Added a sample console application to demonstrate API
+	  usage
+
+2007-09-10  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/CameraFilesystem.cs: Added xml comments
+	* src/Base/Camera.cs: Fixed a leak. The native array needs to be free'ed.
+	* src/Base/CameraAbilitiesList.cs: Added the flags attribute to the enums to
+	  make it clearer that they are bitfields
+
+2007-09-09  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/CameraList.cs: Added comments
+
+2007-09-08  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* libgphoto2-sharp.mdp: Removed useless files
+	* src/Camera.cs: Cosmetic
+	* src/Detector.cs: Removed obsolete file
+
+2007-09-07  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/CameraWidget.cs: Added xml comments. fixed tab v space issues
+
+2007-09-07  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* libgphoto2-sharp.mdp: Turned off unsafe code in the project file.
+
+2007-09-07  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/PortInfoList.cs, src/Base/CameraFilesystem.cs,
+	  src/Base/PortInfo.cs, src/Base/Port.cs, src/Base/Camera.cs,
+	  src/Base/CameraFile.cs, src/Base/CameraAbilitiesList.cs: Replaced the
+	  only use of unsafe code with the safe equivalent. Removed all references
+	  to 'unsafe' where the enclosed block wasn't using unsafe code. Project
+	  now compiles without unsafe code.
+
+2007-09-07  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Camera.cs, src/Base/CameraWidget.cs, src/Base/PortInfoList.cs,
+	  src/Base/CameraFilesystem.cs, src/Base/CameraList.cs,
+	  src/Base/Context.cs, src/Base/Port.cs, src/Base/ErrorCodes.cs,
+	  src/Base/CameraFile.cs, src/Base/CameraAbilitiesList.cs: Made all the
+	  interop methods private instead of internal
+
+2007-09-07   <> 
+
+	* src/Base/Camera.cs: Added new overload for Init which allows the user to
+	  connect to a specific device. Also added XML comments 
+
+2007-09-06  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/PortInfoList.cs, src/Base/CameraFilesystem.cs,
+	  src/Base/CameraList.cs, src/Base/Port.cs, src/Base/Object.cs,
+	  src/Base/Camera.cs, src/Base/CameraFile.cs,
+	  src/Base/CameraAbilitiesList.cs: Removed the old 'Cleanup' method and
+	  replaced it with the standard Dispose(bool) pattern.
+	* src/Base/Context.cs: Removed the old 'Cleanup' method and replaced it with
+	  the standard Dispose(bool) pattern. Changed the error code to
+	  GeneralError.
+
+2007-09-06  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/Context.cs: Fixed typo in error message.
+
+2007-09-06  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/Context.cs: Added safety check to make sure the context was
+	  actually created
+
+2007-09-05  Alan McGovern <alan.mcgovern@gmail.com> 
+
+	* src/Base/Camera.cs: Made the interop methods private as opposed to
+	  internal - no need to be visible outside the class scope.
+
+2007-09-05   <> 
+
+	* libgphoto2-sharp.mdp, src/Base/CameraWidget.cs, src/Base/PortInfoList.cs,
+	  src/Base/CameraFilesystem.cs, src/Base/CameraList.cs,
+	  src/Base/Object.cs, src/Base/Camera.cs, src/Base/CameraFile.cs,
+	  src/Base/CameraAbilitiesList.cs: Updated methods to use the
+	  Error.CheckError method instead of manually doing if(Error.IsError())
+	  throw ErrorException(). Added calls to Error.CheckError() where they
+	  were missing previously.
+
+2007-07-19  Patrick van Staveren  <trick@vanstaveren.us>
+
+	* CameraFilesystem.cs: revert improperly implemented cacheing
+
+2007-07-18  Patrick van Staveren  <trick@vanstaveren.us>
+
+	* CameraList.cs, CameraFilesystem.cs: Lots of whitespace cleanups
+	* CameraFilesystem.cs: these aren't unsafe, so stop marking them
+	so.  Also, cache getting the list of files and folders.  Will make
+	use of this soon :)
+
+2007-02-22  Patrick van Staveren <trick@vanstaveren.us>
+
+	* src/Base/CameraFile.cs: add another constructor to allow passing
+	of integer file descriptor.
+
+2007-02-04  Patrick van Staveren <trick@vanstaveren.us> 
+
+	* libgphoto2-sharp.mdp: Updated MonoDevelop project
+	
+	* src/Base/ErrorCodes.cs: Updated to match newer error code values
+	
+	* src: updated svn:ignore
+
+2007-01-31  Patrick van Staveren  <trick@vanstaveren.us>
+
+	* src/{File,Camera,Detector}.cs: Starting to prototype fully OO
+	classes.
+
+	* configure.ac: Use gmcs rather than mcs, to give us .NET 2.0
+	features (collections, for one).  Both Banshee and F-Spot use 2.0
+	anyway, so this won't be an issue but will provide us with a few
+	extra features.
+
+	* NEWS: updated
+
+2007-01-30  Patrick van Staveren  <trick@vanstaveren.us>
+
+	* src/*: moved everything to a new namespace,
+	Gphoto2.Base and moved all files into subdir.
+
+	* configure.ac: bump to 2.3.99.0.trunk.
+
+	* NEWS, TODO: updated.
+
+	* src/en/*: updated docs for new namespace.
+
+	* src/Makefile.am: fixed up doc updater.
+
+	* src/Base/CameraFile.cs: fd method uses a UnixStream
+	rather than a raw integer.
+
+2007-01-23  Patrick van Staveren  <trick@vanstaveren.us>
+
+	* src/CameraFilesystem.cs: retab
+
+2007-01-19  Patrick van Staveren  <trick@vanstaveren.us>
+
+	* TODO: updated.
+
+	* libgphoto2-sharp.md{s,p}: added MD project/solution.
+
+	* src/Camera.cs: more changes to GetStorageInformation,
+	it should work for >1 storage device now.
+
+2007-01-18  Patrick van Staveren  <trick@vanstaveren.us>
+
+	* src/*: move DllLoader lines to end of classes.
+	
+	* src/todo: updated
+
+	* src/TestGPhoto2Sharp.cs: wrap it all in an exception handler
+	and return 1 on failure.  Also add use System and clean up.
+
+	* NEWS: updated
+
+	* src/Makefile.am: delete libgphoto2-sharp-docs.{tree,zip} on
+	`make clean`
+
+	* moved src/todo to ./TODO
+
+2007-01-17  Patrick van Staveren  <trick@vanstaveren.us>
+
+	* src/todo-formatting renamed to todo.
+
+	* src/CameraFilesystem.cs: cleaned up old sizing comments.
+
+	* src/CameraFile.cs: changed parameter to be a fd integer.
+
+	* src/*: vim:retab
+
+2007-01-15  Patrick van Staveren  <trick@vanstaveren.us>
+
+	* configure.ac: Bump to 2.3.1.2.trunk
+
+	* src/{en/*, libgphoto2-sharp-docs.source, Makefile.am}, configure.ac:
+	add in monodoc generation, and initial (uncommented) docs.
+
+	* shamrock/: svn:ignore Makefile
+
+	* src/Camera.cs, src/testsizes-typelist.txt: added
+	CameraStorageInformation API.  Currently will only return info for
+	first storage device.  Experimental.  Lightly tested.
+
+	* src/{Camera, CameraAbilitiesList}.cs: Formatting: move DllLoader
+	lines to bottom.
+
+	* src/todo-formatting.txt: temp tracking file for formatting.
+
+2006-12-30  Patrick van Staveren  <trick@vanstaveren.us>
+
+	* configure.ac, Makefile.am, src/Makefile.am, shamrock/*:
+	Take advantage of Shamrock macros from Banshee.
+
+	* src/CameraFile.cs: add constructor to use new
+	gp_camera_file_new_from_fd(...), and add corresponding enum.
+	This is untested.
+
+	Bump to 2.3.1.1.trunk
+
+2006-12-26  Patrick van Staveren  <trick@vanstaveren.us>
+
+	* src/{Camera.cs, CameraFile.cs, ErrorCodes.cs,
+	  Object.cs}: Minor code formatting cleanups
+	
+	* src/CameraFile.cs: Update mime type list; fix wild typos
+
+2006-12-10  Patrick van Staveren  <trick@vanstaveren.us>
+
+	* Updated COPYING, AUTHORS, NEWS now that we have a license

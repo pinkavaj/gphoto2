@@ -1,0 +1,6 @@
+==General Todo==
+
+* Integrate some NUnit tests.
+* Extend the 'ImageFile' class to offer more useful methods
+* Implement the 'Playlist' class fully.
+* Implement any other specific types that would be useful. VideoFile maybe.
