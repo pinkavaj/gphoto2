@@ -994,6 +994,47 @@ Saving file as MVI_5418.AVI                                                     
 	  </answer>
 	</qandaentry>
 
+	<qandaentry id="FAQ-already-in-use">
+	  <question>
+	    <simpara>Why do I get the error message "Could not lock the device"?</simpara>
+	  </question>
+	  <answer>
+	    <para>
+	      The exact message looks like
+	    </para>
+	    <screen>
+		*** Error ***
+		An error occurred in the io-library ('Could not lock the device'): Camera is
+		already in use.
+
+		*** Error (-60: 'Could not lock the device') ***
+	    </screen>
+	    <para>
+	      This means another process on the system is using the camera already. Cameras
+              supported by libgphoto2 can be accessed by file managers like Nautilus or Dolphin
+              via their virtual file filesystem and their technology opens the cameras as soon
+              as they are plugged in.
+            </para>
+            <para>
+              One major system in use is the GNOME virtual filesystem
+              <code>gvfs</code>.  To detect if this is the case, you
+              can run <code>gvfs-mount -l</code>. If this reports GPhoto
+              device, your camera is likely blocked by it. In that case
+              you can try using <code>gvfs-mount -s gphoto2</code> to
+              umount the virtual filesystem and replugin the camera.
+              Verify with <code>gvfs-mount -l</code> if it is really
+              unmounted.
+            </para>
+            <para>
+              On MacOS X the built-in PTP camera tool might
+              block libgphoto2 usage. It is a process called
+              <code>PTPCamera</code> which can be found using the
+              UNIX <code>ps</code> command and killed with the UNIX
+              <code>kill</code> command.
+	    </para>
+	  </answer>
+	</qandaentry>
+
 	<qandaentry id="FAQ-find-camera">
 	  <question>
 	    <simpara>gphoto2 does not find my camera. What shall I do?</simpara>
@@ -3861,18 +3902,32 @@ or
 	  </listitem>
 	</varlistentry>
 
+	<varlistentry>
+	  <term><option>--keep</option></term>
+	  <listitem>
+	    <para>When doing --capture-image-and-download or interval capture, this option will keep the images on the memory card of the camera.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--no-keep</option></term>
+	  <listitem>
+	    <para>When doing --capture-image-and-download or interval capture, this option will not keep the images on the memory card of the camera after downloading them during capture. (default)</para>
+	  </listitem>
+	</varlistentry>
+
 
 	<varlistentry>
 	  <term><option>--capture-movie</option></term>
 	  <listitem>
-	    <para>Capture a movie. (No driver supports this at this time.)</para>
+	    <para>Capture a movie. If the camera supports previews, this will capture a stream of previews (motion-jpeg) as fast as the camera can.</para>
 	  </listitem>
 	</varlistentry>
 
 	<varlistentry>
 	  <term><option>--capture-sound</option></term>
 	  <listitem>
-	    <para>Capture an audio clip.</para>
+	    <para>Capture an audio clip. (No driver supports this at this time.)</para>
 	  </listitem>
 	</varlistentry>
 
