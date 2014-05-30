@@ -3265,6 +3265,7 @@ or
 	  <arg>-h</arg>
 	  <arg>--help</arg>
 	</group>
+        <arg>--usage</arg>
 	<sbr/>
 	<arg choice="opt">--hook-script <replaceable>FILENAME</replaceable></arg>
 	<sbr/>
@@ -3347,6 +3348,10 @@ or
 	<arg choice="opt">--get-audio-data <replaceable>RANGE</replaceable></arg>
 	<arg choice="opt">--get-all-audio-data</arg>
 	<sbr/>
+	<arg choice="opt">--get-meta-data <replaceable>RANGE</replaceable></arg>
+	<arg choice="opt">--get-all-meta-data</arg>
+	<arg choice="opt">--upload-meta-data <replaceable>FILENAME</replaceable></arg>
+	<sbr/>
 	<arg choice="opt">--force-overwrite</arg>
 	<sbr/>
 	<arg choice="opt">--new</arg>
@@ -3367,11 +3372,13 @@ or
 	<arg choice="opt">--config</arg>
 	<sbr/>
 	<arg choice="opt">--list-config</arg>
+	<arg choice="opt">--list-all-config</arg>
 	<sbr/>
 	<arg choice="opt">--get-config <replaceable>CONFIGENTRY</replaceable></arg>
 	<arg choice="opt">--set-config <replaceable>CONFIGENTRY=CONFIGVALUE</replaceable></arg>
 	<arg choice="opt">--set-config-index <replaceable>CONFIGENTRY=CONFIGINDEX</replaceable></arg>
 	<arg choice="opt">--set-config-value <replaceable>CONFIGENTRY=CONFIGVALUE</replaceable></arg>
+	<arg choice="opt">--reset</arg>
 	<sbr/>
 	<arg choice="opt">--capture-preview</arg>
 	<sbr/>
@@ -3388,13 +3395,16 @@ or
 	<sbr/>
 	<arg choice="opt">--capture-image</arg>
 	<arg choice="opt">--trigger-capture</arg>
-	<arg choice="opt">--capture-movie</arg>
+	<arg choice="opt">--capture-movie <replaceable>SECONDS or COUNT</replaceable></arg>
 	<arg choice="opt">--capture-sound</arg>
 	<sbr/>
 	<arg choice="opt">--capture-tethered <replaceable>SECONDS or COUNT</replaceable></arg>
 	<sbr/>
 	<arg choice="opt">--wait-event <replaceable>SECONDS or COUNT</replaceable></arg>
 	<arg choice="opt">--wait-event-and-download <replaceable>SECONDS or COUNT</replaceable></arg>
+	<sbr/>
+	<arg choice="opt">--keep</arg>
+	<arg choice="opt">--no-keep</arg>
 	<sbr/>
 	<arg choice="opt">--show-info <replaceable>RANGE</replaceable></arg>
 	<sbr/>
@@ -3525,6 +3535,13 @@ or
 
 	<varlistentry>
 	  <term><option>-h</option>, <option>--help</option></term>
+	  <listitem>
+	    <para>Display options and short description.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--usage</option></term>
 	  <listitem>
 	    <para>Display a short usage message.</para>
 	  </listitem>
@@ -3794,6 +3811,29 @@ or
 	</varlistentry>
 
 	<varlistentry>
+	  <term><option>--upload-meta-data</option>
+	   <replaceable>FILENAME</replaceable></term>
+	  <listitem>
+	    <para>Upload meta data for the specific file, taken from a file prefix with meta_ .</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--get-meta-data</option>
+	   <replaceable>RANGE</replaceable></term>
+	  <listitem>
+	    <para>Get meta data given in range.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--get-all-meta-data</option></term>
+	  <listitem>
+	    <para>Get all meta data from folder.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
 	  <term><option>--force-overwrite</option></term>
 	  <listitem>
 	    <para>Overwrite files without asking.</para>
@@ -3867,8 +3907,7 @@ or
 	</varlistentry>
 
 	<varlistentry id="ref-gphoto2-reset-interval">
-	  <term><option>--reset-interval</option>
-	  (since 2.4)</term>
+	  <term><option>--reset-interval</option></term>
 	  <listitem>
 	    <para>
 	      Setting this option will reset the time interval to the
@@ -3891,7 +3930,8 @@ or
 	<varlistentry>
 	  <term><option>--trigger-capture</option></term>
 	  <listitem>
-	    <para>Trigger the capture an image and return. If you want to get the image downloaded, see --wait-event-and-download</para>
+	    <para>Trigger the capture an image and return. If you want to get the image downloaded, see --wait-event-and-download.</para>
+	    <para>This feature is only available for some camera brands and drivers.</para>
 	  </listitem>
 	</varlistentry>
 
@@ -3918,16 +3958,18 @@ or
 
 
 	<varlistentry>
-	  <term><option>--capture-movie</option></term>
+	  <term><option>--capture-movie <replaceable>SECONDS</replaceable></option></term>
 	  <listitem>
 	    <para>Capture a movie. If the camera supports previews, this will capture a stream of previews (motion-jpeg) as fast as the camera can.</para>
+	    <para>If not argument is specified, it will capture preview frames until you press Ctrl-C. Arguments that can be specified are either seconds of capture
+		or number of preview frames.</para> 
 	  </listitem>
 	</varlistentry>
 
 	<varlistentry>
 	  <term><option>--capture-sound</option></term>
 	  <listitem>
-	    <para>Capture an audio clip. (No driver supports this at this time.)</para>
+	    <para>Capture an audio clip. No driver supports this at this time.</para>
 	  </listitem>
 	</varlistentry>
 
@@ -3987,7 +4029,14 @@ or
 	<varlistentry>
 	  <term><option>--show-info</option> <replaceable>RANGE</replaceable></term>
 	  <listitem>
-	    <para>Show info.</para>
+	    <para>Show information for a single or multiple images.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--config</option></term>
+	  <listitem>
+	    <para>Starts a ncurses based text configuration menu. gphoto2 needs to built against CDK for this feature.</para>
 	  </listitem>
 	</varlistentry>
 
@@ -3995,6 +4044,14 @@ or
 	  <term><option>--list-config</option></term>
 	  <listitem>
 	    <para>List all configuration entries.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--list-all-config</option></term>
+	  <listitem>
+	    <para>List all configuration entries and their values and choices.</para>
+	    <para>This command is a combination of <option>--list-config</option> and calling <option>--get-config</option> on all the entries.</para>
 	  </listitem>
 	</varlistentry>
 
@@ -4046,7 +4103,20 @@ or
                 the value is looked up and set.
 	    </para>
 	    <para>
-		Look at the output of <option>--get-config</option> to see what indices are possible to set here.
+		Look at the output of <option>--get-config</option> to see what values are possible to set here.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--reset</option></term>
+	  <listitem>
+	    <para>Resets the specified (or autodetected) USB port.</para>
+	    <para>
+		This command resets the USB port of either the first auto-detected camera,
+		or the port specified with <option>--port usb:XXX,YYY</option>.
+		This option is useful if somehow the protocol talking to the camera locked up
+		and simulates plugging out and in the camera.
 	    </para>
 	  </listitem>
 	</varlistentry>
