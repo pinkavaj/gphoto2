@@ -3411,9 +3411,13 @@ or
 	<arg choice="opt">--show-exif <replaceable>RANGE</replaceable></arg>
 	<sbr/>
 	<arg choice="opt">--storage-info</arg>
+	<sbr/>
 	<arg choice="opt">--summary</arg>
+	<sbr/>
 	<arg choice="opt">--manual</arg>
+	<sbr/>
 	<arg choice="opt">--about</arg>
+	<sbr/>
 	<arg choice="opt">--shell</arg>
       </cmdsynopsis>
     </refsynopsisdiv>
