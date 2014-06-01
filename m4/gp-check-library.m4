@@ -399,6 +399,7 @@ if test "x$have_[$1]" = "xyes"; then
 	AC_MSG_CHECKING([$2][ cpp flags])
 	AC_MSG_RESULT(["${[$1][_CFLAGS]}"])
 else
+	[REQUIREMENTS_FOR_][$1][=]
 	GP_CONFIG_MSG([$2],[no])dnl
 fi
 dnl AC_SUBST is done implicitly by AC_ARG_VAR above.
