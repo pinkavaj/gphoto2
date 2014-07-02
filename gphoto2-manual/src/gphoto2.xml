@@ -2095,6 +2095,10 @@ fi
       <sect2 id="usb-on-linux-hotplug">
 	<title><acronym>USB</acronym> ports on Linux using linux-hotplug</title>
 	<para>
+	Please note that this method is outdated, in Linux kernel 2.6, 3.x and
+	newer versions, udev rules are used for rule setting.
+	</para>
+	<para>
 	  <ulink
 	  url="http://linux-hotplug.sourceforge.net/">linux-hotplug</ulink>
 	  was the first solution for hooks to run when hotplugging
