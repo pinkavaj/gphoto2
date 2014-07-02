@@ -1031,6 +1031,11 @@ Saving file as MVI_5418.AVI                                                     
               <code>PTPCamera</code> which can be found using the
               UNIX <code>ps</code> command and killed with the UNIX
               <code>kill</code> command.
+            </para>
+            <para>
+              If this does not help, and you still get "Could not claim the device" errors,
+              try this user supplied tool <ulink url="https://github.com/mejedi/mac-gphoto-enabler">https://github.com/mejedi/mac-gphoto-enabler</ulink>
+              which does slightly more intrusive changes to MacOS to avoid it grabbing the camera.
 	    </para>
 	  </answer>
 	</qandaentry>
