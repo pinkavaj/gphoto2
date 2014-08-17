@@ -17,6 +17,14 @@
 
 
     	<p>
+	<b>libgphoto2 2.5.5 and gphoto2 2.5.5</b> have been
+	released. Read <a href="/news/"><b>what's new</b></a>.
+	Download it <a href="/download/"><b>now</b></a>.
+    	</p>
+	<div style="text-align: right;"><b>August 17th, 2014</b></div>
+    	<p>
+
+    	<p>
 	<b>libgphoto2 2.5.4 and gphoto2 2.5.4</b> have been
 	released. Read <a href="/news/"><b>what's new</b></a>.
 	Download it <a href="/download/"><b>now</b></a>.
@@ -31,34 +39,6 @@
     	</p>
 	<div style="text-align: right;"><b>January 10th, 2014</b></div>
     	<p>
-
-    	<p>
-	<b>libgphoto2 and gphoto2 2.5.2</b> have been
-	released. Read <a href="/news/"><b>what's new</b></a>.
-	Download it <a href="/download/"><b>now</b></a>.
-    	</p>
-	<div style="text-align: right;"><b>May 5th, 2013</b></div>
-    	<p>
-
-	<b>libgphoto2 and gphoto2 2.5.1</b> have been
-	released. Read <a href="/news/"><b>what's new</b></a>.
-	Download it <a href="/download/"><b>now</b></a>.
-    	</p>
-	<div style="text-align: right;"><b>Jan 27th, 2013</b></div>
-
-    	<p>
-	<b>libgphoto2 and gphoto2 2.5.0</b> have been
-	released. Read <a href="/news/"><b>what's new</b></a>.
-	Download it <a href="/download/"><b>now</b></a>.
-    	</p>
-	<div style="text-align: right;"><b>July 10th, 2012</b></div>
-
-    	<p>
-	<b>libgphoto2 and gphoto2 2.4.14</b> have been
-	released. Read <a href="/news/"><b>what's new</b></a>.
-	Download it <a href="/download/"><b>now</b></a>.
-    	</p>
-	<div style="text-align: right;"><b>April 15th, 2012</b></div>
 
 
 	 <p>Digital cameras have the balance of quality, features, and 
