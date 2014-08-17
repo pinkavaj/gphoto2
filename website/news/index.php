@@ -10,6 +10,61 @@
 	<td class="text">
 <!-- news headlines -->
 <hr />
+<h2>libgphoto2 2.5.5 and gphoto2 2.5.5 release</h2>
+
+<h3>ptp2</h3>
+<ul>
+<li>Nikon 1 support. Final fix to get it running by Raj Kumar of archive.org.
+<li>Nikon: liveview capture without autofocus enhanced, now also for card
+<li>Nikon: restart liveview after capture
+<li>Canon EOS: New property reporting method (OLC Info) implemented.
+<li>Print read-only values in configuration table lookup (for Canon EOS mostly)
+<li>Sony: Fixed Sony SLT-A900v capture
+<li>Fixed the various "datetime" hooks for PTP generic, Canon Powershot and Canon EOS
+  to hopefully work better. --set-config datetime=now sets the camera to the current time.
+<li>CHDK: some changes
+<li>New ids:<ul>
+  <li>Nikon DSC D3x, D5300
+  <li>Nikon Coolpix P330
+  <li>Canon PowerShot S95, S120, SX260HS, SX280HS, SX160IS, A2500, A2600, Elph135, IXUS 300HS, IXUS 255HS
+  <li>Canon EOS 1200D
+  <li>Sony DSC-A900, Alpha 6000, DSC-HX5V
+  <li>Casio EX-ZR700, 
+  <li>Fuji FinePix AV-150, T200
+  </ul>
+<li>Massive logging and error handling cleanup by Axel Waggershauser
+<li>cleanup of the USB data handling
+<li>Bugfixes
+</ul>
+
+<h3>st2205</h3>
+add support for a new type of 240x320 picture frames
+
+<h3>all</h3>
+<ul>
+<li>Massive logging and error handling cleanup by Axel Waggershauser.
+<li>Various cleanups from David Berrange for mingw32 builds.
+<li>fixed libgd detection and linking.
+</ul>
+
+<h3>print-camera-list</h3>
+add a mode to print udev rules for the non-standard USB support (usbscsi/usbdisk),
+needed additional to HWDB databases.
+
+<h3>translations</h3>
+* updated ukrainian, vietnamese, polish, french, finish, chinese, danish, dutch
+
+<h3>gphoto2</h3>
+<ul>
+<li>bugfix for daylight saving time usage in handling date/time widgets
+<li>--debug-loglevel=(debug|verbose|data|all) option added to select debug verbosity
+<li>fixed --filename with cross-device usage
+<li>adjusted wait time heuristics after capture
+<li>manpage updated
+<li>updated translations
+</ul>
+
+<hr />
 <h2>libgphoto2 2.5.4 and gphoto2 2.5.4 release</h2>
 
 <h3>ptp2</h3>
