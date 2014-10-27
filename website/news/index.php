@@ -10,6 +10,27 @@
 	<td class="text">
 <!-- news headlines -->
 <hr />
+<h2>libgphoto2 2.5.5.1 release</h2>
+This is a regression fix release.
+
+<h3>ptp2</h3>
+<ul>
+<li>fixed all Nikon S* coolpix that are not Nikon 1
+<li>Nikon: exit from potential endless loop on trigger capture
+</ul>
+
+<h3>canon</h3>
+<ul>
+<li>On EOS/Rebel DSLR do not query or set "zoom" as its manual always
+</ul>
+
+<h3>translations</h3>
+<ul>
+<li>updated polish, ukrainian, vietnamese
+</ul>
+
+<hr/>
+
 <h2>libgphoto2 2.5.5 and gphoto2 2.5.5 release</h2>
 
 <h3>ptp2</h3>
