@@ -17,6 +17,14 @@
 
 
     	<p>
+	<b>libgphoto2 2.5.5.1</b> has been
+	released. Read <a href="/news/"><b>what's new</b></a>.
+	Download it <a href="/download/"><b>now</b></a>.
+    	</p>
+	<div style="text-align: right;"><b>August 30th, 2014</b></div>
+    	<p>
+
+    	<p>
 	<b>libgphoto2 2.5.5 and gphoto2 2.5.5</b> have been
 	released. Read <a href="/news/"><b>what's new</b></a>.
 	Download it <a href="/download/"><b>now</b></a>.
@@ -33,11 +41,10 @@
     	<p>
 
     	<p>
-	<b>libgphoto2 2.5.3.1 and gphoto2 2.5.3</b> have been
-	released. Read <a href="/news/"><b>what's new</b></a>.
+	<b>gphotofs 0.5</b> has been released to include libgphoto2 2.5.x support.
 	Download it <a href="/download/"><b>now</b></a>.
     	</p>
-	<div style="text-align: right;"><b>January 10th, 2014</b></div>
+	<div style="text-align: right;"><b>July 10th, 2012</b></div>
     	<p>
 
 
