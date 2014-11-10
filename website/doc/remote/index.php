@@ -65,7 +65,7 @@ This can be used with either <code>--capture-image</code> which would leave all 
 Capturing movies with sound is currently possible with:
 <ul>
 <li>Newer Nikon DSLRs: <code>gphoto2 --set-config movie=1 --wait-event=10s --set-config movie=0 --wait-event-and-download=2s</code>. Replace 10s by the number of seconds you want to have your movie long. This started being supported around 2012, around the D7000 release.
-<li>Newer Canon EOS DSLRs (around 7D and later) : Switch the camera to movie record mode on the camera. Then run <code>gphoto2 --set-config movierecordtarget=Card --wait-event=10s --set-config movierecordtarget=None --wait-event-and-download=2s</code>
+<li>Newer Canon EOS DSLRs (around 7D and later) : Switch the camera to movie record mode on the camera. Then run <code>gphoto2 --set-config eosviewfinder=1 --set-config movierecordtarget=Card --wait-event=10s --set-config movierecordtarget=None --wait-event-and-download=2s</code> (in 2.5.6 or later, replace eosviewfinder to viewfinder).
 <li>Older cameras with preview capture ability: <code>gphoto2 --capture-movie=10s</code> . This will capture 10 seconds of preview frames and concatenate them in a MotionJPEG style stream.
 </ul>
 </p>
