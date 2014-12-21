@@ -9,6 +9,49 @@
 <tr>
 	<td class="text">
 <!-- news headlines -->
+<h2>libgphoto2 2.5.6 release</h2>
+
+<h3>ptp2</h3>
+<ul>
+<li>Nikon D3000/D3100/D3200: It hides the "good" capture opcodes from the
+DeviceInfo. Override and add them. If you see capture bugs, please report
+with debuglogfile.
+<li>"exposurecompensation" now in correct size (-3.0 <-> 3.0 usually)
+<li>Canon EOS: decode and report "focusinfo" variable that outputs the focus information of the camera.
+<li>Canon EOS: autofocusdrive=0 and cancelautofocus=1 added to cancel autofocusing, to avoid blocking the camera.
+<li>Canon EOS: "eosviewfinder" renamed to "viewfinder"
+<li>Sony SLT: Make property setting work for "iso", "exposurecompensation", "f-number", "shutterspeed"
+<li>Canon EOS: crash on 700D fixed
+<li>Nikon DSLR: race condition on object addition handled better
+<li>Nikon DSLR: make sure we make a pause a bit during polling after capture.
+<li>IDs added:
+<ul>
+<li>Nikon: Coolpix P7800, S1, J4
+<li>Nikon: D3300, D610, D4s, D810, D750
+<li>Canon: IXUS 125HS, PowerShot Elph340HS
+<li>Leica M9
+</ul>
+<li>various bugfixes
+</ul>
+
+<h3>libgphoto2_port/usb1</h3>
+<ul>
+<li>fixed a memory leak
+<li>api changed for gp_log_data to make smaller debuglogs possible
+</ul>
+
+<hr />
+<h2>gphoto2 2.5.6</h2>
+<ul>
+<li><code>--wait-event</code> / <code>--wait-event-and-download</code> can now wait for strings
+<ul>
+<li><code>--wait-event=CAPTURECOMPLETE</code>
+<li><code>--wait-event=FILEADDED</code>
+<li><code>--wait-event="Property 5001"</code>
+</ul>
+<li>updated translations: french, ukrainian, dutch, polish, russian, vietnamese, hungarian, serbian
+</ul>
+
 <hr />
 <h2>libgphoto2 2.5.5.1 release</h2>
 This is a regression fix release.

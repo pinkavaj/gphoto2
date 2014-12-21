@@ -17,32 +17,40 @@
 
 
     	<p>
+	<b>libgphoto2 and gphoto2 2.5.6</b> have been
+	released. Read <a href="/news/" alt="News"><b>what's new</b></a>.
+	Download it <a href="/download/" alt="Download"><b>now</b></a>.
+    	</p>
+	<div style="text-align: right;"><b>December 21st, 2014</b></div>
+    	<p>
+
+    	<p>
 	<b>libgphoto2 2.5.5.1</b> has been
-	released. Read <a href="/news/"><b>what's new</b></a>.
-	Download it <a href="/download/"><b>now</b></a>.
+	released. Read <a href="/news/" alt="News"><b>what's new</b></a>.
+	Download it <a href="/download/" alt="Download"><b>now</b></a>.
     	</p>
 	<div style="text-align: right;"><b>August 30th, 2014</b></div>
     	<p>
 
     	<p>
 	<b>libgphoto2 2.5.5 and gphoto2 2.5.5</b> have been
-	released. Read <a href="/news/"><b>what's new</b></a>.
-	Download it <a href="/download/"><b>now</b></a>.
+	released. Read <a href="/news/" alt="News"><b>what's new</b></a>.
+	Download it <a href="/download/" alt="Download"><b>now</b></a>.
     	</p>
 	<div style="text-align: right;"><b>August 17th, 2014</b></div>
     	<p>
 
     	<p>
 	<b>libgphoto2 2.5.4 and gphoto2 2.5.4</b> have been
-	released. Read <a href="/news/"><b>what's new</b></a>.
-	Download it <a href="/download/"><b>now</b></a>.
+	released. Read <a href="/news/" alt="News"><b>what's new</b></a>.
+	Download it <a href="/download/" alt="Download"><b>now</b></a>.
     	</p>
 	<div style="text-align: right;"><b>March 23rd, 2014</b></div>
     	<p>
 
     	<p>
 	<b>gphotofs 0.5</b> has been released to include libgphoto2 2.5.x support.
-	Download it <a href="/download/"><b>now</b></a>.
+	Download it <a href="/download/" alt="Download"><b>now</b></a>.
     	</p>
 	<div style="text-align: right;"><b>July 10th, 2012</b></div>
     	<p>
@@ -84,19 +92,19 @@
     <h2>Introducing gPhoto2</h2>
     </td></tr>
     <tr><td class="text">
-    <p><a href="/proj/"><b>gPhoto2</b></a> is a free, redistributable,
+    <p><a href="/proj/" alt="Projects"><b>gPhoto2</b></a> is a free, redistributable,
     ready to use set of digital camera software
     applications for Unix-like systems, written by a whole team of dedicated
     volunteers around the world. It supports more than 
-    <a href="/proj/libgphoto2/support.php">1800 cameras</a></p>
+    <a href="/proj/libgphoto2/support.php" alt="Supported cameras">1800 cameras</a></p>
     <p>gPhoto2 runs on a large range of UNIX-like operating system, including
     Linux, FreeBSD, NetBSD, MacOS X, etc. gPhoto is provided by major Linux distributions
     like Debian GNU/Linux, Ubuntu, Gentoo, Fedora, openSUSE, Mandriva, etc.</p>
     <p>libgphoto2 is freely available and distributed
     under the terms of the 
-    <a href="http://www.gnu.org/copyleft/lesser.html">GNU LGPL.</a>; the other gphoto
+    <a href="http://www.gnu.org/copyleft/lesser.html" alt="GNU LPGL">GNU LGPL.</a>; the other gphoto
     programs are freely available and distributed under the terms of the 
-    <a href="http://www.gnu.org/copyleft/gpl.html">GNU GPL.</a></p>
+    <a href="http://www.gnu.org/copyleft/gpl.html" alt="GNU GPL">GNU GPL.</a></p>
     <p>
     Newer libgphoto2 versions also support Media Transfer Protocol (MTP)
     based media players since their communications protocol is based on
