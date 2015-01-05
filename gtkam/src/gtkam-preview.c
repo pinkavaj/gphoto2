@@ -186,12 +186,25 @@ on_preview_capture_clicked (GtkButton *button, GtkamPreview *preview)
 	CameraFilePath path;
 	GtkWidget *dialog, *s;
 	GtkamPreviewCapturedData data;
+	gchar *store_path;
 
 	s = gtkam_status_new (_("Capturing image..."));
 	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (preview)->vbox), s,
 			    FALSE, FALSE, 0);
 	gtk_widget_show_now (s);
-	
+
+	store_path = gtk_file_chooser_get_uri (
+				GTK_FILE_CHOOSER(preview->priv->button_file));
+	if (gtk_toggle_button_get_active(
+					GTK_TOGGLE_BUTTON (preview->priv->check_download)) &&
+					!store_path) {
+		dialog = gtkam_error_new (-1, GTKAM_STATUS (s)->context,
+			GTK_WIDGET (preview), _("Download directory not selected."));
+		gtk_widget_show (dialog);
+		gtk_object_destroy (GTK_OBJECT (s));
+		return;
+	}
+
 	result = gp_camera_capture (preview->priv->camera->camera,
 		GP_CAPTURE_IMAGE, &path, GTKAM_STATUS (s)->context->context);
 	if (preview->priv->camera->multi)
@@ -204,6 +217,9 @@ on_preview_capture_clicked (GtkButton *button, GtkamPreview *preview)
 		data.name = path.name;
 		g_signal_emit (GTK_OBJECT (preview), signals[CAPTURED], 0,
 			       &data);
+		if (store_path) {
+			// TODO: store captured file;
+		 }
 		break;
 	case GP_ERROR_CANCEL:
 		break;
@@ -213,6 +229,7 @@ on_preview_capture_clicked (GtkButton *button, GtkamPreview *preview)
 		gtk_widget_show (dialog);
 		break;
 	}
+	g_free(store_path);
 	gtk_object_destroy (GTK_OBJECT (s));
 }
 
