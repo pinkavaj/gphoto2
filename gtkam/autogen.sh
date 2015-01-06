@@ -472,7 +472,6 @@ if "$check_versions"; then
 			errors=:
 		fi
 	done <<EOF
-${AUTOMAKE-"automake"}	1.8	automake
 ${AUTOHEADER-"autoheader"}	2.59	autoconf
 ${AUTOPOINT-"autopoint"}	0.14.1	gettext
 EOF
