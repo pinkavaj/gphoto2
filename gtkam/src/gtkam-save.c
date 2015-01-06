@@ -252,15 +252,15 @@ concat_dir_and_file (const gchar *dirname, const gchar *filename)
 static int
 save_file (GtkamSave *save, const char *filename, CameraFile *file, CameraFileType type, guint n)
 {
-	gchar *full_path, *full_filename, *dirname, *msg, *number_filename;
+	gchar *full_path, *full_filename, *msg, *number_filename;
 	const char *mime_type;
-	const gchar *fsel_filename, *fsel_path, *prefix, *suffix;
+	const gchar *fsel_path, *prefix, *suffix;
 	GtkWidget *dialog;
 	int result;
 
 	gp_file_get_mime_type (file, &mime_type);
 
-	fsel_path = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER_DIALOG (save));
+	fsel_path = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (GTK_FILE_CHOOSER_DIALOG (save)));
 
 	if ((save->priv->toggle_filename_camera->active) ||
 		(g_slist_length (save->priv->data) == 1)) {
@@ -378,7 +378,7 @@ store_save_settings(GtkamSave *save)
 
 	/* Directory */
 	savedir = g_strdup (gtk_file_chooser_get_filename (
-			      GTK_FILE_CHOOSER_DIALOG (save)));
+			      GTK_FILE_CHOOSER (GTK_FILE_CHOOSER_DIALOG (save))));
 	if (savedir) {
 		if (strlen (savedir) > 255)
 			savedir[255] = '\0';
