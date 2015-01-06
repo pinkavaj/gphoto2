@@ -476,7 +476,6 @@ ${ACLOCAL-"aclocal"}	1.8	automake
 ${AUTOMAKE-"automake"}	1.8	automake
 ${AUTOHEADER-"autoheader"}	2.59	autoconf
 ${AUTOPOINT-"autopoint"}	0.14.1	gettext
-${LIBTOOLIZE-"libtoolize"}	1.4	libtool
 EOF
 	if "$errors"; then
 		echo "Please update your toolset."
