@@ -23,6 +23,9 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 #include <gtk/gtktooltips.h>
 #include <gtk/gtkvbox.h>
@@ -184,9 +187,11 @@ on_preview_capture_clicked (GtkButton *button, GtkamPreview *preview)
 {
 	int result;
 	CameraFilePath path;
+    CameraFile *camera_file;
 	GtkWidget *dialog, *s;
 	GtkamPreviewCapturedData data;
 	gchar *store_path;
+    int fd;
 
 	s = gtkam_status_new (_("Capturing image..."));
 	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (preview)->vbox), s,
@@ -218,7 +223,19 @@ on_preview_capture_clicked (GtkButton *button, GtkamPreview *preview)
 		g_signal_emit (GTK_OBJECT (preview), signals[CAPTURED], 0,
 			       &data);
 		if (store_path) {
-			// TODO: store captured file;
+            fprintf(stderr, "%s\n", store_path);
+            const char fn[] = "test.bin";
+            fd = open(fn, O_CREAT | O_WRONLY, 0644);
+            // TODO: check val
+            gp_file_new_from_fd(&camera_file, fd);
+            result = gp_camera_file_get (preview->priv->camera->camera,
+                    path.folder, path.name, GP_FILE_TYPE_NORMAL, camera_file,
+                    GTKAM_STATUS (s)->context->context);
+
+            gp_camera_file_delete(preview->priv->camera->camera,
+                    path.folder, path.name,
+                    GTKAM_STATUS (s)->context->context);
+            gp_file_free(camera_file);
 		 }
 		break;
 	case GP_ERROR_CANCEL:
