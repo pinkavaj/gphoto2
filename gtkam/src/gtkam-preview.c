@@ -419,6 +419,24 @@ on_size_allocate (GtkWidget *widget, GtkAllocation *allocation,
 	g_object_unref (G_OBJECT (scaled));
 }
 
+static void
+on_direct_download_toggled (GtkToggleButton *togglebutton, GtkamPreview *preview)
+{
+	const gchar *store_uri;
+	GtkFileChooser *dialog;
+
+	if (!gtk_toggle_button_get_active(
+				GTK_TOGGLE_BUTTON (preview->priv->check_download)))
+        return;
+
+	store_uri = gtk_file_chooser_get_uri (
+			GTK_FILE_CHOOSER (preview->priv->button_file));
+	if (!store_uri) {
+		g_object_get (preview->priv->button_file, "dialog", &dialog, NULL);
+		gtk_widget_show (GTK_WIDGET (dialog));
+    }
+}
+
 GtkWidget *
 gtkam_preview_new (GtkamCamera *camera)
 {
@@ -502,6 +520,8 @@ gtkam_preview_new (GtkamCamera *camera)
 	check = gtk_check_button_new_with_label (_("Direct download"));
 	gtk_widget_show (check);
 	gtk_box_pack_start (GTK_BOX (hbox), check, FALSE, FALSE, 0);
+	g_signal_connect (GTK_OBJECT (check), "toggled",
+			    GTK_SIGNAL_FUNC (on_direct_download_toggled), preview);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), FALSE);
 	gtk_tooltips_set_tip (preview->priv->tooltips, check, _(
 			    _("Immadiately download captured images.")), NULL);
