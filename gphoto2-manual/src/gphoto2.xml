@@ -3262,6 +3262,7 @@ or
 	<command>gphoto2</command>
 	<arg choice="opt">--debug</arg>
 	<arg choice="opt">--debug-logfile <replaceable>FILENAME</replaceable></arg>
+	<arg choice="opt">--debug-loglevel <replaceable>LEVEL</replaceable></arg>
 	<group choice="opt">
 	  <arg>-q</arg>
 	  <arg>--quiet</arg>
@@ -3333,8 +3334,8 @@ or
 	</group>
 	<sbr/>
 	<group choice="opt">
-	  <arg>-p <replaceable>RANGE</replaceable></arg>
-	  <arg>--get-file <replaceable>RANGE</replaceable></arg>
+	  <arg>-p <replaceable>RANGE or NAME</replaceable></arg>
+	  <arg>--get-file <replaceable>RANGE or NAME</replaceable></arg>
 	</group>
 	<group choice="opt">
 	  <arg>-P</arg>
@@ -3342,8 +3343,8 @@ or
 	</group>
 	<sbr/>
 	<group choice="opt">
-	  <arg>-t <replaceable>RANGE</replaceable></arg>
-	  <arg>--get-thumbnail <replaceable>RANGE</replaceable></arg>
+	  <arg>-t <replaceable>RANGE or NAME</replaceable></arg>
+	  <arg>--get-thumbnail <replaceable>RANGE or NAME</replaceable></arg>
 	</group>
 	<sbr/>
 	<group choice="opt">
@@ -3351,13 +3352,13 @@ or
 	  <arg>--get-all-thumbnails</arg>
 	</group>
 	<sbr/>
-	<arg choice="opt">--get-raw-data <replaceable>RANGE</replaceable></arg>
+	<arg choice="opt">--get-raw-data <replaceable>RANGE or NAME</replaceable></arg>
 	<arg choice="opt">--get-all-raw-data</arg>
 	<sbr/>
-	<arg choice="opt">--get-audio-data <replaceable>RANGE</replaceable></arg>
+	<arg choice="opt">--get-audio-data <replaceable>RANGE or NAME</replaceable></arg>
 	<arg choice="opt">--get-all-audio-data</arg>
 	<sbr/>
-	<arg choice="opt">--get-meta-data <replaceable>RANGE</replaceable></arg>
+	<arg choice="opt">--get-meta-data <replaceable>RANGE or NAME</replaceable></arg>
 	<arg choice="opt">--get-all-meta-data</arg>
 	<arg choice="opt">--upload-meta-data <replaceable>FILENAME</replaceable></arg>
 	<sbr/>
@@ -3366,8 +3367,8 @@ or
 	<arg choice="opt">--new</arg>
 	<sbr/>
 	<group choice="opt">
-	  <arg>-d <replaceable>RANGE</replaceable></arg>
-	  <arg>--delete-file <replaceable>RANGE</replaceable></arg>
+	  <arg>-d <replaceable>RANGE or NAME</replaceable></arg>
+	  <arg>--delete-file <replaceable>RANGE or NAME</replaceable></arg>
 	</group>
 	<group choice="opt">
 	  <arg>-D</arg>
@@ -3407,17 +3408,17 @@ or
 	<arg choice="opt">--capture-movie <replaceable>SECONDS or COUNT</replaceable></arg>
 	<arg choice="opt">--capture-sound</arg>
 	<sbr/>
-	<arg choice="opt">--capture-tethered <replaceable>SECONDS or COUNT</replaceable></arg>
+	<arg choice="opt">--capture-tethered <replaceable>SECONDS, COUNT or STRING</replaceable></arg>
 	<sbr/>
-	<arg choice="opt">--wait-event <replaceable>SECONDS or COUNT</replaceable></arg>
-	<arg choice="opt">--wait-event-and-download <replaceable>SECONDS or COUNT</replaceable></arg>
+	<arg choice="opt">--wait-event <replaceable>SECONDS, COUNT or STRING</replaceable></arg>
+	<arg choice="opt">--wait-event-and-download <replaceable>SECONDS, COUNT or STRING</replaceable></arg>
 	<sbr/>
 	<arg choice="opt">--keep</arg>
 	<arg choice="opt">--no-keep</arg>
 	<sbr/>
-	<arg choice="opt">--show-info <replaceable>RANGE</replaceable></arg>
+	<arg choice="opt">--show-info <replaceable>RANGE or NAME</replaceable></arg>
 	<sbr/>
-	<arg choice="opt">--show-exif <replaceable>RANGE</replaceable></arg>
+	<arg choice="opt">--show-exif <replaceable>RANGE or NAME</replaceable></arg>
 	<sbr/>
 	<arg choice="opt">--storage-info</arg>
 	<sbr/>
@@ -3461,6 +3462,19 @@ or
 	    <para>
 	      The logfile to write the debugging info to, if
 	      <option>--debug</option> is given.
+	    </para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--debug-loglevel</option>
+	  <replaceable>LEVEL</replaceable> (since 2.5.5)</term>
+	  <listitem>
+	    <para>
+              The verbosity of debug logging. Possible values with
+              incrementing verbosity are: <option>error</option>,
+              <option>debug</option>, <option>data</option>,
+              <option>all</option>. Default is <option>all</option>.
 	    </para>
 	  </listitem>
 	</varlistentry>
@@ -4042,7 +4056,7 @@ or
 	<varlistentry>
 	  <term><option>--show-info</option> <replaceable>RANGE</replaceable></term>
 	  <listitem>
-	    <para>Show information for a single or multiple images.</para>
+	    <para>Show information for a single or multiple images, like width, height, size and/or the capture time</para>
 	  </listitem>
 	</varlistentry>
 
