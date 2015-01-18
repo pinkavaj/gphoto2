@@ -17,6 +17,14 @@
 
 
     	<p>
+	<b>libgphoto2 2.5.7</b> has been
+	released. Read <a href="/news/" alt="News"><b>what's new</b></a>.
+	Download it <a href="/download/" alt="Download"><b>now</b></a>.
+    	</p>
+	<div style="text-align: right;"><b>January 18th, 2015</b></div>
+    	<p>
+
+    	<p>
 	<b>libgphoto2 and gphoto2 2.5.6</b> have been
 	released. Read <a href="/news/" alt="News"><b>what's new</b></a>.
 	Download it <a href="/download/" alt="Download"><b>now</b></a>.
