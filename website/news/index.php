@@ -9,6 +9,31 @@
 <tr>
 	<td class="text">
 <!-- news headlines -->
+<h2>libgphoto2 2.5.7 release</h2>
+
+<h3>ptp2</h3>
+<ul>
+<li>Canon EOS focusinfo crash fixed (affected all config operations)
+<li>wait_for_event sleep backoff increased (50 - 100 - 150 - 200ms)
+<li>Nikon: fixes to make Nikon Coolpix S9700 over PTPIP work better
+<li>Nikon: WLAN GUID setting
+<li>Sony: tighten event loop to avoid loss of objectadded events
+<li>New USB ids: Nikon Coolpix 9400, Nikon S9700, Pentax K3 (in PTP).
+</ul>
+
+<h3>pentax</h3>
+<ul>
+<li>added Pentax K100Ds
+<li>added raw capture support
+</ul>
+
+<h3>packaging</h3>
+fixed handling of missing libexif in pkgconfig.
+
+<h3>translations</h3>
+Updated ukrainian, vietnamese, french, polish translations.
+
+<hr />
 <h2>libgphoto2 2.5.6 release</h2>
 
 <h3>ptp2</h3>
