@@ -4194,9 +4194,9 @@ or
       
       <variablelist>
         <varlistentry>
-          <term>cd</term>
+          <term>cd <replaceable>DIRECTORY</replaceable></term>
           <listitem>
-            <para>Change to a directory on the camera.</para>
+            <para>Change to the specified directory on the camera.</para>
           </listitem>
         </varlistentry>
 
@@ -4209,44 +4209,51 @@ or
         </varlistentry>
 
         <varlistentry>
-          <term>lcd</term>
+          <term>lcd <replaceable>DIRECTORY</replaceable></term>
           <listitem>
-            <para>Change to a directory on the local machine.</para>
+            <para>Change to the specified directory on the local machine.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>get</term>
+          <term>get <replaceable>FILENAME</replaceable></term>
           <listitem>
-            <para>Download the file to the current directory.</para>
+            <para>Download the specified file to the current directory.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>get-thumbnail</term>
+          <term>put <replaceable>FILENAME</replaceable></term>
           <listitem>
-            <para>Download the thumbnail to the current directory.</para>
+            <para>Upload the specified file from the current system directory to the cameras current directory.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>get-raw</term>
+          <term>get-thumbnail <replaceable>FILENAME</replaceable></term>
           <listitem>
-            <para>Download raw data to the current directory.</para>
+            <para>Download the specified thumbnail to the current directory.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>show-info</term>
+          <term>get-raw <replaceable>FILENAME</replaceable></term>
           <listitem>
-            <para>Show information.</para>
+            <para>Download the specified raw data to the current directory.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>delete</term>
+          <term>show-info <replaceable>FILENAME</replaceable></term>
           <listitem>
-            <para>Delete a file or directory.</para>
+            <para>Show information of the specified file.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>delete <replaceable>FILENAME</replaceable></term>
+          <listitem>
+            <para>Delete the specified file or directory.</para>
           </listitem>
         </varlistentry>
 
@@ -4265,7 +4272,7 @@ or
         </varlistentry>
 
         <varlistentry>
-          <term>show-exif</term>
+          <term>show-exif <replaceable>FILENAME</replaceable></term>
           <listitem>
             <para>Show EXIF information (only if compiled with EXIF support).</para>
           </listitem>
@@ -4282,6 +4289,13 @@ or
           <term>capture-image-and-download</term>
           <listitem>
             <para>Captures a single image and downloads it from the camera.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>capture-preview</term>
+          <listitem>
+            <para>Captures a preview image and downloads it from the camera.</para>
           </listitem>
         </varlistentry>
 
