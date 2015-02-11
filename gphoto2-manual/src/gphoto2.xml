@@ -3983,6 +3983,13 @@ or
 	  </listitem>
 	</varlistentry>
 
+	<varlistentry>
+	  <term><option>--keep-raw</option></term>
+	  <listitem>
+	    <para>When doing --capture-image-and-download or interval capture, this option will keep the RAW images on the memory card of the camera, but still download the JPEG images. This is useful when doing dual mode capture and you want to review the JPEGs already during capture.</para>
+	  </listitem>
+	</varlistentry>
+
 
 	<varlistentry>
 	  <term><option>--capture-movie <replaceable>SECONDS</replaceable></option></term>
