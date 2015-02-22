@@ -1032,7 +1032,7 @@ here</a></td>
 	<td>Yes</td>
 	<td>None</td>
 	<td>10</td>
-	<td>not configurable, just trigger capture</td>
+	<td>image quality and size, but not other configurations</td>
 </tr>
 
 <tr>
