@@ -3955,17 +3955,17 @@ or
 	</varlistentry>
 
 	<varlistentry>
-	  <term><option>--trigger-capture</option></term>
+	  <term><option>--capture-image-and-download</option></term>
 	  <listitem>
-	    <para>Trigger the capture an image and return. If you want to get the image downloaded, see --wait-event-and-download.</para>
-	    <para>This feature is only available for some camera brands and drivers.</para>
+	    <para>Capture an image and download it immediately to the computer.</para>
 	  </listitem>
 	</varlistentry>
 
 	<varlistentry>
-	  <term><option>--capture-image-and-download</option></term>
+	  <term><option>--trigger-capture</option></term>
 	  <listitem>
-	    <para>Capture an image and download it immediately to the computer.</para>
+	    <para>Triggers the capture an image and return. If you want to get the image downloaded, see --wait-event-and-download.</para>
+	    <para>This feature is only available for some camera brands and drivers.</para>
 	  </listitem>
 	</varlistentry>
 
