@@ -3714,7 +3714,7 @@ or
 	<varlistentry>
 	  <term><option>-a</option>, <option>--abilities</option></term>
 	  <listitem>
-	    <para>Display camera abilities.</para>
+	    <para>Display the camera and driver abilities specified in the libgphoto2 driver. This all does not query the camera, it uses data provided by the library. Use <option>--summary</option> to query an overview of the camera.</para>
 	  </listitem>
 	</varlistentry>
 
