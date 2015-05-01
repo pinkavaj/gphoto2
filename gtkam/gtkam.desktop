@@ -1,24 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Gtkam Digital Camera Browser
-Name[cs]=Prohlížeč pro digitální fotoaparáty Gtkam
-Name[eo]=Gtkam Ciferec-Kamerao-Rigardilo
-Name[id]=Peramban Kamera Digital Gtkam
-Name[is]=Gtkam vafri fyrir stafrænar myndavélar
-Name[it]=Gtkam esploratore di fotocamere digitali
-Name[ja]=Gtkam デジタルカメラ ブラウザー
-Name[nl]=Gtkam bladerprogramma voor digitale camera
-Name[pl]=Przeglądarka aparatu cyfrowego programu Gtkam
-Name[ru]=Просмотрщик изображений с цифровых камер Gtkam
 Comment=Browse and download images from an attached digital camera
-Comment[cs]=Zachytí obrázky z digitálního fotoaparátu
-Comment[eo]=Trarigardi kaj elŝuti bildojn el konektata cifereca kamerao
-Comment[id]=Ramban dan unduh gambar dari kamera digital yang tertancap
-Comment[it]=Esplora e scarica le immagini da una fotocamera digitale connessa
-Comment[ja]=接続したデジタルカメラから画像の参照と取り込みをします
-Comment[nl]=Door afbeeldingen bladeren en downloaden van een aangesloten digitale camera
-Comment[pl]=Przeglądaj i pobierz zdjęcia z pdołączonego aparatu cyfrowego
-Comment[ru]=Просмотр и получение изображений с подключённой цифровой камеры
 Exec=gtkam
 Icon=gtkam-camera
 Terminal=false
