@@ -426,15 +426,19 @@ on_direct_download_toggled (GtkToggleButton *togglebutton, GtkamPreview *preview
 	GtkFileChooser *dialog;
 
 	if (!gtk_toggle_button_get_active(
-				GTK_TOGGLE_BUTTON (preview->priv->check_download)))
-        return;
+				GTK_TOGGLE_BUTTON (preview->priv->check_download))) {
+	    gp_setting_set ("gtkam-preview", "direct_download", "0");
+	    return;
+	}
 
 	store_uri = gtk_file_chooser_get_uri (
 			GTK_FILE_CHOOSER (preview->priv->button_file));
 	if (!store_uri) {
 		g_object_get (preview->priv->button_file, "dialog", &dialog, NULL);
 		gtk_widget_show (GTK_WIDGET (dialog));
-    }
+	    return;
+	}
+	gp_setting_set ("gtkam-preview", "direct_download", "1");
 }
 
 GtkWidget *
@@ -444,6 +448,7 @@ gtkam_preview_new (GtkamCamera *camera)
 	GtkamPreview *preview;
 	GtkWidget *button, *check, *hbox, *vbox, *radio;
 	GSList *group;
+	gchar buf[1024];
 
 	g_return_val_if_fail (GTKAM_IS_CAMERA (camera), NULL);
 
@@ -526,6 +531,11 @@ gtkam_preview_new (GtkamCamera *camera)
 	gtk_tooltips_set_tip (preview->priv->tooltips, check, _(
 			    _("Immadiately download captured images.")), NULL);
 	preview->priv->check_download = GTK_CHECK_BUTTON (check);
+	if (gp_setting_get ("gtkam-preview", "direct_download", buf) == GP_OK) {
+	            gtk_toggle_button_set_active (
+	                    GTK_TOGGLE_BUTTON (preview->priv->check_download),
+	                    atoi(buf));
+	}
 
 	button = gtk_file_chooser_button_new(_("File store directory"),
 			    GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
