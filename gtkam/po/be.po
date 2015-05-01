@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gtkam 0.2.0\n"
 "Report-Msgid-Bugs-To: gphoto-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2012-07-10 09:51+0200\n"
+"POT-Creation-Date: 2015-05-10 13:08+0200\n"
 "PO-Revision-Date: 2014-01-09 17:27+0300\n"
 "Last-Translator: Viktar Siarheichyk <vics@eq.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -15,8 +15,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Virtaal 0.7.1\n"
+
+#: gtkam.desktop.in:7
+msgid "gtkam-camera"
+msgstr ""
 
 #: src/gtkam-chooser.c:231 src/gtkam-chooser.c:253
 msgid "None"
@@ -252,7 +257,7 @@ msgstr "Загружае файлы з лічбавага здымача"
 msgid "<Toolbox>/File/Acquire/Load from Camera..."
 msgstr "<Toolbox>/Файл/Набыццё/Загрузіць са здымача..."
 
-#: src/gtkam-gimp.c:194 src/gtkam-list.c:505
+#: src/gtkam-gimp.c:194 src/gtkam-list.c:507
 #, c-format
 msgid "Downloading '%s' from '%s'..."
 msgstr "Спампоўка '%s' з '%s'..."
@@ -319,7 +324,7 @@ msgstr "Чытаць"
 msgid "Delete"
 msgstr "Выдаліць"
 
-#: src/gtkam-info.c:419 src/gtkam-list.c:892
+#: src/gtkam-info.c:419 src/gtkam-list.c:872
 msgid "Preview"
 msgstr "Перадпрагляд"
 
@@ -332,49 +337,49 @@ msgstr "Аудыа"
 msgid "Downloading thumbnail of '%s' from folder '%s'..."
 msgstr "Спампоўванне мініяцюры '%s' з тэчкі '%s'..."
 
-#: src/gtkam-list.c:826
+#: src/gtkam-list.c:806
 msgid "/_View with..."
 msgstr "/_Прагляд у..."
 
-#: src/gtkam-list.c:827
+#: src/gtkam-list.c:807
 msgid "/View with.../Built-in viewer"
 msgstr "/Прагляд у.../Убудаваны праглядчык"
 
-#: src/gtkam-list.c:829
+#: src/gtkam-list.c:809
 msgid "/View file _properties"
 msgstr "/Прагляд _уласцівасцей файла"
 
-#: src/gtkam-list.c:831
+#: src/gtkam-list.c:811
 msgid "/View _EXIF data"
 msgstr "/Прагляд _данніх EXIF"
 
-#: src/gtkam-list.c:834
+#: src/gtkam-list.c:814
 msgid "/_Save"
 msgstr "/_Захаваць"
 
-#: src/gtkam-list.c:835
+#: src/gtkam-list.c:815
 msgid "/_Delete"
 msgstr "/_Выдаліць"
 
-#: src/gtkam-list.c:898
+#: src/gtkam-list.c:878
 msgid "Name"
 msgstr "Назва"
 
-#: src/gtkam-list.c:904
+#: src/gtkam-list.c:884
 msgid "Time"
 msgstr "Час"
 
-#: src/gtkam-list.c:926 src/gtkam-tree.c:690
+#: src/gtkam-list.c:906 src/gtkam-tree.c:694
 #, c-format
 msgid "Listing files in folder '%s'..."
 msgstr "Атрыманне спіса файлаў тэчкі '%s'..."
 
-#: src/gtkam-list.c:943 src/gtkam-tree.c:707
+#: src/gtkam-list.c:923 src/gtkam-tree.c:711
 #, c-format
 msgid "Could not get file list for folder '%s'"
 msgstr "Немагчыма атрымаць спіс файлаў у тэчцы '%s'"
 
-#: src/gtkam-list.c:960
+#: src/gtkam-list.c:940
 msgid "Unknown"
 msgstr "Невядома"
 
@@ -506,190 +511,218 @@ msgstr "_Аб праграме"
 msgid "_View Thumbnails"
 msgstr "_Прагляд мініяцюр"
 
-#: src/gtkam-mkdir.c:151
+#: src/gtkam-mkdir.c:152
 #, c-format
 msgid "Creating folder '%s' in folder '%s'..."
 msgstr "Стварэнне тэчкі '%s' у тэчцы '%s'..."
 
-#: src/gtkam-mkdir.c:185
+#: src/gtkam-mkdir.c:186
 #, c-format
 msgid "Could not create folder '%s' in folder '%s'."
 msgstr "Немагчыма стварыць тэчку '%s' у тэчцы '%s'."
 
-#: src/gtkam-mkdir.c:211
+#: src/gtkam-mkdir.c:213
 #, c-format
 msgid "Please choose a name for the directory that should be created in '%s':"
 msgstr "Выберыце назву для дырэкторыі, што будзе створана ў '%s':"
 
-#: src/gtkam-mkdir.c:227
+#: src/gtkam-mkdir.c:229
 msgid "New directory"
 msgstr "Новая дырэкторыя"
 
 #: src/gtkam-port.c:146
 #, c-format
-msgid "The port '%s' could not be found. Please make sure that the port exists."
+msgid ""
+"The port '%s' could not be found. Please make sure that the port exists."
 msgstr "Порт '%s' не знойдзены. Упэўніцеся, што гэты порт існуе."
 
 #: src/gtkam-port.c:180
 msgid "Please specify the path to the port your camera is attached to:"
 msgstr "Вызначце шлях да парта, куды далучаны ваш фотаздымач:"
 
-#: src/gtkam-preview.c:186 src/gtkam-tree.c:1098
+#: src/gtkam-preview.c:217
+msgid "Failed to open file for download."
+msgstr ""
+
+#: src/gtkam-preview.c:229
+msgid "gphoto error, gp_file_new_from_fd"
+msgstr ""
+
+#: src/gtkam-preview.c:254 src/gtkam-tree.c:1102
 msgid "Capturing image..."
 msgstr "Сцягванне выявы..."
 
-#: src/gtkam-preview.c:208
+#: src/gtkam-preview.c:265
+msgid "Download directory not selected."
+msgstr ""
+
+#: src/gtkam-preview.c:294
 msgid "Could not capture image."
 msgstr "Выява не захоплена."
 
-#: src/gtkam-preview.c:346 src/gtkam-preview.c:409
+#: src/gtkam-preview.c:457 src/gtkam-preview.c:552
 msgid "Capture"
 msgstr "Захапіць"
 
-#: src/gtkam-preview.c:372
+#: src/gtkam-preview.c:483
 msgid "0 degrees"
 msgstr "0 градусаў"
 
-#: src/gtkam-preview.c:380
+#: src/gtkam-preview.c:491
 msgid "Don't rotate thumbnail"
 msgstr "Не пераварочваць мініяцюру"
 
-#: src/gtkam-preview.c:382
+#: src/gtkam-preview.c:493
 msgid "-90 degrees"
 msgstr "-90 градусаў"
 
-#: src/gtkam-preview.c:389
+#: src/gtkam-preview.c:500
 msgid "Rotate thumbnail by -90 degrees"
 msgstr "Перавярнуць мініяцюру на -90 градусаў"
 
-#: src/gtkam-preview.c:391
+#: src/gtkam-preview.c:502
 msgid "+90 degrees"
 msgstr "+90 градусаў"
 
-#: src/gtkam-preview.c:398
+#: src/gtkam-preview.c:509
 msgid "Rotate thumbnail by 90 degrees"
 msgstr "Перавярнуць мініяцюру на +90 градусаў"
 
-#: src/gtkam-preview.c:400
+#: src/gtkam-preview.c:511
 msgid "180 degrees"
 msgstr "180 градусаў"
 
-#: src/gtkam-preview.c:407
+#: src/gtkam-preview.c:518
 msgid "Rotate thumbnail by 180 degrees"
 msgstr "Перавярнуць мініяцюру на 180 градусаў"
 
-#: src/gtkam-save.c:299 src/gtkam-tree.c:619
+#: src/gtkam-preview.c:526
+msgid "Diret download"
+msgstr ""
+
+#: src/gtkam-preview.c:533
+#, fuzzy
+msgid "Immadiately download captured images."
+msgstr "Выява не захоплена."
+
+#: src/gtkam-preview.c:536
+#, fuzzy
+msgid "File store directory"
+msgstr "/Выдаліць дырэкторыю"
+
+#: src/gtkam-save.c:299 src/gtkam-tree.c:623
 #, c-format
 msgid "The file '%s' already exists."
 msgstr "Файл '%s' ужо існуе."
 
-#: src/gtkam-save.c:321 src/gtkam-tree.c:636
+#: src/gtkam-save.c:321 src/gtkam-tree.c:640
 #, c-format
 msgid "Could not save file to '%s'."
 msgstr "Немагчыма захаваць файл у '%s'."
 
-#: src/gtkam-save.c:361 src/gtkam-tree.c:669
+#: src/gtkam-save.c:361 src/gtkam-tree.c:673
 #, c-format
 msgid "Could not get '%s' from folder '%s'."
 msgstr "Немагчыма атрымаць '%s' з тэчкі '%s'."
 
-#: src/gtkam-save.c:492
+#: src/gtkam-save.c:493
 msgid "There is nothing to be saved."
 msgstr "Няма чаго захоўваць."
 
-#: src/gtkam-save.c:504
+#: src/gtkam-save.c:505
 msgid "Downloading file"
 msgstr "Спампоўванне файла"
 
-#: src/gtkam-save.c:506
+#: src/gtkam-save.c:507
 #, c-format
 msgid "Downloading %i files"
 msgstr "Спампоўванне %i файлаў"
 
-#: src/gtkam-save.c:513 src/gtkam-tree.c:745
+#: src/gtkam-save.c:514 src/gtkam-tree.c:749
 #, c-format
 msgid "Downloading %i files..."
 msgstr "Спампоўванне %i файлаў..."
 
-#: src/gtkam-save.c:564 src/gtkam-tree.c:760
+#: src/gtkam-save.c:565 src/gtkam-tree.c:764
 #, c-format
 msgid "Problem getting '%s' from folder '%s'."
 msgstr "Праблема атрымання '%s' з тэчкі '%s'."
 
-#: src/gtkam-save.c:639
+#: src/gtkam-save.c:640
 msgid "What to save:"
 msgstr "Што захаваць:"
 
-#: src/gtkam-save.c:651
+#: src/gtkam-save.c:652
 msgid "Save photos"
 msgstr "Захаваць здымкі"
 
-#: src/gtkam-save.c:655
+#: src/gtkam-save.c:656
 msgid "Photos will be saved if this is checked"
 msgstr "Здымкі будуць захаваны, калі адзначана"
 
-#: src/gtkam-save.c:659
+#: src/gtkam-save.c:660
 msgid "Save raw data"
 msgstr "Захаваць сырыя данні"
 
-#: src/gtkam-save.c:662
+#: src/gtkam-save.c:663
 msgid "Raw data will be saved if this is checked"
 msgstr "Сыря данні будуць захаваны, калі адзначана"
 
-#: src/gtkam-save.c:666
+#: src/gtkam-save.c:667
 msgid "Save audio data"
 msgstr "Захаваць аудыа"
 
-#: src/gtkam-save.c:669
+#: src/gtkam-save.c:670
 msgid "Audio data will be saved if this is checked"
 msgstr "Аудыа будзе захавана, калі адзначана"
 
-#: src/gtkam-save.c:673
+#: src/gtkam-save.c:674
 msgid "Save thumbnails"
 msgstr "Захаваць мініяцюры"
 
-#: src/gtkam-save.c:676
+#: src/gtkam-save.c:677
 msgid "Thumbnails will be saved if this is checked"
 msgstr "Мініяцюры будуць захаваны, калі адзначана"
 
-#: src/gtkam-save.c:680
+#: src/gtkam-save.c:681
 msgid "Save EXIF data"
 msgstr "Захаваць данні EXIF"
 
-#: src/gtkam-save.c:683
+#: src/gtkam-save.c:684
 msgid "EXIF data will be saved if this is checked"
 msgstr "Данні EXIF будуць захаваны, калі адзначана"
 
-#: src/gtkam-save.c:692
+#: src/gtkam-save.c:693
 msgid "Open image(s) with: "
 msgstr "Адкрыць выяву(ы) ў: "
 
-#: src/gtkam-save.c:699
+#: src/gtkam-save.c:700
 msgid "Type in the name of the program you want to run, leave blank for none"
-msgstr "Увядзіце назву праграмы, якую хочаце запусціць, пакіньце пустым для ніякай"
+msgstr ""
+"Увядзіце назву праграмы, якую хочаце запусціць, пакіньце пустым для ніякай"
 
-#: src/gtkam-save.c:705
+#: src/gtkam-save.c:706
 msgid "Use filename(s) provided by the camera"
 msgstr "Ужываць імёны, прапанаваныя фотаздымачом"
 
-#: src/gtkam-save.c:709
+#: src/gtkam-save.c:710
 msgid "Choose whether to use the filename provided by the camera"
 msgstr "Выберыце, ці ўжываць імёны, прапанаваныя фотаздымачом"
 
-#: src/gtkam-save.c:723
+#: src/gtkam-save.c:724
 msgid "Filename prefix: "
 msgstr "Прыстаўка назваў файлаў:"
 
-#: src/gtkam-save.c:732
+#: src/gtkam-save.c:733
 msgid "Start numbering with: "
 msgstr "Пачаць нумараванне з: "
 
-#: src/gtkam-save.c:774
+#: src/gtkam-save.c:775
 #, c-format
 msgid "Save '%s'..."
 msgstr "Захаваць '%s'..."
 
-#: src/gtkam-save.c:794
+#: src/gtkam-save.c:795
 msgid "Save photos..."
 msgstr "Захаваць здымкі..."
 
@@ -708,153 +741,161 @@ msgstr "Немагчыма атрымаць спіс тэчак у '%s'."
 msgid "Could not open '%s'."
 msgstr "Немагчыма адкрыць '%s'."
 
-#: src/gtkam-tree.c:421
+#: src/gtkam-tree.c:422
 #, c-format
 msgid "Uploading '%s' into folder '%s'..."
 msgstr "Запампоўка '%s' у тэчку '%s'..."
 
-#: src/gtkam-tree.c:445
+#: src/gtkam-tree.c:446
 #, c-format
 msgid "Could not upload '%s' into '%s'."
 msgstr "Немагчыма запампаваць '%s' у '%s'."
 
-#: src/gtkam-tree.c:469
+#: src/gtkam-tree.c:471
 #, c-format
 msgid "Upload into '%s'..."
 msgstr "Запампаваць у '%s'..."
 
-#: src/gtkam-tree.c:545
+#: src/gtkam-tree.c:547
 #, c-format
 msgid "Removing directory '%s'..."
 msgstr "Выдаленне дырэкторыі '%s'..."
 
-#: src/gtkam-tree.c:562
+#: src/gtkam-tree.c:566
 #, c-format
 msgid "Could not remove directory '%s'."
 msgstr "Немагчыма выдаліць дырэкторыю '%s'."
 
-#: src/gtkam-tree.c:722
+#: src/gtkam-tree.c:726
 #, c-format
 msgid "Could not create directory '%s'"
 msgstr "Немагчыма стварыць дырэкторыю '%s'"
 
-#: src/gtkam-tree.c:734
+#: src/gtkam-tree.c:738
 #, c-format
 msgid "Downloading file from '%s'"
 msgstr "Спампоўванне файла з '%s'"
 
-#: src/gtkam-tree.c:736
+#: src/gtkam-tree.c:740
 #, c-format
 msgid "Downloading %i files from '%s'"
 msgstr "Спамоўванне %i файлаў з '%s'"
 
-#: src/gtkam-tree.c:786
+#: src/gtkam-tree.c:790
 #, c-format
 msgid "Listing subfolders in folder '%s'..."
 msgstr "Атрыманне спісу падтэчак у тэчцы '%s'..."
 
-#: src/gtkam-tree.c:805
+#: src/gtkam-tree.c:809
 #, c-format
 msgid "Could not get subfolders list for folder '%s'"
 msgstr "Немагчыма пералічыць падтэчкі ў тэчцы '%s'"
 
-#: src/gtkam-tree.c:868
+#: src/gtkam-tree.c:872
 #, c-format
 msgid "Download '%s' subtree to..."
 msgstr "Спампаваць субдрэва '%s' у..."
 
-#: src/gtkam-tree.c:906
+#: src/gtkam-tree.c:910
 msgid "Getting information about the camera..."
 msgstr "Атрыманне звестак пра здымач..."
 
-#: src/gtkam-tree.c:910
+#: src/gtkam-tree.c:914
 msgid "Getting information about the driver..."
 msgstr "Атрыманне звестак пра драйвер..."
 
-#: src/gtkam-tree.c:914
+#: src/gtkam-tree.c:918
 msgid "Getting manual..."
 msgstr "Атрыманне інструкцыі..."
 
-#: src/gtkam-tree.c:945
+#: src/gtkam-tree.c:949
 msgid "Could not retrieve information."
 msgstr "Немагчыма прыняць звесткі."
 
-#: src/gtkam-tree.c:1048
+#: src/gtkam-tree.c:1052
 msgid "Select Camera"
 msgstr "Вылучце фотаздымач"
 
-#: src/gtkam-tree.c:1116
+#: src/gtkam-tree.c:1120
 msgid "Could not capture."
 msgstr "Немагчыма захапіць."
 
-#: src/gtkam-tree.c:1155
+#: src/gtkam-tree.c:1159
 msgid "/Upload file..."
 msgstr "/Запампаваць файл..."
 
-#: src/gtkam-tree.c:1156
+#: src/gtkam-tree.c:1160
 msgid "/Make directory..."
 msgstr "/Зрабіць дырэкторыю..."
 
-#: src/gtkam-tree.c:1157
+#: src/gtkam-tree.c:1161
 msgid "/Delete directory"
 msgstr "/Выдаліць дырэкторыю"
 
-#: src/gtkam-tree.c:1158
+#: src/gtkam-tree.c:1162
 msgid "/Save directory tree..."
 msgstr "/Захаваць дрэва дырэкторый..."
 
-#: src/gtkam-tree.c:1160
+#: src/gtkam-tree.c:1164
 msgid "/Capture image..."
 msgstr "/Захапіць выяву..."
 
-#: src/gtkam-tree.c:1161
+#: src/gtkam-tree.c:1165
 msgid "/View camera preferences"
 msgstr "/Прагляд наладак фотаздымача"
 
-#: src/gtkam-tree.c:1163
+#: src/gtkam-tree.c:1167
 msgid "/View camera summary"
 msgstr "/Прагляд рэзюмэ фотаздымача"
 
-#: src/gtkam-tree.c:1164
+#: src/gtkam-tree.c:1168
 msgid "/View camera manual"
 msgstr "/Прагляд інструкцыі фотаздымача"
 
-#: src/gtkam-tree.c:1165
+#: src/gtkam-tree.c:1169
 msgid "/View driver details"
 msgstr "/Прагляд дэталяў драйвера"
 
-#: src/gtkam-tree.c:1167
+#: src/gtkam-tree.c:1171
 msgid "/Select camera..."
 msgstr "/Вылучыць фотаздымач..."
 
-#: src/gtkam-tree.c:1168
+#: src/gtkam-tree.c:1172
 msgid "/Remove camera"
 msgstr "/Выдаліць фотаздымач"
 
-#: src/gtkam-tree.c:1198
+#: src/gtkam-tree.c:1202
 msgid "_Add camera..."
 msgstr "_Дадаць фотаздымач..."
 
-#: src/gtkam-tree.c:1298
+#: src/gtkam-tree.c:1302
 msgid "Please right-click to access additional menus"
 msgstr "Націснеце правай кнопкай мышы для дадатковых меню"
 
-#: src/gtkam-tree.c:1327
+#: src/gtkam-tree.c:1331
 msgid "Folder"
 msgstr "Тэчка"
 
-#: src/gtkam-tree.c:1420
+#: src/gtkam-tree.c:1424
 msgid "Loading cameras..."
 msgstr "Загрузка здымачоў..."
 
 #: src/gtkam-util.c:44
 #, c-format
-msgid "Could not display '%s'. Either the image type ('%s') is not supported by gtk or the file itself is corrupt."
-msgstr "Немагчыма паказаць '%s'. Тып выявы ('%s') не падтрымліваецца gtk або файл пашкоджаны."
+msgid ""
+"Could not display '%s'. Either the image type ('%s') is not supported by gtk "
+"or the file itself is corrupt."
+msgstr ""
+"Немагчыма паказаць '%s'. Тып выявы ('%s') не падтрымліваецца gtk або файл "
+"пашкоджаны."
 
 #: src/gtkam-version.c:100
-msgid "ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE MAILING LIST:"
-msgstr "ЗАЎСЁДЫ ЎКЛЮЧАЙЦЕ НАСТУПНЫЯ РАДКІ, КАЛІ ДАСЫЛАЕЦЕ АДЛАДАЧНЫЯ ПАВЕДАМЛЕННІ Ў СПІС РАССЫЛКІ:"
+msgid ""
+"ALWAYS INCLUDE THE FOLLOWING LINES WHEN SENDING DEBUG MESSAGES TO THE "
+"MAILING LIST:"
+msgstr ""
+"ЗАЎСЁДЫ ЎКЛЮЧАЙЦЕ НАСТУПНЫЯ РАДКІ, КАЛІ ДАСЫЛАЕЦЕ АДЛАДАЧНЫЯ ПАВЕДАМЛЕННІ Ў "
+"СПІС РАССЫЛКІ:"
 
 #: src/gtkam-viewer.c:245
 #, c-format
