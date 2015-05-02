@@ -544,6 +544,9 @@ gtkam_preview_new (GtkamCamera *camera)
 	gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
 	gtk_file_chooser_set_local_only( GTK_FILE_CHOOSER (button), TRUE);
 	preview->priv->button_file = GTK_FILE_CHOOSER_BUTTON (button);
+	if (gp_setting_get ("gtkam-preview", "download_folder", buf) == GP_OK) {
+				gtk_file_chooser_set_filename (preview->priv->button_file, buf);
+	}
 
 	/* Buttons in action area */
 	button = gtk_button_new_with_label (_("Capture"));
