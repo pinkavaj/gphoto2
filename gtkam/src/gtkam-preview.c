@@ -422,7 +422,7 @@ on_size_allocate (GtkWidget *widget, GtkAllocation *allocation,
 static void
 on_direct_download_toggled (GtkToggleButton *togglebutton, GtkamPreview *preview)
 {
-	const gchar *store_uri;
+	const gchar *store_filename;
 	GtkFileChooser *dialog;
 
 	if (!gtk_toggle_button_get_active(
@@ -431,14 +431,15 @@ on_direct_download_toggled (GtkToggleButton *togglebutton, GtkamPreview *preview
 	    return;
 	}
 
-	store_uri = gtk_file_chooser_get_uri (
+	store_filename = gtk_file_chooser_get_filename (
 			GTK_FILE_CHOOSER (preview->priv->button_file));
-	if (!store_uri) {
+	if (!store_filename) {
 		g_object_get (preview->priv->button_file, "dialog", &dialog, NULL);
 		gtk_widget_show (GTK_WIDGET (dialog));
-	    return;
+		return;
 	}
 	gp_setting_set ("gtkam-preview", "direct_download", "1");
+	gp_setting_set ("gtkam-preview", "download_folder", store_filename);
 }
 
 GtkWidget *
