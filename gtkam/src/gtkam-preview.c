@@ -532,11 +532,6 @@ gtkam_preview_new (GtkamCamera *camera)
 	gtk_tooltips_set_tip (preview->priv->tooltips, check, _(
 			    _("Immadiately download captured images.")), NULL);
 	preview->priv->check_download = GTK_CHECK_BUTTON (check);
-	if (gp_setting_get ("gtkam-preview", "direct_download", buf) == GP_OK) {
-	            gtk_toggle_button_set_active (
-	                    GTK_TOGGLE_BUTTON (preview->priv->check_download),
-	                    atoi(buf));
-	}
 
 	button = gtk_file_chooser_button_new(_("File store directory"),
 			    GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
@@ -546,6 +541,11 @@ gtkam_preview_new (GtkamCamera *camera)
 	preview->priv->button_file = GTK_FILE_CHOOSER_BUTTON (button);
 	if (gp_setting_get ("gtkam-preview", "download_folder", buf) == GP_OK) {
 				gtk_file_chooser_set_filename (preview->priv->button_file, buf);
+	}
+	if (gp_setting_get ("gtkam-preview", "direct_download", buf) == GP_OK) {
+	            gtk_toggle_button_set_active (
+	                    GTK_TOGGLE_BUTTON (preview->priv->check_download),
+	                    atoi(buf));
 	}
 
 	/* Buttons in action area */
