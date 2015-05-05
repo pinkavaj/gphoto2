@@ -3391,6 +3391,7 @@ or
 	<arg choice="opt">--reset</arg>
 	<sbr/>
 	<arg choice="opt">--capture-preview</arg>
+	<arg choice="opt">--show-preview</arg>
 	<sbr/>
 	<group choice="opt">
 	  <arg>-F <replaceable>COUNT</replaceable></arg> 
@@ -3907,6 +3908,13 @@ or
 	  <term><option>--capture-preview</option></term>
 	  <listitem>
 	    <para>Capture a quick preview.</para>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term><option>--show-preview</option></term>
+	  <listitem>
+	    <para>Capture a quick preview and displays it in the terminal using Ascii Art (if aalib was used during build).</para>
 	  </listitem>
 	</varlistentry>
 
