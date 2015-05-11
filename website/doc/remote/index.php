@@ -103,7 +103,7 @@ An error will be reported if the end of the focus range is reached.
 </li>
 <li>Canon EOS DSLR: Manual focus driving only works on the "liveview" aka "preview" mode (with mirror up). In "non preview" mode the focus motor is only controllable by the autofocus
 engine.
-<code>--set-config manualfocusdrive=<b>Mode</b></code> where mode is "Near 1" "Near 2" "Near 3" "Far 1" "Far 2" "Far 3". These are 3 different relative stepsizes for both focusing directions. To achieve focusing, multiple calls might need to be done.
+<code>--set-config manualfocusdrive=<b>Mode</b></code> where mode is "Near 1" "Near 2" "Near 3" "Far 1" "Far 2" "Far 3". These are 3 different relative stepsizes for both focusing directions. To achieve focusing, multiple calls might need to be done.<br/>On newer Canon EOS cameras, you also need to set "Continous AF" to "Off" in the settings (this option will be remote controllable in 2.5.8).
 </li>
 </ul>
 </p>
