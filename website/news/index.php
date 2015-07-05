@@ -9,6 +9,51 @@
 <tr>
 	<td class="text">
 <!-- news headlines -->
+
+<h2>libgphoto2 2.5.8 release</h2>
+
+<h3>ptp2</h3>
+<ul>
+<li>Canon Powershot/IXUS CHDK support<br/>
+  Install the CHDK firmware and then use <code>gphoto2 --set-config chdk=On</code> to enable.
+<li>Canon EOS: Implemented new capture method for new Canon EOS to avoid hangs.
+<li>Canon EOS: New configuration variable: continuousaf
+<li>Canon EOS: event output for focusinfo / focusmask
+<li>Nikon DSLR: New configuration variables: movieiso, movieshutterspeed, moviehighisonr
+<li>Nikon Coolpix A: also manually add override opcodes for capture (please report if it works)
+<li>New USB ids:<ul>
+<li>Sony: DSC-HX60V, Alpha-A7S, Alpha-A77 M2, Alpha A5100
+<li>Panasonic: DMC-LS2
+<li>Canon EOS 7D Mark II, Canon EOS M3
+<li>Canon Powershot SX520 HS
+<li>Fuji Fujifilm X-E2
+<li>Samsung NX1
+</ul>
+<li>Media Player IDs synced with the libmtp ID database.
+<li>Lots of bugfixes.
+</ul>
+
+<h3>libgphoto2_port/libusb</h3>
+<ul>
+<li>Prefer libusb1 over libusb0 if both are present.
+<li>Asynchronous interrupt handling, to avoid losing usb interrupts during other operations.
+</ul>
+
+<h3>all</h3>
+<ul>
+<li>Missing COPYRIGHT headers added.
+<li>Bug fixes for issues detected by Coverity.
+</ul>
+
+<h2>gphoto2 2.5.8 release</h2>
+<ul>
+<li><code>--keep-raw</code> option added, which leaves non-JPEG files on camera during capture or wait-event-and-download
+<li><code>--show-preview</code> option split out of <code>--capture-preview</code>. <code>--show-preview</code> now displays the ascii art preview, <code>--capture-preview</code> no longer does.
+<li>updated translations: french, ukrainian, vietnamese, russian, polish, dutch, hungarian, esperanto, serbian, danish
+</ul>
+
+<hr />
+
 <h2>libgphoto2 2.5.7 release</h2>
 
 <h3>ptp2</h3>
