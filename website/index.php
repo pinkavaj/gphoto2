@@ -17,7 +17,7 @@
 
 
     	<p>
-	<b>libgphoto2 2.5.8</b> has been
+	<b>gphoto2 and libgphoto2 2.5.8</b> has been
 	released. Read <a href="/news/" alt="News"><b>what's new</b></a>.
 	Download it <a href="/download/" alt="Download"><b>now</b></a>.
     	</p>
