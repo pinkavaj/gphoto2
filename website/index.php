@@ -17,6 +17,14 @@
 
 
     	<p>
+	<b>libgphoto2 2.5.8</b> has been
+	released. Read <a href="/news/" alt="News"><b>what's new</b></a>.
+	Download it <a href="/download/" alt="Download"><b>now</b></a>.
+    	</p>
+	<div style="text-align: right;"><b>July 5th, 2015</b></div>
+    	<p>
+
+    	<p>
 	<b>libgphoto2 2.5.7</b> has been
 	released. Read <a href="/news/" alt="News"><b>what's new</b></a>.
 	Download it <a href="/download/" alt="Download"><b>now</b></a>.
@@ -104,7 +112,7 @@
     ready to use set of digital camera software
     applications for Unix-like systems, written by a whole team of dedicated
     volunteers around the world. It supports more than 
-    <a href="/proj/libgphoto2/support.php" alt="Supported cameras">1800 cameras</a></p>
+    <a href="/proj/libgphoto2/support.php" alt="Supported cameras">2100 cameras</a></p>
     <p>gPhoto2 runs on a large range of UNIX-like operating system, including
     Linux, FreeBSD, NetBSD, MacOS X, etc. gPhoto is provided by major Linux distributions
     like Debian GNU/Linux, Ubuntu, Gentoo, Fedora, openSUSE, Mandriva, etc.</p>
